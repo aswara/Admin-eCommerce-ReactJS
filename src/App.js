@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import Loading from './components/Loading'
+import Login from './components/Login'
+import Dashboard from './components/Dashboard'
+import Orders from './components/Orders'
+import Products from './components/Products'
+import Costumers from './components/Costumers'
+import Categories from './components/Categories'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Loading} />
+            <Route path="/login" component={Login} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/orders" component={Orders} />
+            <Route path="/products" component={Products} />
+            <Route path="/costumers" component={Costumers} />
+            <Route path="/categories" component={Categories} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

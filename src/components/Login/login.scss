@@ -1,0 +1,170 @@
+.login {
+
+    .wrapper {
+        background-color: white;
+        width: 350px;
+        height: 450px;
+        border-radius: 20px;
+        box-shadow: 0px 5px 20px lightgray;
+        position: absolute;
+        right: 10%;
+        top: 10%;
+        z-index: 50;
+
+        img {
+            width: 100%;
+        }
+
+        form {
+            margin-top: -110px;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        h2 {
+            color: white;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        label {
+            color: #5daafd;
+        }
+
+        input {
+            width: 96%;
+            padding: 5px;
+            margin-top: 7px;
+            margin-bottom: 10px;
+            border: 1px solid #5daafd;
+            font-size: 16px;
+            background-color: #eaf4ff;
+            border-radius: 3px;
+        }
+
+        button {
+            width: 100%;
+            font-size: 16px;
+            background-image: linear-gradient(#5daafd, #4bcffa);
+            border: none;
+            color: white;
+            padding: 7px;
+            border-radius: 3px;
+            box-shadow: 0px 3px 20px lightgrey;
+        }
+
+        button:hover {
+            color: #5daafd;
+            background-image: linear-gradient( #eaf4ff, white);
+            border: 2px solid #5daafd;
+            cursor: pointer;
+        }
+    }
+
+    .left {
+        .background {
+            position: fixed;
+            width: auto;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        .person {
+            z-index: 2;
+            position: fixed;
+            height: 40%;
+            top: 45%;
+            left: 10%;
+        }
+
+        .screen1 {
+            top: 15%;
+            left: 17%;
+            z-index: 2;
+            height: 30%;
+            position: fixed;
+            animation: screen1 2s ease-in-out infinite;
+        }
+
+        @keyframes screen1 {
+            0%{
+                top: 15%;
+            }
+            50%{
+                top: 10%;
+            }
+            100% {
+                top: 15%;
+            }
+        }
+
+        .screen2 {
+            top: 20%;
+            left: 8%;
+            z-index: 2;
+            height: 15%;
+            position: fixed;
+            animation: screen2 1.5s ease-in-out infinite;
+        }
+
+        @keyframes screen2 {
+            0%{
+                top: 25%;
+            }
+            50%{
+                top: 30%;
+            }
+            100% {
+                top: 25%;
+            }
+        }
+
+        .screen3 {
+            top: 40%;
+            left: 20%;
+            z-index: 2;
+            height: 25%;
+            position: fixed;
+            animation: screen3 2s ease-in-out infinite;
+        }
+
+        @keyframes screen3 {
+            0%{
+                top: 43%;
+            }
+            50%{
+                top: 48%;
+            }
+            100% {
+                top: 43%;
+            }
+        }
+
+        .icons {
+            position: fixed;
+            z-index: 2;
+            height:70%;
+            top: 8%;
+            left: 1%;
+            animation: icons 2s ease-in-out;
+        }
+
+        @keyframes icons {
+            0%{
+                top:-50%;
+                opacity: 0;
+            }
+            75%{
+                top:15%;
+            }
+            100%{
+                top: 8%;
+                opacity: 1;
+            }
+        }
+
+    }
+
+}

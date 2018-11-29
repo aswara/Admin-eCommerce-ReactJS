@@ -1,0 +1,28 @@
+.navbar {
+    width: 150px;
+    height: 100%;
+    color: red;
+    background-color: white;
+    position: fixed;
+    top: 50px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    box-shadow: 1px 0 10px lightgrey;
+
+    .link {
+        color: #4694fc;
+        margin-bottom: 30px;
+        text-decoration: none;
+    }
+
+    .active {
+        color: white;
+        width: 100%;
+        color: white;
+        background-image: linear-gradient(to left, #4694fc,#80befc);
+        padding: 7px;    
+        width: 100%;
+    }
+}

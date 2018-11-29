@@ -1,0 +1,47 @@
+.dashboard {
+    padding-top: 50px;
+    padding-left: 150px;
+
+    .wrapper {
+        padding: 50px;
+
+        span {
+            color: #4694fc;
+        }
+
+        .total {
+            margin-top: 10px; 
+            display: flex;
+            justify-content: space-between;
+
+            .card {
+                background-color: white;
+                width: 30%;
+                border-radius: 17px;
+                box-shadow: 0px 3px 5px lightgrey;
+                display: flex;
+
+                div {
+                    width: 50%;
+                    text-align: center;
+
+                    p {
+                        margin-top: 10px;;
+                        color:gray;
+                        margin-bottom: 10px;
+                        font-size: 15px;
+                    }
+
+                    h1 {
+                        margin-top: 0px;
+                        color: #4694fc;
+                        font-weight: 400;
+                        font-size: 50px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+    }
+}
