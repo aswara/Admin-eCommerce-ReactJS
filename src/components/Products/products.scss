@@ -16,7 +16,28 @@
             z-index: 5;
             background-color: #4694fc;
             box-shadow: 0px 2px 10px lightgray;
+            cursor: pointer;
+            animation: icon 0.7s ease-in-out;
+            color: white;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        @keyframes icon {
+            0%{
+                transform: scale(0.2);
+           
+            }
+            50%{
+                transform:  scale(1.5);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
 
         .costumer {
             margin-top: 10px;

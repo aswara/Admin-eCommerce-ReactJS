@@ -13,7 +13,7 @@ class index extends Component {
 
                 <div className="wrapper">
                     <div className="new">
-                    
+                        <i class="demo-icon icon-plus">&#xe808;</i>
                     </div>
 
                     <span>Products</span>

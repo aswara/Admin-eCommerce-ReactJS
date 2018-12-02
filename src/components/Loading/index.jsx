@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import './loading.scss'
+
 import logo from '../../assets/logo.svg'
 
 class index extends Component {
     render() {
         return (
-            <div>
+            <div className="loading">
                 <img src={logo} alt="logo"/>
-                <h1>Loading</h1>
-                <ion-icon name="heart"></ion-icon>
+                <h1>e-Commerce</h1>
             </div>
         );
     }

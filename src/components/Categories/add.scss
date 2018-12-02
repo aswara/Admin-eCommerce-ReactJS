@@ -1,0 +1,47 @@
+.add-category {
+    margin-top: 10px;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 0 3px 10px lightgray;
+    animation: add 1s ease-in-out;
+    border-radius: 3px;
+    width: 99%;
+
+    @keyframes add {
+        0%{
+            opacity: 0;
+            width: 0%;
+        }
+        50%{
+            width: 105%;
+        }
+        100%{
+            width: 99%;
+            opacity: 1;
+        }
+    }
+
+    form {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    input {
+        font-size: 14px;
+        padding: 5px;
+        border: 1px solid #87B7FB;
+        background-color: #f5f5f5;
+        border-radius: 3px;
+        width: 92%;
+    }
+
+    button {
+        background-color:  #4694fc;
+        border: none;
+        color: white;
+        border-radius: 3px;
+        padding: 0 20px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+}

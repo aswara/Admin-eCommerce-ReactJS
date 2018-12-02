@@ -10,6 +10,7 @@
     flex-direction: column;
     padding-top: 40px;
     box-shadow: 1px 0 10px lightgrey;
+    transition: 1s;
 
     .link {
         color: #4694fc;
@@ -24,5 +25,19 @@
         background-image: linear-gradient(to left, #4694fc,#80befc);
         padding: 7px;    
         width: 100%;
+    }
+
+    i {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 700px){
+    .navbar {
+        width: 40px;
+
+        span {
+            display: none;
+        }
     }
 }

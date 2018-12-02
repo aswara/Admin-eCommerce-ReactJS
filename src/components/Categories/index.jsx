@@ -24,7 +24,7 @@ class index extends Component {
                     <span>Categories</span>
 
                     <div onClick={this.newCategory} className="new">
-                    
+                       { !new_category ? <i class="demo-icon icon-cancel">&#xe80f;</i> : <i class="demo-icon icon-plus">&#xe808;</i> } 
                     </div>
 
                     {/* Component for input new category */}
@@ -36,13 +36,13 @@ class index extends Component {
                         </div>
                         <div className="actions">
                             <div className="delete">
-                            
+                                <i class="demo-icon icon-minus">&#xe814;</i>
                             </div>
                             <div className="update">
-                            
+                                <i class="demo-icon icon-cog">&#xe81a;</i>
                             </div>
                             <div className="add">
-                            
+                                <i class="demo-icon icon-plus">&#xe808;</i>
                             </div>
                         </div>
                     </div>

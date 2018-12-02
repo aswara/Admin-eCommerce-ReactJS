@@ -17,6 +17,29 @@
             background-color: #4694fc;
             box-shadow: 0px 2px 10px lightgray;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            animation: icon 0.7s ease-in-out;
+
+        }
+
+        @keyframes icon {
+            0%{
+                transform: scale(0.2);
+           
+            }
+            50%{
+                transform:  scale(1.5);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
+        i {
+            color: white;
         }
 
         .category {
@@ -41,6 +64,11 @@
                 background-color: #4694fc;
                 margin-left: 7px;
                 box-shadow: 0px 2px 10px lightgray;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                cursor: pointer;
             }
 
             .update {
@@ -50,6 +78,11 @@
                 background-color: #6EE072;
                 margin-left: 7px;
                 box-shadow: 0px 2px 10px lightgray;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                cursor: pointer;
             }
 
             .delete {
@@ -58,6 +91,11 @@
                 border-radius: 20px;
                 background-color: #ff5555;
                 box-shadow: 0px 2px 10px lightgray;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                cursor: pointer;
             }
 
         }

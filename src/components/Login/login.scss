@@ -2,23 +2,40 @@
 
     .wrapper {
         background-color: white;
-        width: 350px;
-        height: 450px;
-        border-radius: 20px;
-        box-shadow: 0px 5px 20px lightgray;
+        width: 310px;
+        height: 385px;
+        border-radius: 15px;
+        box-shadow: 0px 2px 0px lightgray;
         position: absolute;
-        right: 10%;
-        top: 10%;
+        right: 15%;
+        top: 110px;
         z-index: 50;
+        animation: form 1s ease-in-out;
 
         img {
             width: 100%;
+        }
+
+        .error {
+            color: #c83737;
+            margin-bottom: 5px;
         }
 
         form {
             margin-top: -110px;
             margin-left: 25px;
             margin-right: 25px;
+        }
+
+        @keyframes form {
+            0%{
+                top: 0;
+                opacity: 0;
+            }
+            100%{
+                top:110px;
+                opacity: 1;
+            }
         }
 
         h2 {
@@ -43,7 +60,7 @@
         }
 
         button {
-            width: 100%;
+            width: 260px;
             font-size: 16px;
             background-image: linear-gradient(#5daafd, #4bcffa);
             border: none;
@@ -51,12 +68,31 @@
             padding: 7px;
             border-radius: 3px;
             box-shadow: 0px 3px 20px lightgrey;
+            margin-top: 10px;
+            animation: button 1s ease-in-out;
+        }
+
+        @keyframes button {
+            0%{
+                position: absolute;
+                top: 0;
+                opacity: 0;
+            }
+            50%{
+                position: absolute;
+                top: 300px;
+            }
+            100%{
+                opacity: 1;
+                position: absolute;
+                top: 255px;
+            }
         }
 
         button:hover {
             color: #5daafd;
             background-image: linear-gradient( #eaf4ff, white);
-            border: 2px solid #5daafd;
+            border: 1px solid #5daafd;
             cursor: pointer;
         }
     }
@@ -76,12 +112,12 @@
             position: fixed;
             height: 40%;
             top: 45%;
-            left: 10%;
+            left: 15%;
         }
 
         .screen1 {
             top: 15%;
-            left: 17%;
+            left: 23%;
             z-index: 2;
             height: 30%;
             position: fixed;
@@ -102,7 +138,7 @@
 
         .screen2 {
             top: 20%;
-            left: 8%;
+            left: 13%;
             z-index: 2;
             height: 15%;
             position: fixed;
@@ -123,7 +159,7 @@
 
         .screen3 {
             top: 40%;
-            left: 20%;
+            left: 25%;
             z-index: 2;
             height: 25%;
             position: fixed;
@@ -147,7 +183,7 @@
             z-index: 2;
             height:70%;
             top: 8%;
-            left: 1%;
+            left: 6%;
             animation: icons 2s ease-in-out;
         }
 
@@ -166,5 +202,21 @@
         }
 
     }
+
+}
+
+// responsive mobile
+@media (max-width: 700px) {
+    .login {
+        display: flex;
+        justify-content: center;
+
+        .wrapper {
+            position: relative;
+            left: auto;
+            right: auto;
+        }
+    }
+
 
 }

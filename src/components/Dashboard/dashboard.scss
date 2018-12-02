@@ -45,3 +45,13 @@
 
     }
 }
+
+@media (max-width: 700px){
+    .dashboard {
+        padding-left: 40px;
+
+        .wrapper {
+            padding: 20px;
+        }
+    }
+}

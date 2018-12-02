@@ -1,0 +1,44 @@
+.loading {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: lightblue;
+    opacity: 0.9;
+    z-index: 100;
+
+    img {
+        width: 20%;
+        margin-top: 100px;
+        animation: title 2s ease-in-out infinite;
+    }
+
+    h1  {
+        font-weight: 400;
+        color: #4694fc;
+        animation: ecommerce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes title {
+        from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+    }
+
+    @keyframes ecommerce {
+        0%{
+            opacity: 0.2;
+        }
+        50% {
+            opacity: 1;
+        }
+        100%{
+            opacity: 0.2;
+        }
+    }
+}

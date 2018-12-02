@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './header.scss'
+import { connect } from 'react-redux'
 
 import logo from '../../assets/logo.svg'
 
@@ -13,6 +14,7 @@ class index extends Component {
     }
 
     render() {
+        console.log(this.props)
         const { dropdown } = this.state
         return (
             <div className="header">
@@ -20,10 +22,10 @@ class index extends Component {
                     <span>e-Commerce</span>
                 </div>
                 <div className="admin">
-                    <span onClick={this.dropDown}>Admin</span>
+                    <span onClick={this.dropDown}>Admin <i class="demo-icon icon-down-circle">&#xe810;</i></span>
 
                     <div className={`dropdown ${ dropdown ? `hide` : ``}`}>
-                        <span>Logout</span>
+                        <span><i class="demo-icon icon-power">&#xe80e;</i> Logout</span>
                     </div>
                 </div>
             </div>
@@ -31,4 +33,10 @@ class index extends Component {
     }
 }
 
-export default index;       
+const mapStateToProps = (state) => {
+    return {
+        user: state.userReducer
+    }
+}
+
+export default  connect(mapStateToProps)(index);       

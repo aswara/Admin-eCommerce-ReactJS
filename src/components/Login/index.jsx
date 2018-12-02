@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import './login.scss'
+import axios from 'axios'
+import { connect } from 'react-redux'
+import { url } from '../../config'
+import { loginAction } from '../../actions'
+import { Redirect } from 'react-router-dom'
+import Loading from '../Loading'
+
 import imageform from '../../assets/login-form.svg'
 import imgBackground from '../../assets/login-bg.svg'
 import imgPerson from '../../assets/login-person.svg'
@@ -10,9 +17,53 @@ import imgIcons from '../../assets/login-icons.svg'
 
 
 class index extends Component {
+    state = {
+        loading : false,
+        login: false,
+        error: '',
+        username: null,
+        password: null
+    }
+
+    handleChange = (e) => {
+        this.setState({ [e.target.name] : e.target.value })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const { username, password, loading } = this.state
+        console.log(this.state)
+        if(!username){ this.setState({ error: 'Username tidak boleh kosong' }) }
+        if(!password){ this.setState({ error: 'Password tidak boleh kosong' }) }
+        if(!username && !password){ this.setState({ error: 'Username dan password tidak boleh kosong' }) }
+        
+
+        let formData = new FormData()
+        formData.append('username', username)
+        formData.append('password', password)
+
+        if( password && username ) {
+            this.setState({ loading: true })
+            this.setState({ error: '' })
+            axios.post( url + "/admin/login" , formData )
+            .then(res=>{
+                this.props.loginAction(res.data.token)
+                this.setState({ login: true })
+            })
+            .catch(err=>{
+                this.setState({ loading: false })
+                this.setState({ error: 'Username dan password tidak cocok' })
+            })
+        }
+    }
+
     render() {
+        const { login, loading, error } = this.state
         return (
             <div className="login">
+                { loading ? <Loading /> : '' }
+                { login ? <Redirect to="/dashboard" /> : '' }
+
                 <div className="left">
                     <img className="background" src={imgBackground} alt="imgBackground"/>
                     <img className="person" src={imgPerson} alt="imgPerson"/>
@@ -23,13 +74,20 @@ class index extends Component {
                 </div>
                 <div className="wrapper">
                     <img src={imageform} alt="imageform"/>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <h2>Login Admin</h2>
-                        <label for="username">Username</label>
+
+                        <p className="error">{error}</p>
+
+                        <label id="username" htmlFor="username">Username</label>
                         <br/>
-                        <input name="username" id="username" type="text"/>
+                        <input onChange={this.handleChange} name="username" id="username" type="text"/>
                         <br/>
-                        <button>Login</button>
+                        <label className="password" htmlFor="password">Password</label>
+                        <br/>
+                        <input onChange={this.handleChange} name="password" id="password" type="text"/>
+                        <br/>
+                        <button type="submit">Login</button> 
                     </form>
                 </div>
             </div>
@@ -37,4 +95,5 @@ class index extends Component {
     }
 }
 
-export default index;
+
+export default connect(null, {loginAction})(index);
