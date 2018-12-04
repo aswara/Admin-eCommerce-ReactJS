@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { LOGIN } from '../types'
+import { LOGIN } from '../types'               
 
 const initialState = {
     token: localStorage.getItem('token')

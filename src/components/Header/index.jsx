@@ -14,7 +14,6 @@ class index extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { dropdown } = this.state
         return (
             <div className="header">
@@ -22,10 +21,10 @@ class index extends Component {
                     <span>e-Commerce</span>
                 </div>
                 <div className="admin">
-                    <span onClick={this.dropDown}>Admin <i class="demo-icon icon-down-circle">&#xe810;</i></span>
+                    <span onClick={this.dropDown}>Admin <i className="demo-icon icon-down-circle">&#xe810;</i></span>
 
                     <div className={`dropdown ${ dropdown ? `hide` : ``}`}>
-                        <span><i class="demo-icon icon-power">&#xe80e;</i> Logout</span>
+                        <span><i className="demo-icon icon-power">&#xe80e;</i> Logout</span>
                     </div>
                 </div>
             </div>

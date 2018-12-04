@@ -15,7 +15,7 @@ class index extends Component {
                         <div className="card">
                             <div>ss</div>
                             <div>
-                                <p>Total Orders</p>
+                                <p>Recent Orders</p>
                                 <h1>25</h1>
                             </div>
                         </div>

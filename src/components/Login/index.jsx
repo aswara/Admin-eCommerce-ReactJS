@@ -32,11 +32,10 @@ class index extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const { username, password, loading } = this.state
-        console.log(this.state)
+
         if(!username){ this.setState({ error: 'Username tidak boleh kosong' }) }
         if(!password){ this.setState({ error: 'Password tidak boleh kosong' }) }
         if(!username && !password){ this.setState({ error: 'Username dan password tidak boleh kosong' }) }
-        
 
         let formData = new FormData()
         formData.append('username', username)
@@ -77,7 +76,7 @@ class index extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <h2>Login Admin</h2>
 
-                        <p className="error">{error}</p>
+                        <p className="error"> {error} </p>
 
                         <label id="username" htmlFor="username">Username</label>
                         <br/>
