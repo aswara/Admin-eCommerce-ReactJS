@@ -125,7 +125,7 @@
         }
 
         .category {
-            margin-top: 10px;
+            margin: 10px 0;
             display: flex;
             justify-content: space-between;
             background-color: white;
@@ -141,6 +141,7 @@
 
             span {
                 margin-left: 5px;
+                font-size: 18px;
             }
 
             .add {

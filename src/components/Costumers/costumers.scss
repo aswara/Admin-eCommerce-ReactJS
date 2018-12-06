@@ -28,3 +28,17 @@
 
     }
 }
+
+@media (max-width: 700px){
+    .costumers {
+        padding-left: 40px;
+
+        .wrapper {
+            padding: 15px;
+
+            .costumer {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

@@ -3,52 +3,84 @@ import axios from 'axios'
 import { url, headers } from '../../config'
 import { connect } from 'react-redux'
 
+import SubCategory from './SubCategory'
+
 class Category extends Component {
     state = {
-        open : true,
-        input : true,
+        open_update : true,
+        open_add : true,
         comfirm_delete : true,
-        name: ''
+        name : '',
+        message : '',
+        sub_categories : [] 
     }
 
-    deleteCategory (id) {   
+    componentDidMount() {
+        this.fetchSubCategories()
+    }
+
+    fetchSubCategories = () => {
+        axios.get( url + '/subcategory/category/' + this.props.category.category_id )
+        .then(res=>{ 
+            if(res.data.constructor === Array )
+                this.setState({ sub_categories: res.data })
+            else
+                this.setState({ sub_categories: [] })
+         })
+        .catch(err=>{ this.setState({ message: 'Gagal menampilkan sub kategori' }) })
+    }
+
+    deleteCategory(id) {   
         axios.delete( url+ '/category/' + id , headers(this.props.user.token) )
         .then(res=>{
             this.props.update()
         })
     }
 
-    openCategory = (name) =>{
-        this.setState({ name, open: !this.state.open })
+
+    openUpdateCategory = (name) =>{
+        this.setState({ name, open_update: !this.state.open_update, message: '' })
     }
 
-    handleUpdate(e, id) {
+    updateCategory(e, id) {
         e.preventDefault() 
         const data = {
             name: this.state.name,
-            id
         }
-        console.log(data)
-        axios.put( url + '/category' + id , data ,headers(this.props.user.token) )
+
+        axios.put( url + '/category/' + id , data ,headers(this.props.user.token) )
+        .then(res=>{ 
+            this.setState({ message: 'Berhasil ubah kategori', open_update: true })
+            this.props.update()
+        })
+        .catch(err=>{ this.setState({ message: 'Gagal ubah kategori' }) })
     }
 
-    addSubCategory = () =>{
-        this.setState({ input: !this.state.input })
+    openAddSubCategory = () =>{
+        this.setState({ open_add: !this.state.open_add, message: '' })
         
     }
 
-    handleAdd(e, id) {
+    addSubCategory(e, id) {
         e.preventDefault()
-        console.log(id)
+        const data = {
+            name : this.state.name,
+            category_id : id
+        }
+        axios.post( url + '/subcategory', data , headers(this.props.user.token) )
+        .then(res=>{
+            this.fetchSubCategories()
+            this.setState({ message: 'Berhasil tambah sub kategori', open_add: true, name: '' })
+        })
     }
 
 
     render() {
-        const { open, name, input, comfirm_delete } = this.state
+        const { open_update, name, open_add, comfirm_delete, message, sub_categories } = this.state
         const { category } = this.props
-        console.log(this.state)
         return (
             <div>
+                <span className="message">{message}</span>
                 <div className="category">
                     <div>
                         <span>{category.name}</span>
@@ -57,15 +89,17 @@ class Category extends Component {
                         <div onClick={()=>{this.setState({ comfirm_delete : false})}} className="delete">
                             <i className="demo-icon icon-minus">&#xe814;</i>
                         </div>
-                        <div onClick={()=>{this.openCategory(category.name)}} className="update">
+                        <div onClick={()=>{this.openUpdateCategory(category.name)}} className="update">
                             <i className="demo-icon icon-cog">&#xe81a;</i>
                         </div>
-                        <div className="add">
-                            <i onClick={this.addSubCategory} className="demo-icon icon-plus">&#xe808;</i>
+                        <div onClick={this.openAddSubCategory} className="add">
+                            {
+                                open_add ?  <i className="demo-icon icon-plus">&#xe808;</i> : <i className="demo-icon icon-cancel">&#xe80f;</i>
+                            }
                         </div>
                     </div>
                 </div>
-
+                
                 { //open comfirm delete category
                     comfirm_delete ? '' :
                     <div className="comfirm-delete">
@@ -79,9 +113,9 @@ class Category extends Component {
                 
 
                 { //open input for update category
-                    open ? '' :
+                    open_update ? '' :
                     <div className="add-category">
-                        <form onSubmit={(e)=>{ this.handleUpdate(e, category.category_id) }}>
+                        <form onSubmit={(e)=>{ this.updateCategory(e, category.category_id) }}>
                             <input onChange={(e)=>{this.setState({ name: e.target.value })}} value={name} type="text"/>
                             <button type="submit">Save</button>
                         </form>
@@ -90,15 +124,22 @@ class Category extends Component {
 
 
                 { //open input for add subcategory
-                    input ? '' :
+                    open_add ? '' :
                     <div className="add-category">
-                        <form onSubmit={(e)=>{ this.handleAdd(e, category.category_id) }}>
-                            <input placeholder="Tambah sub category" onChange={(e)=>{this.setState({ name: e.target.value })}} type="text"/>
+                        <form onSubmit={(e)=>{ this.addSubCategory(e, category.category_id) }}>
+                            <input placeholder="Tambah sub kategori" onChange={(e)=>{this.setState({ name: e.target.value })}} type="text"/>
                             <button type="submit">Add</button>
                         </form>
                     </div>
                 }
 
+                { //list sub categories
+                    sub_categories.map(sub_category=>{
+                        return(
+                            <SubCategory key={sub_category.sub_category_id} update={this.fetchSubCategories} data={sub_category} />
+                        )
+                   })
+                }
 
             </div>
 

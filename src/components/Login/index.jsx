@@ -25,6 +25,12 @@ class index extends Component {
         password: null
     }
 
+    componentDidMount() {
+        if(localStorage.getItem('token') !== null){
+            this.setState({ login: true })
+        }
+    }
+
     handleChange = (e) => {
         this.setState({ [e.target.name] : e.target.value })
     }
@@ -60,6 +66,7 @@ class index extends Component {
         const { login, loading, error } = this.state
         return (
             <div className="login">
+
                 { loading ? <Loading /> : '' }
                 { login ? <Redirect to="/dashboard" /> : '' }
 

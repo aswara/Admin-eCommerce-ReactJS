@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import './costumers.scss'
+import axios from 'axios'
+import { url, headers } from '../../config'
+import { connect } from 'react-redux'
 
 import Header from '../Header'
 import Navbar from '../Navbar'
 
 class index extends Component {
+
+    componentDidMount() {
+        axios.get( url + "/customers" , headers(this.props.user.token) )
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err.response)
+        })
+    }
+
     render() {
         return (
             <div className="costumers">
@@ -31,4 +45,11 @@ class index extends Component {
     }
 }
 
-export default index;
+
+const mapStateToProps = (state) => {
+    return({
+        user: state.userReducer
+    })
+}
+
+export default connect(mapStateToProps)(index);

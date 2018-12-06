@@ -61,3 +61,24 @@
 
     }
 }
+
+@media (max-width: 700px){
+    .products {
+        padding-left: 40px;
+
+        .wrapper {
+            padding: 15px;
+
+            .new {
+                top: 60px;
+                right: 10px;
+            }
+
+            .costumer {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+        }
+    }
+}

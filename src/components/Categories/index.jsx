@@ -11,7 +11,7 @@ import Category from './Category'
 class index extends Component {
     state = {
         new_category: true,
-        categories: [1,2,3,4,5,6,7,8,8,10],
+        categories: [1,2,3,4,5,6,7,8,9,10,11],
         loading: true
     }
     
@@ -35,14 +35,13 @@ class index extends Component {
 
     render() {
         const { new_category, categories, loading } = this.state
-        console.log(categories)
         return (
             <div className="categories">
                 <Header />
                 <Navbar />
 
-                {
-                    loading ? <div className="wrapper">{ categories.map(category=>{ return(<div className="category loading-list"></div>) }) }</div> :
+                { //loading fect data categories
+                    loading ? <div className="wrapper">{ categories.map(category=>{ return(<div key={category} className="category loading-list"></div>) }) }</div> :
                 
 
                 <div className="wrapper">
