@@ -7,7 +7,7 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Orders from './components/Orders'
 import Products from './components/Products'
-import Costumers from './components/Costumers'
+import Customers from './components/Customers'
 import Categories from './components/Categories'
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/orders" component={Orders} />
             <Route path="/products" component={Products} />
-            <Route path="/costumers" component={Costumers} />
+            <Route path="/customers" component={Customers} />
             <Route path="/categories" component={Categories} />
           </Switch>
         </BrowserRouter>

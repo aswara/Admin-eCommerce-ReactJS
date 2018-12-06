@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './costumers.scss'
+import './customers.scss'
 import axios from 'axios'
 import { url, headers } from '../../config'
 import { connect } from 'react-redux'
