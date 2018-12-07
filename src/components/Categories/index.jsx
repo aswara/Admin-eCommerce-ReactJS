@@ -12,7 +12,8 @@ class index extends Component {
     state = {
         new_category: true,
         categories: [1,2,3,4,5,6,7,8,9,10,11],
-        loading: true
+        loading: true,
+        message: ''
     }
     
     componentDidMount(){
@@ -25,7 +26,7 @@ class index extends Component {
             this.setState({ categories: res.data, loading: false })
         })
         .catch(res=>{
-            this.setState({ loading: true })
+            this.setState({ loading: true , message: 'Koneksi bermasalah' })
         })
     }
 
@@ -34,14 +35,14 @@ class index extends Component {
     }
 
     render() {
-        const { new_category, categories, loading } = this.state
+        const { new_category, categories, loading, message } = this.state
         return (
             <div className="categories">
                 <Header />
                 <Navbar />
 
                 { //loading fect data categories
-                    loading ? <div className="wrapper">{ categories.map(category=>{ return(<div key={category} className="category loading-list"></div>) }) }</div> :
+                    loading ? <div className="wrapper"> <span className="message">{message}</span> { categories.map(category=>{ return(<div key={category} className="category loading-list"></div>) }) }</div> :
                 
 
                 <div className="wrapper">

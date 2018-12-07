@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 import { LOGIN } from '../types'               
+import { categoriesReducer, subcategoriesReducer }  from './categories'
+
 
 const initialState = {
     token: localStorage.getItem('token')
@@ -17,5 +19,4 @@ const userReducer = ( state = initialState, action ) => {
     }
 }
 
-export default combineReducers({ userReducer })
-
+export default combineReducers({ userReducer, categoriesReducer, subcategoriesReducer })

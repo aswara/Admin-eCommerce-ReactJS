@@ -15,7 +15,7 @@
             right: 50px;
             z-index: 5;
             background-color: #4694fc;
-            box-shadow: 0px 2px 10px lightgray;
+            box-shadow: 0px 2px 10px lightblue;
             cursor: pointer;
             animation: icon 0.7s ease-in-out;
             color: white;
@@ -38,26 +38,52 @@
             }
         }
 
-
-        .costumer {
+        .card {
             margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            background: white;
-            padding: 10px;
-            color: grey;
-            border-radius: 10px;
-            align-items: center;
-            box-shadow: 0 3px 10px lightgray;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 10px;
 
-            .photo {
-                height: 40px;
-                width: 40px;
-                border-radius: 20px;
-                background-color: #4694fc;
+            .product {
+                display: flex;
+                flex-direction: column;
+                background: white;
+                padding: 10px;
+                color: grey;
+                border-radius: 2px;
+                box-shadow: 0 3px 10px lightgray;
+                font-size: 14px;
+                color: gray;
+
+                .photo img {
+                    height: auto;
+                    width: 100%;
+                }
+
+                .name {
+                    color: black;
+                    font-size: 14px;
+                    font-weight: 450;
+                }
+
+                .code {
+                    span{
+                        color: black;
+                        font-size: 14px;
+                    }
+                }
+
+                .price {
+                    span {
+                        color: #4694fc;
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+    
             }
 
-        }
+         }
 
     }
 }
@@ -74,9 +100,11 @@
                 right: 10px;
             }
 
-            .costumer {
-                display: flex;
-                flex-wrap: wrap;
+            .card {
+                margin-top: 5px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
             }
 
         }
