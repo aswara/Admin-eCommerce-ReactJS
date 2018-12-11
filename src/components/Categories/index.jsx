@@ -26,7 +26,7 @@ class index extends Component {
             this.setState({ categories: res.data, loading: false })
         })
         .catch(res=>{
-            this.setState({ loading: true , message: 'Koneksi bermasalah' })
+            this.setState({ loading: true , message: 'Connection error' })
         })
     }
 

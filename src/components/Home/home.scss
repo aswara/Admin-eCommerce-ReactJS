@@ -1,4 +1,4 @@
-.loading {
+.home {
     text-align: center;
     position: fixed;
     width: 100%;
@@ -6,7 +6,6 @@
     left: 0;
     top: 0;
     background-color: white;
-    opacity: 0.9;
     z-index: 100;
 
     img {
@@ -40,5 +39,9 @@
         100%{
             opacity: 0.2;
         }
+    }
+
+    span {
+        color: red;
     }
 }

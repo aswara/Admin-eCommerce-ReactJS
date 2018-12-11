@@ -4,15 +4,16 @@ import { categoriesReducer, subcategoriesReducer }  from './categories'
 
 
 const initialState = {
-    token: localStorage.getItem('token')
+    token: localStorage.getItem('token'),
 }
 
 const userReducer = ( state = initialState, action ) => {
     switch (action.type) {
         case LOGIN:
             return {
-                login: true,
-                token: action.token
+                token: action.token,
+                data: action.payload,
+                login: action.login
             }
         default:
             return state

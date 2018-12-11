@@ -38,22 +38,131 @@
             }
         }
 
+        .show {
+            margin-top: 5px;
+            width: auto;
+            display: flex;         
+
+            div {
+                background-color: white;
+                padding: 5px 10px;
+                margin-right: 5px;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            .active {
+                background-color: #4694fc;
+                color: white;
+            }
+        }
+
+        .table {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-top: 10px;
+
+            .product {
+                padding: 5px;
+                display: grid;
+                grid-template-columns: 1fr 3fr 1fr 1fr;
+                background-color: white;      
+                margin-bottom: 5px;
+                border-radius: 3px;
+                box-shadow: 0 3px 10px lightgray;
+                animation: table 1s ease-in-out;
+
+                @keyframes table {
+                    0%{
+                        margin-top: 100px
+                    }
+                    50%{
+                        margin-top: -10px
+                    }
+                    100%{
+                        margin-top: 0px;
+                    }
+                }
+
+
+                .photo img {
+                    height: auto;
+                    width: 50px;
+                }
+
+                .name {
+                    color: #505050;
+                    font-size: 18px;
+                    font-weight: 450;
+                }
+
+                .code {
+                    span{
+                        color: #505050;
+                        font-size: 18px;
+                    }
+                }
+
+                .price {
+                    span {
+                        color: #4694fc;
+                        font-size: 20px;
+                        font-weight: 500;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+
+            }
+        }
+
         .card {
             margin-top: 10px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             grid-gap: 10px;
 
+            .loading-card {
+                height: 250px;
+                background-color: white;
+                animation: loading-list 2s infinite;
+            }
+    
+            @keyframes loading-list {
+                0%{
+                    opacity: 0.2;
+                }
+                50%{
+                    opacity: 0.6;
+                }
+                100%{
+                    opacity: 0.2;
+                }
+            }
+
             .product {
                 display: flex;
                 flex-direction: column;
                 background: white;
                 padding: 10px;
-                color: grey;
                 border-radius: 2px;
                 box-shadow: 0 3px 10px lightgray;
                 font-size: 14px;
-                color: gray;
+                color: #570D8A;
+                animation: card 1s ease-in-out;
+
+                @keyframes card {
+                    0%{
+                        margin-top: 100px;
+                    }
+                    50%{
+                        margin-top: -10px
+                    }
+                    100%{
+                        margin-top: 0px;
+                  
+                    }
+                }
 
                 .photo img {
                     height: auto;
@@ -61,14 +170,14 @@
                 }
 
                 .name {
-                    color: black;
+                    color: #505050;
                     font-size: 14px;
                     font-weight: 450;
                 }
 
                 .code {
                     span{
-                        color: black;
+                        color: #505050;
                         font-size: 14px;
                     }
                 }
@@ -98,6 +207,14 @@
             .new {
                 top: 60px;
                 right: 10px;
+            }
+
+            .table {
+                
+                .product{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
             }
 
             .card {

@@ -16,11 +16,11 @@ class SubCategory extends Component {
     deleteCategory(id) {   
         axios.delete( url+ '/subcategory/' + id , headers(this.props.user.token) )
         .then(res=>{
-            this.setState({ comfirm_delete: true, message: 'Berhasil menghapus sub kategori' })
+            this.setState({ comfirm_delete: true, message: 'Success delete subcategory' })
             this.props.update()
         })
         .catch(err=>{
-            this.setState({ comfirm_delete: true, message: 'Gagal menghapus menghapus sub kategori' })
+            this.setState({ comfirm_delete: true, message: 'Failed delete subcategory' })
         })
     }
 
@@ -29,36 +29,82 @@ class SubCategory extends Component {
         this.setState({ name, open: !this.state.open, message: '' })
     }
 
+    handleImage = (e) => {
+        let file = e.target.files[0]
+        let reader = new FileReader()
+
+        reader.readAsDataURL(file)
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                image: reader.result
+            })
+        }
+    }
+
     updateCategory(e, id) {
-        e.preventDefault() 
-        const data = {
-            name: this.state.name,
+        e.preventDefault()
+        const { name, file, image } = this.state 
+        let formData = new FormData()
+        formData.append('image', file)
+
+        //post data if no change image
+        if(name && !file){
+            let data = {
+                name,
+                image: this.props.data.icon,
+                category_id: this.props.data.category_id 
+            }
+            axios.put( url + '/subcategory/' + id , data ,headers(this.props.user.token) )
+            .then(res=>{ 
+                this.setState({ message: 'Success update subcategory', open: true })
+                this.props.update()
+            })
+            .catch(err=>{ this.setState({ message: 'Failed update subcategory' }) })
         }
 
-        axios.put( url + '/subcategory/' + id , data ,headers(this.props.user.token) )
-        .then(res=>{ 
-            this.setState({ message: 'Berhasil ubah sub kategori', open: true })
-            this.props.update()
-        })
-        .catch(err=>{ this.setState({ message: 'Gagal ubah sub kategori' }) })
+        //post data if change image
+        if(name && file){
+            axios.post( url + "/subcategory/upload-image", formData )
+            .then(res=>{
+                let data = {
+                    name,
+                    image: res.data.url,
+                    category_id: this.props.data.category_id 
+                }
+                axios.put( url + '/subcategory/' + id , data ,headers(this.props.user.token) )
+                .then(res=>{ 
+                    this.setState({ message: 'Success update subcategory', open: true })
+                    this.props.update()
+                })
+                .catch(err=>{ this.setState({ message: 'Failed update subcategory' }) })
+            })
+        }
+
+
     }
 
     render() {
-        const { open, name, comfirm_delete, message } = this.state
+        const { open, name, comfirm_delete, message, image } = this.state
         const { data } = this.props
+        console.log(this.props)
         return (
             <div>
                 <span className="message">{message}</span>
                 <div className="sub-category">
                     <div>
+                        { image ? <img src={image} alt="image"/> : <img src={data.icon} alt="image"/> }
+                    </div>
+                    <div className="name">
                         <span>{data.name}</span>
                     </div>
                     <div className="actions">
                         <div onClick={()=>{this.setState({ comfirm_delete : false})}} className="delete">
-                            <i className="demo-icon icon-minus">&#xe814;</i>
+                            <i className="demo-icon icon-minus">&#xe814;</i>delete
                         </div>
                         <div onClick={()=>{this.openUpdateCategory(data.name)}} className="update">
-                            <i className="demo-icon icon-cog">&#xe81a;</i>
+                            <i className="demo-icon icon-cog">&#xe81a;</i>edit
                         </div>
                     </div>
                 </div>
@@ -77,7 +123,8 @@ class SubCategory extends Component {
 
                 { //open input for update category
                     open ? '' :
-                    <div className="add-category">
+                    <div className="update-subcategory">
+                        <input onChange={this.handleImage} type="file"/>
                         <form onSubmit={(e)=>{ this.updateCategory(e, data.sub_category_id) }}>
                             <input onChange={(e)=>{this.setState({ name: e.target.value })}} value={name} type="text"/>
                             <button type="submit">Save</button>

@@ -1,0 +1,194 @@
+.add-wrapper {
+    padding-top: 50px;
+    padding-left: 150px;
+
+    .add-product {
+        background-color: white;
+        color: gray;
+        margin: 50px;
+        padding: 20px;
+        box-shadow: 0px 2px 10px lightgray;
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+
+        h1 {
+            color: #4694fc;
+            margin-top: 0px;
+            text-align: center;
+        }
+
+        .success {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+
+            div {
+                margin: 150px auto;
+                height:80px;
+                width: 250px;
+                background-color: #4694fc;
+                color: white;
+                font-size: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                animation: success 1s ease-in-out;            
+            }
+        }
+
+
+        @keyframes success {
+            0%{
+                transform: scale(0.2);
+           
+            }
+            50%{
+                transform:  scale(1.3);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
+        .photo {
+            .image {
+                display: flex;
+                justify-content: center;
+        
+                img {
+                    width: 60%;
+                    height: 60%;
+                }
+            }
+
+            label {
+                margin-bottom: 2px;
+                font-weight: 520;
+                color: #4694fc;
+                font-size: 17px;
+            }
+            
+            input {
+                margin-bottom: 15px;
+            }
+        
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            
+            label {
+                margin-bottom: 2px;
+                font-weight: 520;
+                color: #4694fc;
+            }
+
+            input {
+                margin-bottom: 15px;
+            
+                border: 1px solid lightblue;
+                padding: 5px 8px;
+                font-size: 16px;
+            }
+
+            select {
+                margin-bottom: 10px;
+                font-size: 16px;
+                padding: 2px 5px;
+                border: 1px solid lightblue;
+                background-color: white;
+            }
+
+            .size-stock {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                
+                input {
+                    width: 50%;
+                    margin-bottom: 2px;
+                }
+
+                hr {
+                    margin-top: 1px;
+                    border: none;
+                    height: 2px;
+                    background-color: #4694fc;
+                    border-radius: 2px;
+                    opacity: 0.5;
+                }
+
+                .size {
+                    font-size: 20px;
+                    color: black;
+                    font-weight: 500;
+                }
+
+                .stock {
+                    font-size: 20px;
+                    color: #4694fc;
+                    font-weight: 500;
+                }
+
+            }
+
+            .description {
+                height: 300px;
+                margin-bottom: 70px;
+            }
+
+            .message {
+                color: red;
+                margin: 0 auto;
+                margin-bottom: 5px;
+            }
+
+            .add {
+                border: 1px solid #4694fc;
+                background: #4694fc;
+                text-align: center;
+                color: white;
+                padding: 3px 0;
+                margin-bottom: 15px;
+                border-radius: 20px;
+                cursor: pointer;
+            }
+
+            .add:hover {
+                background-color: white;
+                color: #4694fc;
+            }
+
+            button {
+                border: 1px solid #4694fc;
+                background-color: #4694fc;
+                color: white;
+                font-size: 18px;
+                font-weight: 520;
+                cursor: pointer;
+                padding: 3px 0;
+                box-shadow: 0px 2px 10px lightgray;
+
+            }
+
+            button:hover {
+                background-color: white;
+                color: #4694fc;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px){
+    .add-wrapper {
+        padding-left: 40px;
+
+        .add-product {
+            margin: 15px;
+        }
+    }
+}

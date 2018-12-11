@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './products.scss'
-import AddProduct from './AddProduct'
 import axios from 'axios'
 import { url } from '../../config'
 import { connect } from 'react-redux'
 import { categoriesAction, subcategoriesAction } from '../../actions'
+import { Link } from 'react-router-dom'
 
 import Product from './Product'
 import Header from '../Header'
@@ -12,11 +12,12 @@ import Navbar from '../Navbar'
 
 class index extends Component {
     state = {
-        open_add : false,
-        products : []
+        show: 'card',
+        loading : true,
+        products : [1,2,3,4,5,6,7,8,9,10]
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.categoriesAction()
         this.fetchProducts()
     }
@@ -25,29 +26,38 @@ class index extends Component {
         axios.get( url + "/product" )
         .then(res=>{
             if( res.data.constructor === Array )
-                this.setState({ products: res.data })
+                this.setState({ products: res.data, loading: false })
         })
     }
 
     render() {
-        const { open_add, products } = this.state
-        const { categories, subcategories, subcategoriesAction } = this.props
-        console.log(this.props)
+        const { loading, products, show } = this.state
+        const { categories, subcategories, subcategoriesAction, user } = this.props
+        console.log(this.state)
         return (
             <div className="products">
                 <Header />
                 <Navbar />
 
                 <div className="wrapper">
-                    <div onClick={()=>{this.setState({ open_add : !open_add })}} className="new">
-                        { open_add ? <i className="demo-icon icon-cancel">&#xe80f;</i> : <i className="demo-icon icon-plus">&#xe808;</i> }
+                    <Link to="/addproduct">
+                    <div className="new">
+                        <i className="demo-icon icon-plus">&#xe808;</i>
+                    </div>
+                    </Link>
+                    <span>Products</span>
+                    <div className="show">
+                        <div className={ show === 'card' ? 'active' : '' } onClick={()=> this.setState({ show: 'card' })}>
+                            <span>cards</span>
+                        </div>
+                        <div className={ show === 'table' ? 'active' : '' }  onClick={()=> this.setState({ show: 'table' })} >
+                            <span>table</span>
+                        </div>
                     </div>
 
-                    <span>Products</span>
-
-                    { // open add product
-                        open_add ? <AddProduct categories={categories.data} subcategories={subcategories.data} subcategoriesAction={subcategoriesAction} /> :
-                        <div className="card">
+                    { // loading product
+                        loading ? <div className={show}>{ products.map(num=> <div key={num} className="loading-card"></div> ) }</div> :
+                        <div className={show}>
                             { //list all products 
                                 products.map(product=> <Product key={product.product_id} product={product} /> )
                             }
@@ -63,7 +73,8 @@ class index extends Component {
 const mapStateToProps = (state) => {
     return({
         categories : state.categoriesReducer,
-        subcategories : state.subcategoriesReducer
+        subcategories : state.subcategoriesReducer,
+        user : state.userReducer
     })
 }
 

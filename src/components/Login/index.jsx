@@ -19,16 +19,12 @@ import imgIcons from '../../assets/login-icons.svg'
 class index extends Component {
     state = {
         loading : false,
-        login: false,
         error: '',
         username: null,
         password: null
     }
 
     componentDidMount() {
-        if(localStorage.getItem('token') !== null){
-            this.setState({ login: true })
-        }
     }
 
     handleChange = (e) => {
@@ -39,9 +35,9 @@ class index extends Component {
         e.preventDefault()
         const { username, password, loading } = this.state
 
-        if(!username){ this.setState({ error: 'Username tidak boleh kosong' }) }
-        if(!password){ this.setState({ error: 'Password tidak boleh kosong' }) }
-        if(!username && !password){ this.setState({ error: 'Username dan password tidak boleh kosong' }) }
+        if(!username){ this.setState({ error: 'Enter your username' }) }
+        if(!password){ this.setState({ error: 'Enter your password' }) }
+        if(!username && !password){ this.setState({ error: 'Enter your username and password' }) }
 
         let formData = new FormData()
         formData.append('username', username)
@@ -50,25 +46,31 @@ class index extends Component {
         if( password && username ) {
             this.setState({ loading: true })
             this.setState({ error: '' })
+            
             axios.post( url + "/admin/login" , formData )
             .then(res=>{
-                this.props.loginAction(res.data.token)
-                this.setState({ login: true })
+                if(res.data)  this.props.loginAction(res.data.token, res.data.data)
             })
             .catch(err=>{
-                this.setState({ loading: false })
-                this.setState({ error: 'Username dan password tidak cocok' })
+                if(err.response){
+                    this.setState({ loading: false })
+                    this.setState({ error: 'Wrong username or password' })
+                } else {
+                    this.setState({ loading: false })
+                    this.setState({ error: 'Failed connect server' })
+                }
+
             })
         }
     }
 
     render() {
-        const { login, loading, error } = this.state
+        const { loading, error } = this.state
         return (
             <div className="login">
 
                 { loading ? <Loading /> : '' }
-                { login ? <Redirect to="/dashboard" /> : '' }
+                { this.props.user.login ? <Redirect to="/dashboard" /> : '' }
 
                 <div className="left">
                     <img className="background" src={imgBackground} alt="imgBackground"/>
@@ -102,4 +104,10 @@ class index extends Component {
 }
 
 
-export default connect(null, {loginAction})(index);
+const mapStateToProps = (state) => {
+    return({
+        user: state.userReducer
+    })
+}
+
+export default connect(mapStateToProps, {loginAction})(index);

@@ -34,7 +34,7 @@ class AddCategory extends Component {
             <div>
                 <div className="add-category">
                     <form onSubmit={this.handleSubmit}>
-                        <input placeholder="Tambah kategori" onChange={this.handleChange} value={name} name="name" type="text"/>
+                        <input placeholder="Add category" onChange={this.handleChange} value={name} name="name" type="text"/>
                         <button type="submit">Add</button>
                     </form>
                 </div>
