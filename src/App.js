@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import Home from './components/Home'
 import Loading from './components/Loading'
-const Login = lazy(() => import('./components/Login'))
+import Login from './components/Login'
 const Dashboard = lazy(() => import('./components/Dashboard'))
 const Orders = lazy(() => import('./components/Orders'))
 const Products = lazy(() => import('./components/Products'))
