@@ -39,13 +39,10 @@ class index extends Component {
                                 <div key={customer.customer_id} className="customer">
                                     <div className="photo">
                                         <img src={customer.photo} alt="photo"/>
-                                    </div>
-                                    <div>
                                         <span>{customer.name}</span>
                                     </div>
-                                    <span>Tulungagung</span>
-                                    <span>email.gmail.com</span>
-                                    <span>098389372772</span>
+                                    <span>{customer.phone}</span>
+                                    <span>{customer.email}</span>
                                 </div>
                             )
                         })            

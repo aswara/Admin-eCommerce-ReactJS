@@ -138,7 +138,7 @@
 
             .description {
                 height: 300px;
-                margin-bottom: 70px;
+                margin-bottom: 100px;
             }
 
             .message {
@@ -184,11 +184,20 @@
 }
 
 @media (max-width: 700px){
-    .add-wrapper {
+    .update-product {
         padding-left: 40px;
 
         .add-product {
             margin: 15px;
+
+            .photo {
+                .image {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
         }
+
     }
 }

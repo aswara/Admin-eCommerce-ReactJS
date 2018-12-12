@@ -8,20 +8,29 @@
 
         .customer {
             margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            background: white;
-            padding: 10px;
-            color: grey;
-            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background-color: white;
+            padding: 5px;
+            color: #505050;
+            border-radius: 5px;
             align-items: center;
             box-shadow: 0 3px 10px lightgray;
 
             .photo {
-                height: 40px;
-                width: 40px;
-                border-radius: 20px;
-                background-color: #4694fc;
+                display: flex;
+                align-items: center;
+
+                img {
+                    background-color: #4694fc;
+                    height: 50px;
+                    width:  50px;
+                    margin-right: 10px;
+                }
+
+                span {
+                    font-weight: 500;
+                }
             }
 
         }
@@ -36,8 +45,9 @@
         .wrapper {
             padding: 15px;
 
-            .costumer {
-                flex-wrap: wrap;
+            .customer {
+                display: grid;
+                grid-template-columns: 1fr;
             }
         }
     }

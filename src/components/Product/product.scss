@@ -70,6 +70,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 50px;
+        font-weight: 500;
 
         .image {
             img {
@@ -78,15 +79,19 @@
         }
 
         .detail {
+            .box {
+                background-color: white;
+                padding: 15px;
+            }
+            
             .message {
                 color: red;
             }
 
             .update {
                 height: 30px;
-                width: 30px;
                 color: white;
-                border-radius: 20px;
+                border-radius: 2px;
                 background-color: #4DB649;
                 position: absolute;
                 box-shadow: 0px 2px 10px lightgray;
@@ -95,16 +100,16 @@
                 align-items: center;
                 font-size: 20px;
                 cursor: pointer;
-                right: 85px;
+                right: 145px;
                 top: 65px;
+                padding-right: 5px;
             }
 
             .delete {
                 position: absolute;
                 height: 30px;
-                width: 30px;
                 color: white;
-                border-radius: 20px;
+                border-radius: 3px;
                 background-color: #ff5555;
                 box-shadow: 0px 2px 10px lightgray;
                 display: flex;
@@ -114,19 +119,17 @@
                 cursor: pointer;
                 right: 50px;
                 top: 65px;
+                padding-right: 5px;
+
             }
 
             .name {
-                background-color: white;            
-                padding: 10px;
                 color: #505050;
                 font-size: 25px;
                 font-weight: 500;
             }
 
             .code {
-                background-color: white;            
-                padding: 10px;
                 margin-top: 5px;
                 span {
                     color: #505050;
@@ -137,8 +140,6 @@
 
 
             .weight {
-                background-color: white;            
-                padding: 10px;
                 margin-top: 5px;
                 span {
                     color: #505050;
@@ -148,8 +149,6 @@
             }
 
             .category {
-                background-color: white;            
-                padding: 10px;
                 margin-top: 5px;
                 span {
                     color: #505050;
@@ -159,8 +158,6 @@
             }
             
             .size-stock {
-                background-color: white;            
-                padding: 10px;
                 margin-top: 5px;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -182,9 +179,9 @@
 
 
             .price {
+                background-color: white;
+                padding: 15px;
                 margin-top: 5px;
-                background-color: white;            
-                padding: 10px;
                 span {
                     color: #505050;
                     font-size: 25px;
@@ -201,10 +198,46 @@
         margin-left: 50px;
         margin-right: 50px;
         padding: 10px;
+        color: #4694fc;
+        font-weight: 600;
+
         div {
             color: #505050;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 400;
+
+            p {
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px){
+    .detail-product {
+        padding-top: 50x;
+        padding-left: 40px;
+
+        .wrapper {
+            padding: 50px 10px 10px 5px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+
+            .detail {
+                .update {
+                    right: 105px;
+                }
+
+                .delete {
+                    right: 10px;
+                }
+            }
+        }
+
+        .description {
+            margin: 0px 10px 10px 5px;
         }
     }
 }

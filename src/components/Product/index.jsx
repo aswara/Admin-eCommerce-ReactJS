@@ -78,34 +78,35 @@ class index extends Component {
                     <div className="detail">
                         <span className="message">{message}</span>
 
-                        <div className="delete">
-                            <i  onClick={()=>{this.setState({ comfirm_delete: false })}} className="demo-icon icon-minus">&#xe814;</i>
+                        <div onClick={()=>{this.setState({ comfirm_delete: false })}} className="delete">
+                            <i  className="demo-icon icon-minus">&#xe814;</i><span>delete</span>
                         </div>
                         <Link to={`/updateproduct/${product.product_id}`}>
                         <div className="update">
-                            <i className="demo-icon icon-cog">&#xe81a;</i>
+                            <i className="demo-icon icon-cog">&#xe81a;</i><span>edit</span>
                         </div>
                         </Link>
 
+                        <div className="box">
                         <div className="name">
                             {product.name}
                         </div>
                         <div className="code">
-                            Kode Produk <br/>
+                            Code Product <br/>
                             <span>{product.code}</span>
                         </div>
                         <div className="category">
                             <div>
-                                Kategori <br/>
+                                Category <br/>
                                 <span>{product.category_name}</span>
                             </div>
                             <div>
-                                Subkategori <br/>
+                                Subcategory <br/>
                                 <span>{product.sub_category_name}</span>
                             </div>
                         </div>
                         <div className="weight">
-                            Berat <br/>
+                            Weight <br/>
                             <span>{product.weight}</span>
                         </div>
                         <div className="sizes">
@@ -127,9 +128,11 @@ class index extends Component {
                                 </div>
                             </div>
                         </div>
+                        </div>
+
                         <div className="price">
-                            Harga <br/>
-                            <span>{product.price}</span>
+                            Price <br/>
+                            <span>Rp {product.price}</span>
                         </div>
                     </div>
                 </div>

@@ -224,7 +224,7 @@ class UpdateProduct extends Component {
 
                     <div className="photo">
                         <div className="image">
-                            <img src={image} alt="imagePreview"/> : <div></div>
+                            <img src={image} alt="imagePreview"/> 
                         </div>
                         <label htmlFor="photo">Image  <i className="demo-icon icon-picture">&#xe812;</i></label><br/>
                         <input onChange={this.handleImage} id="photo" type="file"/>

@@ -1,4 +1,4 @@
-export const url = "http://10.10.10.59:8888"
+export const url = "https://e-commerce-rest-api.herokuapp.com"
 
 export function headers(token) {
     return(

@@ -1,25 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Home from './components/Home'
-import Login from './components/Login'
-import Dashboard from './components/Dashboard'
-import Orders from './components/Orders'
-import Products from './components/Products'
-import Customers from './components/Customers'
-import Categories from './components/Categories'
-import AddProduct from './components/Product/AddProduct'
-import Product from './components/Product'
-import UpdateProduct from './components/Product/Update'
+import Loading from './components/Loading'
+const Login = lazy(() => import('./components/Login'))
+const Dashboard = lazy(() => import('./components/Dashboard'))
+const Orders = lazy(() => import('./components/Orders'))
+const Products = lazy(() => import('./components/Products'))
+const Customers = lazy(() => import('./components/Customers'))
+const Categories = lazy(() => import('./components/Categories'))
+const AddProduct = lazy(() => import('./components/Product/AddProduct'))
+const Product = lazy(() => import('./components/Product'))
+const UpdateProduct = lazy(() => import('./components/Product/Update'))
 
 class App extends Component {
+  componentDidMount() {
+    const element = document.getElementById('startingLoader')
+    window.onload = () => {
+      if(element) {
+        element.remove()
+      }
+    }
+  }
+
   render() {
     const { user } = this.props
     return (
       <div>
         <BrowserRouter>
+        <Suspense fallback={Loading}>
         {
           user.login ?
           <Switch>
@@ -42,6 +53,7 @@ class App extends Component {
             <Route path="/*" component={Home} />
           </Switch>
         }
+        </Suspense>
         </BrowserRouter>
       </div>
     );

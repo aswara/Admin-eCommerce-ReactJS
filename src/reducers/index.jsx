@@ -1,23 +1,7 @@
-import { combineReducers } from 'redux'
-import { LOGIN } from '../types'               
+import { combineReducers } from 'redux'             
 import { categoriesReducer, subcategoriesReducer }  from './categories'
+import { userReducer } from './user'
 
 
-const initialState = {
-    token: localStorage.getItem('token'),
-}
-
-const userReducer = ( state = initialState, action ) => {
-    switch (action.type) {
-        case LOGIN:
-            return {
-                token: action.token,
-                data: action.payload,
-                login: action.login
-            }
-        default:
-            return state
-    }
-}
 
 export default combineReducers({ userReducer, categoriesReducer, subcategoriesReducer })

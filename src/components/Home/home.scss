@@ -5,18 +5,18 @@
     height: 100%;
     left: 0;
     top: 0;
-    background-color: white;
+    background-color: #4694fc;
     z-index: 100;
 
     img {
         width: 20%;
-        margin-top: 100px;
+        margin-top: 150px;
         animation: title 2s ease-in-out infinite;
     }
 
     h1  {
-        font-weight: 400;
-        color: #4694fc;
+        font-weight: 500;
+        color: white;
         animation: ecommerce 1.5s ease-in-out infinite;
     }
 
@@ -43,5 +43,13 @@
 
     span {
         color: red;
+    }
+}
+
+@media (max-width: 700px){
+    .home {
+        img {
+            width: 50%;
+        }
     }
 }

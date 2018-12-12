@@ -15,11 +15,11 @@ class Product extends Component {
                     <span>{product.name}</span>
                 </div>
                 <div className="code">
-                    Kode Produk <br/>
+                    Code Product <br/>
                     <span>{product.code}</span>
                 </div>
                 <div className="price">
-                    Harga <span>Rp {product.price}</span>
+                    Price <span>Rp {product.price}</span>
                 </div>
 
             </div>
