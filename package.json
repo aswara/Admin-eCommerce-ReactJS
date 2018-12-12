@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "intersection-observer": "^0.5.1",
     "lodash": "^4.17.11",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-lazy": "^1.0.3",
     "react-quill": "^1.3.3",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",

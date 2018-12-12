@@ -1,4 +1,4 @@
-import { LOGIN } from '../types'  
+import { LOGIN, LOGOUT } from '../types'  
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -7,6 +7,12 @@ const initialState = {
 export const userReducer = ( state = initialState, action ) => {
     switch (action.type) {
         case LOGIN:
+            return {
+                token: action.token,
+                data: action.payload,
+                login: action.login
+            }
+        case LOGOUT:
             return {
                 token: action.token,
                 data: action.payload,

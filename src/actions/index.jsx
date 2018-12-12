@@ -1,4 +1,4 @@
-import { LOGIN, FETCH_CATEGORIES, FETCH_SUBCATEGORIES } from '../types'
+import { LOGIN,LOGOUT, FETCH_CATEGORIES, FETCH_SUBCATEGORIES } from '../types'
 import axios from 'axios'
 import { url } from '../config'
 
@@ -21,6 +21,18 @@ export const loginAction = (token, payload) => {
             token : token,
             login : true,
             payload
+        })
+    }
+}
+
+export const logoutAction = () => {
+    return (dispatch) => {
+        localStorage.removeItem('token')
+        dispatch({
+            type: LOGOUT,
+            token : null,
+            login : false,
+            payload: null
         })
     }
 }

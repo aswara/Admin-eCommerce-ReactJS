@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import { Lazy } from 'react-lazy'
 
 class Product extends Component {
     render() {
@@ -9,7 +10,9 @@ class Product extends Component {
             <Link style={{textDecoration: 'none'}} to={`product/${product.product_id}`}>
             <div className="product">
                 <div className="photo">
-                    <img src={product.image} alt=""/>
+                    <Lazy ltIE9>
+                        <img src={product.image} alt=""/>
+                    </Lazy>
                 </div>
                 <div className="name">
                     <span>{product.name}</span>

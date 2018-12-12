@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 import Header from '../Header'
 import Navbar from '../Navbar'
+import  Loading from '../Loading'
 
 class index extends Component {
     state = {
@@ -14,7 +15,8 @@ class index extends Component {
         size: [],
         stock: [],
         comfirm_delete: true,
-        message: ''
+        message: '',
+        loading: true
     }
 
     deleteProduct(id) {   
@@ -47,14 +49,15 @@ class index extends Component {
                 this.setState({
                     product: res.data,
                     size,
-                    stock
+                    stock,
+                    loading: false
                 })
             }
         })
     }
 
     render() {
-        const { product, size, stock, comfirm_delete, message } = this.state
+        const { product, size, stock, comfirm_delete, message, loading } = this.state
         return (
             <div className="detail-product">
                 <Header />
@@ -71,75 +74,86 @@ class index extends Component {
                     </div>
                 }
 
-                <div className="wrapper">
-                    <div className="image">
-                        <img src={product.image} alt=""/>
-                    </div>
-                    <div className="detail">
-                        <span className="message">{message}</span>
+                {
+                    loading ? 
+                    
+                    <Loading />
 
-                        <div onClick={()=>{this.setState({ comfirm_delete: false })}} className="delete">
-                            <i  className="demo-icon icon-minus">&#xe814;</i><span>delete</span>
-                        </div>
-                        <Link to={`/updateproduct/${product.product_id}`}>
-                        <div className="update">
-                            <i className="demo-icon icon-cog">&#xe81a;</i><span>edit</span>
-                        </div>
-                        </Link>
+                    :
 
-                        <div className="box">
-                        <div className="name">
-                            {product.name}
+                    <div>
+                        <div className="wrapper">
+                        <div className="image">
+                            <img src={product.image} alt=""/>
                         </div>
-                        <div className="code">
-                            Code Product <br/>
-                            <span>{product.code}</span>
-                        </div>
-                        <div className="category">
-                            <div>
-                                Category <br/>
-                                <span>{product.category_name}</span>
+                        <div className="detail">
+                            <span className="message">{message}</span>
+
+                            <div onClick={()=>{this.setState({ comfirm_delete: false })}} className="delete">
+                                <i  className="demo-icon icon-minus">&#xe814;</i><span>delete</span>
                             </div>
-                            <div>
-                                Subcategory <br/>
-                                <span>{product.sub_category_name}</span>
+                            <Link to={`/updateproduct/${product.product_id}`}>
+                            <div className="update">
+                                <i className="demo-icon icon-cog">&#xe81a;</i><span>edit</span>
                             </div>
-                        </div>
-                        <div className="weight">
-                            Weight <br/>
-                            <span>{product.weight}</span>
-                        </div>
-                        <div className="sizes">
+                            </Link>
 
-                            <div className="size-stock">
+                            <div className="box">
+                            <div className="name">
+                                {product.name}
+                            </div>
+                            <div className="code">
+                                Code Product <br/>
+                                <span>{product.code}</span>
+                            </div>
+                            <div className="category">
                                 <div>
-                                    <span>Size</span>
-                                    <hr/>
-                                    {
-                                        size.map( (x,i) => <div key={i} className="size">{x} <hr/></div> )
-                                    }
+                                    Category <br/>
+                                    <span>{product.category_name}</span>
                                 </div>
                                 <div>
-                                    <span>Stock</span>
-                                    <hr/>
-                                    {
-                                        stock.map( (x,i) => <div key={i} className="stock">{x} <hr/></div> )
-                                    }
+                                    Subcategory <br/>
+                                    <span>{product.sub_category_name}</span>
                                 </div>
                             </div>
-                        </div>
-                        </div>
+                            <div className="weight">
+                                Weight <br/>
+                                <span>{product.weight}</span>
+                            </div>
+                            <div className="sizes">
 
-                        <div className="price">
-                            Price <br/>
-                            <span>Rp {product.price}</span>
+                                <div className="size-stock">
+                                    <div>
+                                        <span>Size</span>
+                                        <hr/>
+                                        {
+                                            size.map( (x,i) => <div key={i} className="size">{x} <hr/></div> )
+                                        }
+                                    </div>
+                                    <div>
+                                        <span>Stock</span>
+                                        <hr/>
+                                        {
+                                            stock.map( (x,i) => <div key={i} className="stock">{x} <hr/></div> )
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div className="price">
+                                Price <br/>
+                                <span>Rp {product.price}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="description">
-                    Description <br/>
-                    <div dangerouslySetInnerHTML={{__html:product.description}}></div>                      
-                </div>
+                    <div className="description">
+                        Description <br/>
+                        <div dangerouslySetInnerHTML={{__html:product.description}}></div>                      
+                    </div>
+                    </div>
+                }
+
             </div>
         );
     }

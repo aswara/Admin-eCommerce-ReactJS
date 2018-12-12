@@ -26,18 +26,46 @@
         }
 
         .dropdown {
-            width: 80px;
-            height: 50px;
+            width: 120px;
+            height: auto;
             position: absolute;
             background-color: white;
             color: gray;
             padding: 10px;
             margin-top: 5px;
             right: 25px;
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+            border-radius: 3px;
             box-shadow: 0px 1px 10px lightgray;
+            display: flex;
+            flex-direction: column;
+
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+
+            .name {
+                font-size: 16px;
+                font-weight: 500;
+                color: #4694fc;
+            }
+
+            .email {
+                font-size: 13px;
+            }
+
+            .logout {
+                margin-top: 10px;
+                text-align: center;
+                background-color: #F6535A;
+                padding: 3px 5px;
+                color: white;
+                border-radius: 3px;
+            }
+
+
         }
 
         .hide {
