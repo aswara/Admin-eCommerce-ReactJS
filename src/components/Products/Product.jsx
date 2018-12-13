@@ -6,7 +6,7 @@ class Product extends Component {
     render() {
         const { product } = this.props
         return (
-            <Link style={{textDecoration: 'none'}} to={`product/${product.product_id}`}>
+            <Link style={{textDecoration: 'none'}} to={{ pathname: `product/${product.product_id}` , state: product }}>
             <div className="product">
                 <div className="photo">
                     <Lazy ltIE9>

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 
 import Header from '../Header'
 import Navbar from '../Navbar'
-import  Loading from '../Loading'
 
 class index extends Component {
     state = {
@@ -29,31 +28,54 @@ class index extends Component {
         })
     }
 
-    componentWillMount(){
-        let id = this.props.match.params.id
-        axios( url + "/product/" + id )
-        .then(res=>{
-            if(res.data){
-                let sizes = res.data.sizes
-                let size = []
-                let stock = []
-                if(sizes){
-                    for (const key in sizes) {
-                        if (sizes.hasOwnProperty(key)) {
-                            const element = sizes[key];
-                            size.push(key)
-                            stock.push(element)
-                        }
+    componentDidMount(){
+        if(this.props.location.state){
+            let sizes = this.props.location.state.sizes
+            let size = []
+            let stock = []
+            if(sizes){
+                for (const key in sizes) {
+                    if (sizes.hasOwnProperty(key)) {
+                        const element = sizes[key];
+                        size.push(key)
+                        stock.push(element)
                     }
                 }
-                this.setState({
-                    product: res.data,
-                    size,
-                    stock,
-                    loading: false
-                })
             }
-        })
+            this.setState({
+                product: this.props.location.state,
+                size,
+                stock,
+                loading: false
+            })
+        }
+         else {
+
+            let id = this.props.match.params.id
+            axios( url + "/product/" + id )
+            .then(res=>{
+                if(res.data){
+                    let sizes = res.data.sizes
+                    let size = []
+                    let stock = []
+                    if(sizes){
+                        for (const key in sizes) {
+                            if (sizes.hasOwnProperty(key)) {
+                                const element = sizes[key];
+                                size.push(key)
+                                stock.push(element)
+                            }
+                        }
+                    }
+                    this.setState({
+                        product: res.data,
+                        size,
+                        stock,
+                        loading: false
+                    })
+                }
+            })
+        }
     }
 
     render() {
@@ -85,7 +107,7 @@ class index extends Component {
                             <div onClick={()=>{this.setState({ comfirm_delete: false })}} className="delete">
                                 <i  className="demo-icon icon-minus">&#xe814;</i><span>delete</span>
                             </div>
-                            <Link to={`/updateproduct/${product.product_id}`}>
+                            <Link to={{ pathname:`/updateproduct/${product.product_id}`, state:{product} }}>
                             <div className="update">
                                 <i className="demo-icon icon-cog">&#xe81a;</i><span>edit</span>
                             </div>

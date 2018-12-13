@@ -17,7 +17,7 @@ class index extends Component {
         products : [1,2,3,4,5,6,7,8,9,10]
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.categoriesAction()
         this.fetchProducts()
     }
@@ -38,7 +38,6 @@ class index extends Component {
     render() {
         const { loading, products, show } = this.state
         const { categories, subcategories, subcategoriesAction, user } = this.props
-        console.log(this.state)
         return (
             <div className="products">
                 <Header />

@@ -2,7 +2,7 @@ import { LOGIN, LOGOUT } from '../types'
 
 const initialState = {
     token: localStorage.getItem('token'),
-    user: JSON.parse(localStorage.getItem('user'))
+    user: localStorage.getItem('user')
 }
 
 export const userReducer = ( state = initialState, action ) => {

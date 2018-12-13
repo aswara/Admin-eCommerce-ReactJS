@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './categories.scss'
 import axios from 'axios'
+import _ from 'lodash'
 import { url, headers } from '../../config'
 
 import Header from '../Header'
@@ -11,7 +12,7 @@ import Category from './Category'
 class index extends Component {
     state = {
         new_category: true,
-        categories: [1,2,3,4,5,6,7,8,9,10,11],
+        categories: [],
         loading: true,
         message: ''
     }
@@ -23,6 +24,7 @@ class index extends Component {
     fetchCategories = () => {
         axios.get( url + '/category' )
         .then(res=>{
+            console.log(res.data)
             this.setState({ categories: res.data, loading: false })
         })
         .catch(res=>{

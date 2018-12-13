@@ -16,7 +16,7 @@ const Product = lazy(() => import('./components/Product'))
 const UpdateProduct = lazy(() => import('./components/Product/Update'))
 
 class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const element = document.getElementById('startingLoader')
     window.onload = () => {
       if(element) {

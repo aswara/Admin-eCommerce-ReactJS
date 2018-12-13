@@ -25,44 +25,75 @@ class UpdateProduct extends Component {
         loading: false,
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.fetchProduct()
     }
 
     fetchProduct() {
-        let id = this.props.match.params.id
-        axios( url + "/product/" + id )
-        .then(res=>{
-            if(res.data){
-                let sizes = res.data.sizes
-                let allsize = []
-                let allstock = []
-                if(sizes){
-                    for (const key in sizes) {
-                        if (sizes.hasOwnProperty(key)) {
-                            const element = sizes[key];
-                            allsize.push(key)
-                            allstock.push(element)
-                        }
+        console.log(this.props)
+        if(this.props.location.state.product){
+            let sizes = this.props.location.state.product.sizes
+            let allsize = []
+            let allstock = []
+            if(sizes){
+                for (const key in sizes) {
+                    if (sizes.hasOwnProperty(key)) {
+                        const element = sizes[key];
+                        allsize.push(key)
+                        allstock.push(element)
                     }
                 }
-
-                const { product_id, name, code, category_id, sub_category_id, price, weight, description, image } = res.data
-                this.setState({
-                    allsize,
-                    allstock,
-                    name,
-                    code, 
-                    category_id, 
-                    sub_category_id, 
-                    price, 
-                    weight, 
-                    description, 
-                    image,
-                    product_id
-                })
             }
-        })
+
+            const { product_id, name, code, category_id, sub_category_id, price, weight, description, image } = this.props.location.state.product
+            this.setState({
+                allsize,
+                allstock,
+                name,
+                code, 
+                category_id, 
+                sub_category_id, 
+                price, 
+                weight, 
+                description, 
+                image,
+                product_id
+            })
+        } else {
+            let id = this.props.match.params.id
+            axios( url + "/product/" + id )
+            .then(res=>{
+                if(res.data){
+                    let sizes = res.data.sizes
+                    let allsize = []
+                    let allstock = []
+                    if(sizes){
+                        for (const key in sizes) {
+                            if (sizes.hasOwnProperty(key)) {
+                                const element = sizes[key];
+                                allsize.push(key)
+                                allstock.push(element)
+                            }
+                        }
+                    }
+    
+                    const { product_id, name, code, category_id, sub_category_id, price, weight, description, image } = res.data
+                    this.setState({
+                        allsize,
+                        allstock,
+                        name,
+                        code, 
+                        category_id, 
+                        sub_category_id, 
+                        price, 
+                        weight, 
+                        description, 
+                        image,
+                        product_id
+                    })
+                }
+            })
+        }
     }
 
     selectCategory = (e) => {

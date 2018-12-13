@@ -6,6 +6,26 @@
         padding: 50px;
         color: #4694fc;
 
+        .loading-customers {
+            height: 50px;
+            width: 100%;
+            background-color: white;
+            margin-top: 10px;
+            animation: loading-customers 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loading-customers {
+            0%{
+                opacity: 0.4;
+            }
+            50%{
+                opacity: 0.9;
+            }
+            100%{
+                opacity: 0.4;
+            }
+        }
+
         .customer {
             margin-top: 10px;
             display: grid;

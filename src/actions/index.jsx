@@ -23,7 +23,7 @@ export const loginAction = (token, payload) => {
             type: LOGIN,
             token : token,
             login : true,
-            payload
+            payload         
         })
     }
 }
