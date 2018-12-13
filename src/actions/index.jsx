@@ -4,6 +4,7 @@ import { url } from '../config'
 
 export const userAction = (payload, login, token) => {
     return(dispatch) => {
+        localStorage.setItem('user', JSON.stringify(payload))
         dispatch ({
             type: LOGIN,
             payload,
@@ -15,7 +16,8 @@ export const userAction = (payload, login, token) => {
 
 export const loginAction = (token, payload) => {
     return (dispatch) => {
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', JSON.stringify(payload))
+        localStorage.setItem('user', JSON.stringify(payload))
         dispatch({
             type: LOGIN,
             token : token,
@@ -28,6 +30,7 @@ export const loginAction = (token, payload) => {
 export const logoutAction = () => {
     return (dispatch) => {
         localStorage.removeItem('token')
+        localStorage.removeItem('user')
         dispatch({
             type: LOGOUT,
             token : null,

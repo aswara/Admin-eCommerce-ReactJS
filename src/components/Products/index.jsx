@@ -56,7 +56,7 @@ class index extends Component {
                     </div>
 
                     { // loading product
-                        loading ? <div className={show}>{ products.map(num=> <div key={num} className="loading-list"></div> ) }</div> :
+                        loading ? <div className={show}>{ products.map(num=> <div key={num} className="loading-list"><div></div><div></div><div></div></div> ) }</div> :
                         <div className={show}>
                             { //list all products 
                                 products.map(product=> <Product key={product.product_id} product={product} /> )

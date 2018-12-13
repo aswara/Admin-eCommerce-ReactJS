@@ -9,17 +9,19 @@ import Navbar from '../Navbar'
 
 class index extends Component {
     state = {
-        customers : []
+        customers : [],
+        loading : true,
+        msg: ''
     }
 
     componentDidMount() {
         axios.get( url + "/customers" , headers(this.props.user.token) )
         .then(res=>{
             if( res.data.constructor === Array )
-                this.setState({ customers: res.data })
+                this.setState({ customers: res.data, loading: false })
         })
         .catch(err=>{
-            console.log(err.response)
+            this.setState({ message: "Connection error" })
         })
     }
 

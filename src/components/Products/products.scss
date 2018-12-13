@@ -64,11 +64,35 @@
 
 
             .loading-list {
-                height: 60px;
+                height: 50px;
                 margin-bottom: 10px;
                 background-color: white;
                 box-shadow: 0 3px 10px lightgray;
                 animation: loading-list 2s infinite;
+                padding: 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                div:nth-child(1) {
+                    height: 50px;
+                    width: 50px;
+                    background-color: lightgray;
+                }
+
+                div:nth-child(2) {
+                    height: 15px;
+                    width: 30%;
+                    background-color: lightgray;
+                    margin-top: 15px;
+                }
+
+                div:nth-child(3) {
+                    height: 15px;
+                    width: 30%;
+                    background-color: lightgray;
+                    margin-top: 10px;
+                }
             }
     
             @keyframes loading-list {
@@ -86,7 +110,7 @@
             .product {
                 padding: 5px;
                 display: grid;
-                grid-template-columns: 1fr 3fr 1fr 1fr;
+                grid-template-columns: 1fr 7fr 4fr 4fr;
                 background-color: white;      
                 margin-bottom: 5px;
                 border-radius: 3px;
@@ -105,10 +129,10 @@
                     }
                 }
 
-
                 .photo img {
-                    height: auto;
-                    width: 50px;
+                    background-color: lightgrey;
+                    height: 40px;
+                    width: 40px;
                 }
 
                 .name {
@@ -144,10 +168,29 @@
             grid-gap: 10px;
 
             .loading-list {
-                height: 250px;
+                height: 230px;
                 background-color: white;
                 animation: loading-list 2s infinite;
                 box-shadow: 0 3px 10px lightgray;
+                padding: 10px;
+
+                div:nth-child(1) {
+                    height: 170px;
+                    background-color: lightgray;
+                }
+
+                div:nth-child(2) {
+                    height: 15px;
+                    background-color: lightgray;
+                    margin-top: 15px;
+                }
+
+                div:nth-child(3) {
+                    height: 15px;
+                    width: 50%;
+                    background-color: lightgray;
+                    margin-top: 10px;
+                }
             }
     
             @keyframes loading-list {
@@ -187,7 +230,8 @@
                 }
 
                 .photo img {
-                    height: auto;
+                    background-color: lightgray;
+                    height: 180px;
                     width: 100%;
                 }
 
@@ -236,6 +280,11 @@
                 .product{
                     display: grid;
                     grid-template-columns: 1fr 1fr;
+
+                    .name {
+                        font-size: 15px;
+                    }
+
                 }
             }
 
@@ -244,6 +293,12 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-gap: 10px;
+
+                .product {
+                    .photo img {
+                        height: 100px;
+                    }
+                }
             }
 
         }

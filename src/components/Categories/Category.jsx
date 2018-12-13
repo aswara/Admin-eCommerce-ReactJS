@@ -136,9 +136,9 @@ class Category extends Component {
                     comfirm_delete ? '' :
                     <div className="comfirm-delete">
                         <div>
-                            <h3>Apa anda yakin ingin menghapus?</h3>
-                            <button onClick={()=>{this.deleteCategory(category.category_id)}}>Ya</button>
-                            <button onClick={()=>{this.setState({ comfirm_delete: true })}}>Tidak</button>
+                            <h3>Are you sure want to delete?</h3>
+                            <button onClick={()=>{this.deleteCategory(category.category_id)}}>Yes</button>
+                            <button onClick={()=>{this.setState({ comfirm_delete: true })}}>No</button>
                         </div>
                     </div>
                 }

@@ -21,10 +21,10 @@ class AddCategory extends Component {
         axios.post( url + '/category' , { name } , headers(this.props.user.token)  )
         .then(res=>{
             this.props.update()
-            this.setState({ name: '', message: 'Berhasil menambah kategori' })
+            this.setState({ name: '', message: 'Success add category' })
         })
         .catch(res=>{
-            this.setState({ message: 'Gagal menambah kategori' })
+            this.setState({ message: 'Failed add category' })
         })
     }
 

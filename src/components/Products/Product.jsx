@@ -5,7 +5,6 @@ import { Lazy } from 'react-lazy'
 class Product extends Component {
     render() {
         const { product } = this.props
-        console.log(this.props)
         return (
             <Link style={{textDecoration: 'none'}} to={`product/${product.product_id}`}>
             <div className="product">
