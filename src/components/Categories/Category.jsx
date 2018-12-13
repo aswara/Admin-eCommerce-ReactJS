@@ -115,7 +115,7 @@ class Category extends Component {
                 <span className="message">{message}</span>
                 <div className="category">
                     <div>
-                        <span>{category.name}</span>
+                        <span>{category.category_name}</span>
                     </div>
                     <div className="actions">
                         <div onClick={()=>{this.setState({ comfirm_delete : false})}} className="delete">

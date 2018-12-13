@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './categories.scss'
 import axios from 'axios'
-import _ from 'lodash'
 import { url, headers } from '../../config'
 
 import Header from '../Header'
@@ -12,7 +11,7 @@ import Category from './Category'
 class index extends Component {
     state = {
         new_category: true,
-        categories: [],
+        categories: [1,2,3,4,5,6,7,8,9,10,11],
         loading: true,
         message: ''
     }
@@ -25,7 +24,7 @@ class index extends Component {
         axios.get( url + '/category' )
         .then(res=>{
             console.log(res.data)
-            this.setState({ categories: res.data, loading: false })
+            this.setState({ categories: res.data.data, loading: false })
         })
         .catch(res=>{
             this.setState({ loading: true , message: 'Connection error' })
