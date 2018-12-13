@@ -93,7 +93,7 @@ class index extends Component {
                         <br/>
                         <label className="password" htmlFor="password">Password</label>
                         <br/>
-                        <input onChange={this.handleChange} name="password" id="password" type="text"/>
+                        <input onChange={this.handleChange} name="password" id="password" type="password"/>
                         <br/>
                         <button type="submit">Login</button> 
                     </form>

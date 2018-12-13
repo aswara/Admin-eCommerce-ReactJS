@@ -74,17 +74,10 @@ class index extends Component {
                     </div>
                 }
 
-                {
-                    loading ? 
-                    
-                    <Loading />
-
-                    :
-
-                    <div>
-                        <div className="wrapper">
+                <div>
+                    <div className="wrapper">
                         <div className="image">
-                            <img src={product.image} alt=""/>
+                           { loading ? <div className="load"></div> :  <img src={product.image} alt=""/> }
                         </div>
                         <div className="detail">
                             <span className="message">{message}</span>
@@ -100,28 +93,27 @@ class index extends Component {
 
                             <div className="box">
                             <div className="name">
-                                {product.name}
+                                { loading ? <div className="load"></div> : <span>{product.name}</span> }
                             </div>
                             <div className="code">
                                 Code Product <br/>
-                                <span>{product.code}</span>
+                                { loading ? <div className="load"></div> : <span>{product.code}</span> }
                             </div>
                             <div className="category">
                                 <div>
                                     Category <br/>
-                                    <span>{product.category_name}</span>
+                                    { loading ? <div className="load"></div> :  <span>{product.category_name}</span> }
                                 </div>
                                 <div>
                                     Subcategory <br/>
-                                    <span>{product.sub_category_name}</span>
+                                    { loading ? <div className="load"></div> :  <span>{product.sub_category_name}</span> }
                                 </div>
                             </div>
                             <div className="weight">
                                 Weight <br/>
-                                <span>{product.weight}</span>
+                                { loading ? <div className="load"></div> :  <span>{product.weight}</span> }                               
                             </div>
                             <div className="sizes">
-
                                 <div className="size-stock">
                                     <div>
                                         <span>Size</span>
@@ -143,7 +135,7 @@ class index extends Component {
 
                             <div className="price">
                                 Price <br/>
-                                <span>Rp {product.price}</span>
+                                { loading ? <div className="load"></div> : <span>Rp {product.price}</span> }
                             </div>
                         </div>
                     </div>
@@ -151,8 +143,7 @@ class index extends Component {
                         Description <br/>
                         <div dangerouslySetInnerHTML={{__html:product.description}}></div>                      
                     </div>
-                    </div>
-                }
+                </div>
 
             </div>
         );

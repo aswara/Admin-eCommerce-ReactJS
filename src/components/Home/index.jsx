@@ -14,7 +14,7 @@ class index extends Component {
     
     componentWillMount() {
         let token = this.props.user.token
-        let user = this.props.user
+        let user = this.props.user.data
         if(navigator.onLine){
             axios.get( url + "/admin/profile" , headers(token) )
             .then(res=>{
@@ -24,19 +24,22 @@ class index extends Component {
                 }
             })
             .catch(err=>{
-                localStorage.removeItem('token')
                 if(err.response){
                     this.props.userAction(null , false, null)
                     this.props.history.push("/login")
                 } else {
-                    this.props.userAction(null , false)
+                    this.props.userAction(user , true, token)
                     this.setState({ message: 'Failed connect server' })
+                    this.props.history.push("/dashboard")
                 }
             })
         } else {
-            if(user){
+            if(user && token){
                 this.props.userAction(user, true, token)
                 this.props.history.push("/dashboard")
+            } else {
+                this.props.history.push("/login")
+                this.props.userAction(user, false, token)
             }
         }
 
@@ -44,7 +47,6 @@ class index extends Component {
 
     render() {
         const { message } = this.state
-        console.log(this.props)
         return (
             <div className="home">
                 <img src={logo} alt="logo"/>

@@ -28,7 +28,6 @@ class App extends Component {
   render() {
     const { user } = this.props
     return (
-      <div>
         <BrowserRouter>
         <Suspense fallback={Loading}>
         {
@@ -55,7 +54,6 @@ class App extends Component {
         }
         </Suspense>
         </BrowserRouter>
-      </div>
     );
   }
 }

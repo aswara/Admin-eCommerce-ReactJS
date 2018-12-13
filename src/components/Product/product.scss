@@ -76,133 +76,27 @@
             img {
                 width: 100%;
             }
-        }
 
-        .detail {
-            .box {
-                background-color: white;
-                padding: 15px;
-            }
-            
-            .message {
-                color: red;
-            }
-
-            .update {
-                height: 30px;
-                color: white;
-                border-radius: 2px;
-                background-color: #4DB649;
-                position: absolute;
-                box-shadow: 0px 2px 10px lightgray;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 20px;
-                cursor: pointer;
-                right: 145px;
-                top: 65px;
-                padding-right: 5px;
-            }
-
-            .delete {
-                position: absolute;
-                height: 30px;
-                color: white;
-                border-radius: 3px;
-                background-color: #ff5555;
-                box-shadow: 0px 2px 10px lightgray;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 20px;
-                cursor: pointer;
-                right: 50px;
-                top: 65px;
-                padding-right: 5px;
-
-            }
-
-            .name {
-                color: #505050;
-                font-size: 25px;
-                font-weight: 500;
-            }
-
-            .code {
-                margin-top: 5px;
-                span {
-                    color: #505050;
-                    font-size: 20px;
-                    font-weight: 500;
-                }
-            }
-
-
-            .weight {
-                margin-top: 5px;
-                span {
-                    color: #505050;
-                    font-size: 20px;
-                    font-weight: 500;
-                }
-            }
-
-            .category {
-                margin-top: 5px;
-                span {
-                    color: #505050;
-                    font-size: 20px;
-                    font-weight: 500;
-                }
-            }
-            
-            .size-stock {
-                margin-top: 5px;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-
-                hr {
-                    border: none;
-                    height: 1px;
-                    background-color: #4694fc;
-                    opacity: 0.5;
-                    margin-top: 0;
-                }
-
-                .stock {
-                    color: #505050;
-                    font-weight: 500;
-                }
-
-            }
-
-
-            .price {
-                background-color: white;
-                padding: 15px;
-                margin-top: 5px;
-                span {
-                    color: #505050;
-                    font-size: 25px;
-                    font-weight: 500;
-                }
-            }
-        }
-    }
-
-    .wrapper-load {
-        padding: 50px 50px 0px 50px;
-        color: #4694fc;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 50px;
-        font-weight: 500;
-
-        .image {
-            img {
+            .load {
+                background-color: lightgray;
+                height: 400px;
                 width: 100%;
+                animation: load 2s ease-in-out infinite;
             }
+
+            @keyframes load {
+                0%{
+                    opacity: 0.2;
+                }
+                50%{
+                    opacity: 0.8;
+                }
+                100%{
+                    opacity: 0.2;
+                }
+            }
+
+
         }
 
         .detail {
@@ -254,6 +148,25 @@
                 color: #505050;
                 font-size: 25px;
                 font-weight: 500;
+
+                .load {
+                    background-color: lightgray;
+                    height: 30px;
+                    width: 100%;
+                    animation: load 2s ease-in-out infinite;
+                }
+    
+                @keyframes load {
+                    0%{
+                        opacity: 0.2;
+                    }
+                    50%{
+                        opacity: 0.8;
+                    }
+                    100%{
+                        opacity: 0.2;
+                    }
+                }
             }
 
             .code {
@@ -262,6 +175,25 @@
                     color: #505050;
                     font-size: 20px;
                     font-weight: 500;
+                }
+
+                .load {
+                    background-color: lightgray;
+                    height: 30px;
+                    width: 100%;
+                    animation: load 2s ease-in-out infinite;
+                }
+    
+                @keyframes load {
+                    0%{
+                        opacity: 0.2;
+                    }
+                    50%{
+                        opacity: 0.8;
+                    }
+                    100%{
+                        opacity: 0.2;
+                    }
                 }
             }
 
@@ -273,6 +205,25 @@
                     font-size: 20px;
                     font-weight: 500;
                 }
+
+                .load {
+                    background-color: lightgray;
+                    height: 30px;
+                    width: 100%;
+                    animation: load 2s ease-in-out infinite;
+                }
+    
+                @keyframes load {
+                    0%{
+                        opacity: 0.2;
+                    }
+                    50%{
+                        opacity: 0.8;
+                    }
+                    100%{
+                        opacity: 0.2;
+                    }
+                }
             }
 
             .category {
@@ -281,6 +232,25 @@
                     color: #505050;
                     font-size: 20px;
                     font-weight: 500;
+                }
+
+                .load {
+                    background-color: lightgray;
+                    height: 30px;
+                    width: 100%;
+                    animation: load 2s ease-in-out infinite;
+                }
+    
+                @keyframes load {
+                    0%{
+                        opacity: 0.2;
+                    }
+                    50%{
+                        opacity: 0.8;
+                    }
+                    100%{
+                        opacity: 0.2;
+                    }
                 }
             }
             
@@ -313,6 +283,25 @@
                     color: #505050;
                     font-size: 25px;
                     font-weight: 500;
+                }
+
+                .load {
+                    background-color: lightgray;
+                    height: 30px;
+                    width: 100%;
+                    animation: load 2s ease-in-out infinite;
+                }
+    
+                @keyframes load {
+                    0%{
+                        opacity: 0.2;
+                    }
+                    50%{
+                        opacity: 0.8;
+                    }
+                    100%{
+                        opacity: 0.2;
+                    }
                 }
             }
         }

@@ -23,10 +23,15 @@ class index extends Component {
     }
 
     fetchProducts = () => {
+        let products = JSON.parse(localStorage.getItem('products'))
+        if(products){
+            this.setState({ products, loading: false })
+        }
         axios.get( url + "/product" )
         .then(res=>{
             if( res.data.constructor === Array )
                 this.setState({ products: res.data, loading: false })
+                localStorage.setItem('products', JSON.stringify(res.data))
         })
     }
 
@@ -53,6 +58,10 @@ class index extends Component {
                         <div className={ show === 'table' ? 'active' : '' }  onClick={()=> this.setState({ show: 'table' })} >
                             <span>table</span>
                         </div>
+                    </div>
+
+                    <div className="search">
+
                     </div>
 
                     { // loading product
