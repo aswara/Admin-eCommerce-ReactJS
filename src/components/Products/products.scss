@@ -38,6 +38,31 @@
             }
         }
 
+        .wrapper-search {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .search {
+                margin-top: 8px;
+                color: #505050;
+                font-weight: 500;
+                select {
+                    color: #505050;
+                    font-weight: 500;
+                    margin-left: 10px;
+                    width: 150px;
+                    border-radius: 3px;
+                    font-size: 16px;
+                    background-color: white;
+                    border: 1px solid lightblue;
+                    padding: 2px 5px;
+                }
+    
+            }
+        }
+
+
+
         .show {
             margin-top: 5px;
             width: auto;
@@ -229,6 +254,12 @@
                     }
                 }
 
+                .photo {
+                    background-color: lightgray;
+                    height: 180px;
+                    width: 100%;
+                }
+
                 .photo img {
                     background-color: lightgray;
                     height: 180px;
@@ -275,6 +306,11 @@
                 right: 10px;
             }
 
+            .wrapper-search {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
             .table {
                 
                 .product{
@@ -295,6 +331,10 @@
                 grid-gap: 10px;
 
                 .product {
+                    .photo {
+                        height: 100px;
+                    }
+
                     .photo img {
                         height: 100px;
                     }

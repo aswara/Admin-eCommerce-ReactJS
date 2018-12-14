@@ -88,12 +88,11 @@ class SubCategory extends Component {
     render() {
         const { open, name, comfirm_delete, message, image } = this.state
         const { data } = this.props
-        console.log(this.props)
         return (
             <div>
                 <span className="message">{message}</span>
                 <div className="sub-category">
-                    <div>
+                    <div className="photo">
                         { image ? <img src={image} alt="image"/> : <img src={data.icon} alt="image"/> }
                     </div>
                     <div className="name">

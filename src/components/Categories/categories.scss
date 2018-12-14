@@ -128,11 +128,10 @@
             margin: 10px 0;
             display: flex;
             justify-content: space-between;
-            background-color: white;
-            padding: 6px;
-            color: grey;
+            border-bottom: 1px solid #4694fc;
+            padding: 3px;
+            color: #505050;
             align-items: center;
-            box-shadow: 0 3px 10px lightgray;
 
             .actions {
                 display: flex;

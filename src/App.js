@@ -6,17 +6,26 @@ import { connect } from 'react-redux'
 import Home from './components/Home'
 import Loading from './components/Loading'
 import Login from './components/Login'
-const Dashboard = lazy(() => import('./components/Dashboard'))
-const Orders = lazy(() => import('./components/Orders'))
-const Products = lazy(() => import('./components/Products'))
-const Customers = lazy(() => import('./components/Customers'))
-const Categories = lazy(() => import('./components/Categories'))
-const AddProduct = lazy(() => import('./components/Product/AddProduct'))
-const Product = lazy(() => import('./components/Product'))
-const UpdateProduct = lazy(() => import('./components/Product/Update'))
+import Dashboard from './components/Dashboard'
+import Orders from './components/Orders'
+import Products from './components/Products'
+import Product from './components/Product'
+import Categories from './components/Categories'
+import AddProduct from './components/Product/AddProduct'
+import UpdateProduct from './components/Product/Update'
+import Customers from './components/Customers'
+
+// const Dashboard = lazy(() => import('./components/Dashboard'))
+// const Orders = lazy(() => import('./components/Orders'))
+// const Products = lazy(() => import('./components/Products'))
+// const Customers = lazy(() => import('./components/Customers'))
+// const Categories = lazy(() => import('./components/Categories'))
+// const AddProduct = lazy(() => import('./components/Product/AddProduct'))
+// const Product = lazy(() => import('./components/Product'))
+// const UpdateProduct = lazy(() => import('./components/Product/Update'))
 
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const element = document.getElementById('startingLoader')
     window.onload = () => {
       if(element) {

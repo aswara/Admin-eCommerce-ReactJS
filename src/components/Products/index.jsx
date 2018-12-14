@@ -3,8 +3,9 @@ import './products.scss'
 import axios from 'axios'
 import { url } from '../../config'
 import { connect } from 'react-redux'
-import { categoriesAction, subcategoriesAction } from '../../actions'
+import { categoryAction } from '../../actions'
 import { Link } from 'react-router-dom'
+import _ from 'lodash'
 
 import Product from './Product'
 import Header from '../Header'
@@ -14,30 +15,112 @@ class index extends Component {
     state = {
         show: 'card',
         loading : true,
-        products : [1,2,3,4,5,6,7,8,9,10]
+        products : [1,2,3,4,5,6,7,8,9,10],
+        categories : [],
+        subcategories : []
     }
 
-    componentDidMount() {
-        this.props.categoriesAction()
+
+    componentDidMount(){
         this.fetchProducts()
+        let category = localStorage.getItem('categories')
+        if(_.isString(category)){
+            let categories = JSON.parse(category)
+            if(_.isArray(categories))
+                this.setState({ categories, loading: false })
+        }
+        this.fetchCategories()
     }
+
+    fetchCategories = () => {
+        axios.get( url + '/category' )
+        .then(res=>{
+            if(_.isArray(res.data.data)){
+                this.props.categoryAction(res.data.data)
+                this.setState({ categories: res.data.data, loading: false })
+            }
+        })
+    }
+
+    
 
     fetchProducts = () => {
         let products = JSON.parse(localStorage.getItem('products'))
-        if(products){
+        if(_.isArray(products)){
             this.setState({ products, loading: false })
         }
         axios.get( url + "/product" )
         .then(res=>{
-            if( res.data.constructor === Array )
+            if( _.isArray(res.data) )
                 this.setState({ products: res.data, loading: false })
                 localStorage.setItem('products', JSON.stringify(res.data))
         })
     }
 
+    selectCategory = (e) => {
+        let id = e.target.value
+
+        this.setState({ category_id: id })
+        if(id <= 0){
+            this.fetchProducts()
+        } else {
+            this.fetchProductsCategory(id)
+        }
+
+        let categories = this.state.categories
+        let selectcategories = categories.filter((el)=>{
+            return(
+                el.category_id == id
+            )
+        })
+
+        if(!_.isUndefined(selectcategories[0])){
+            this.setState({ subcategories: selectcategories[0].subcategories })
+        } else {
+            this.setState({ subcategories: [] })
+        }
+    }
+
+    fetchProductsCategory(id){
+        let products = JSON.parse(localStorage.getItem(`category${id}`))
+        if(_.isArray(products)){
+            this.setState({ products, loading: false })
+        }
+
+        axios.get( url + "/product/category/" + id )
+        .then(res=>{
+            if(_.isArray(res.data)){
+                localStorage.setItem(`category${id}`, JSON.stringify(res.data))
+                this.setState({ products: res.data, loading: false })
+            }
+        })
+    }
+
+    selectSubcategory = (e) => {
+        let id = e.target.value
+        let category = this.state.category_id
+
+        if(id <= 0){
+            this.fetchProductsCategory(category)
+        } else {
+            let products = JSON.parse(localStorage.getItem(`category${category}${id}`))
+            if(_.isArray(products)){
+                this.setState({ products, loading: false })
+            }
+
+            axios.get( url + "/product/category/" + category + "?idSub=" + id )
+            .then( res => {
+                if(_.isArray(res.data)){
+                    localStorage.setItem(`category${category}${id}`, JSON.stringify(res.data))
+                    this.setState({ products: res.data, loading: false })
+                }
+            } )
+        }
+    }
+
     render() {
-        const { loading, products, show } = this.state
-        const { categories, subcategories, subcategoriesAction, user } = this.props
+        const { loading, products, show, categories, subcategories } = this.state
+        console.log(this.state)
         return (
             <div className="products">
                 <Header />
@@ -59,8 +142,26 @@ class index extends Component {
                         </div>
                     </div>
 
-                    <div className="search">
+                    <div className="wrapper-search">
+                        <div className="search">
+                            <label htmlFor="category">Category</label>
+                            <select onChange={this.selectCategory} name="category" id="category">
+                                <option value="0">All</option>
+                                {
+                                categories && categories.map( category => <option value={category.category_id}>{category.category_name}</option> )
+                                }
+                            </select>
+                        </div>
 
+                        <div className="search">
+                            <label htmlFor="category">Subcategory</label>
+                            <select onChange={this.selectSubcategory} name="category" id="category">
+                                <option value="0">All</option>
+                                {
+                                subcategories && subcategories.map( category => <option value={category.sub_category_id}>{category.name}</option> )
+                                }
+                            </select>
+                        </div>
                     </div>
 
                     { // loading product
@@ -81,9 +182,8 @@ class index extends Component {
 const mapStateToProps = (state) => {
     return({
         categories : state.categoriesReducer,
-        subcategories : state.subcategoriesReducer,
         user : state.userReducer
     })
 }
 
-export default connect(mapStateToProps , { categoriesAction, subcategoriesAction })(index);
+export default connect(mapStateToProps , { categoryAction })(index);

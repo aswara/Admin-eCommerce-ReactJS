@@ -1,7 +1,10 @@
-import { FETCH_CATEGORIES, FETCH_SUBCATEGORIES } from '../types'
+import { FETCH_CATEGORIES } from '../types'
 
+const initialState = {
+    data: []
+}
 
-export const categoriesReducer = ( state = { data: [] }, action ) => {
+export const categoriesReducer = ( state = initialState, action ) => {
     switch (action.type) {
         case FETCH_CATEGORIES:
             return {
@@ -12,14 +15,5 @@ export const categoriesReducer = ( state = { data: [] }, action ) => {
     }
 }
 
-export const subcategoriesReducer = ( state = { data: [] }, action ) => {
-    switch (action.type) {
-        case FETCH_SUBCATEGORIES:
-            return {
-                data: action.payload
-            }
-        default:
-            return state
-    }
-}
+
 

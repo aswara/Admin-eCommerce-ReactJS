@@ -5,7 +5,20 @@ import  { logoutAction } from '../../actions'
 
 class index extends Component {
     state={
-        dropdown: true
+        dropdown: true,
+        data: {
+            user: '',
+            photo: '',
+            name: '',
+            email: ''
+        }
+    }
+
+    componentDidMount(){
+        let data = this.props.user.data
+        if(data){
+            this.setState({ data })
+        }
     }
 
     dropDown = () => {
@@ -13,9 +26,7 @@ class index extends Component {
     }
 
     render() {
-        const { data } = this.props.user
-        const { dropdown } = this.state
-        console.log(data)
+        const { dropdown, data } = this.state
         return (
             <div className="header">
                 <div className="title">

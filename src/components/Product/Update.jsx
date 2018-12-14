@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { url, headers } from '../../config'
 import { connect } from 'react-redux'
-import { categoriesAction, subcategoriesAction } from '../../actions'
+import _ from 'lodash'
 
 import Header from '../Header'
 import Navbar from '../Navbar'
@@ -23,14 +23,19 @@ class UpdateProduct extends Component {
         description: '',
         success: false,
         loading: false,
+        categories: [],
+        subcategories: []
     }
 
     componentDidMount() {
+        let categories = this.props.categories.data
+        if(_.isArray(categories)){
+            this.setState({ categories })
+        }
         this.fetchProduct()
     }
 
     fetchProduct() {
-        console.log(this.props)
         if(this.props.location.state.product){
             let sizes = this.props.location.state.product.sizes
             let allsize = []
@@ -97,11 +102,22 @@ class UpdateProduct extends Component {
     }
 
     selectCategory = (e) => {
-        this.props.subcategoriesAction(e.target.value)
         this.setState({
-            category_id : e.target.value,
-            sub_category_id : ""
+            category_id : e.target.value
         })
+
+        let categories = this.state.categories
+        let selectcategories = categories.filter((el)=>{
+            return(
+                el.category_id == e.target.value
+            )
+        })
+
+        if(!_.isUndefined(selectcategories[0])){
+            this.setState({ subcategories: selectcategories[0].subcategories })
+        } else {
+            this.setState({ subcategories: [] })
+        }
     }
 
     addSize = () => {
@@ -240,8 +256,8 @@ class UpdateProduct extends Component {
     }
 
     render() {
-        const { categories, subcategories } = this.props
-        const { loading, inputsize, inputstock, allsize, allstock, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
+        console.log(this.state)
+        const { categories, subcategories, loading, inputsize, inputstock, allsize, allstock, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
         return (
             <div className="update-product">
                 <Header />
@@ -270,9 +286,9 @@ class UpdateProduct extends Component {
                         <select value={category_id} onChange={this.selectCategory} name="category_id" id="category">
                             <option value="">select</option>
                             {
-                                categories.data.map(category=>{
+                                categories.map(category=>{
                                     return(
-                                        <option key={category.category_id} value={category.category_id}>{category.name}</option>
+                                        <option key={category.category_id} value={category.category_id}>{category.category_name}</option>
                                     )
                                 })
                             }
@@ -281,7 +297,7 @@ class UpdateProduct extends Component {
                         <select value={sub_category_id} onChange={this.handleChange} name="sub_category_id" id="sub_category">
                             <option value="">select</option>
                             {
-                                subcategories.data.map(subcategory=>{
+                                subcategories.map(subcategory=>{
                                     return(
                                         <option key={subcategory.sub_category_id} value={subcategory.sub_category_id}>{subcategory.name}</option>
                                     )
@@ -347,9 +363,8 @@ class UpdateProduct extends Component {
 const mapStateToProps = (state) => {
     return({
         categories : state.categoriesReducer,
-        subcategories : state.subcategoriesReducer,
         user : state.userReducer
     })
 }
 
-export default connect(mapStateToProps , { categoriesAction, subcategoriesAction })(UpdateProduct);
+export default connect(mapStateToProps )(UpdateProduct);

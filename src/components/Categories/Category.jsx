@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { url, headers } from '../../config'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 
 import SubCategory from './SubCategory'
@@ -16,19 +17,21 @@ class Category extends Component {
     }
 
     componentDidMount() {
+        let sub_categories = this.props.category.subcategories
+        if(sub_categories){
+            this.setState({ sub_categories })
+        }
         this.fetchSubCategories()
     }
 
     fetchSubCategories = () => {
         axios.get( url + '/subcategory/category/' + this.props.category.category_id )
         .then(res=>{ 
-            if(res.data.datasub.constructor === Array )
+            if( _.isArray(res.data.datasub) )
                 this.setState({ sub_categories: res.data.datasub })
             else
                 this.setState({ sub_categories: [] })
          })
-        .catch(err=>{
-            this.setState({ sub_categories: [] }) })
     }
 
     deleteCategory(id) {   
@@ -90,7 +93,6 @@ class Category extends Component {
                 image : res.data.url,
                 category_id : id
             }
-            console.log(data)
             axios.post( url + '/subcategory', data , headers(this.props.user.token) )
             .then(res=>{
                 
@@ -121,7 +123,7 @@ class Category extends Component {
                         <div onClick={()=>{this.setState({ comfirm_delete : false})}} className="delete">
                             <i className="demo-icon icon-minus">&#xe814;</i>
                         </div>
-                        <div onClick={()=>{this.openUpdateCategory(category.name)}} className="update">
+                        <div onClick={()=>{this.openUpdateCategory(category.category_name)}} className="update">
                             <i className="demo-icon icon-cog">&#xe81a;</i>
                         </div>
                         <div onClick={this.openAddSubCategory} className="add">

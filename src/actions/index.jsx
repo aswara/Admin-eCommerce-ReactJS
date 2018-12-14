@@ -1,4 +1,4 @@
-import { LOGIN,LOGOUT, FETCH_CATEGORIES, FETCH_SUBCATEGORIES } from '../types'
+import { LOGIN,LOGOUT, FETCH_CATEGORIES } from '../types'
 import axios from 'axios'
 import { url } from '../config'
 
@@ -41,51 +41,12 @@ export const logoutAction = () => {
     }
 }
 
-export const categoriesAction = () => {
+export const categoryAction = (payload) => {
     return (dispatch) => {
-        axios.get( url + "/category" )
-        .then(res=>{
-            if(res.data.constructor === Array)
-                dispatch({
-                    type: FETCH_CATEGORIES,
-                    payload: res.data
-                })
-            else
-                dispatch({
-                    type: FETCH_CATEGORIES,
-                    payload: []
-                })
-        })
-        .catch(err=>{
-            dispatch({
-                type: FETCH_CATEGORIES,
-                payload: []
-            })
-        })
-
-    }
-}
-
-export const subcategoriesAction = (id) => {
-    return (dispatch) => {
-        axios.get( url + "/subcategory/category/" + id )
-        .then(res=>{
-            if(res.data.datasub.constructor === Array)
-                dispatch({
-                    type: FETCH_SUBCATEGORIES,
-                    payload: res.data.datasub
-                })
-            else
-                dispatch({
-                    type: FETCH_SUBCATEGORIES,
-                    payload: []
-                })
-        })
-        .catch(err=>{
-            dispatch({
-                type: FETCH_SUBCATEGORIES,
-                payload: []
-            })
+        localStorage.setItem('categories', JSON.stringify(payload) )
+        dispatch({
+            type: FETCH_CATEGORIES,
+            payload
         })
 
     }

@@ -14,6 +14,7 @@
 
         img {
             width: 100%;
+            position: absolute;
         }
 
         .error {
@@ -39,9 +40,10 @@
         }
 
         h2 {
-            color: white;
+            margin-top: 230px;
+            color: #5daafd;
             font-weight: 400;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         label {
@@ -80,12 +82,12 @@
             }
             50%{
                 position: absolute;
-                top: 300px;
+                top: 320px;
             }
             100%{
                 opacity: 1;
                 position: absolute;
-                top: 255px;
+                top: 300px;
             }
         }
 

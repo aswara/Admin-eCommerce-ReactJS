@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './categories.scss'
 import axios from 'axios'
-import { url, headers } from '../../config'
+import _ from 'lodash'
+import { url } from '../../config'
+import { connect } from 'react-redux'
+import { categoryAction } from '../../actions'
 
 import Header from '../Header'
 import Navbar from '../Navbar'
@@ -11,23 +14,28 @@ import Category from './Category'
 class index extends Component {
     state = {
         new_category: true,
-        categories: [1,2,3,4,5,6,7,8,9,10,11],
+        categories: [1,2,3,4,5,6,7,8],
         loading: true,
         message: ''
     }
     
     componentDidMount(){
+        let category = localStorage.getItem('categories')
+        if(_.isString(category)){
+            let categories = JSON.parse(category)
+            if(_.isArray(categories))
+                this.setState({ categories, loading: false })
+        }
         this.fetchCategories()
     }
 
     fetchCategories = () => {
         axios.get( url + '/category' )
         .then(res=>{
-            console.log(res.data)
-            this.setState({ categories: res.data.data, loading: false })
-        })
-        .catch(res=>{
-            this.setState({ loading: true , message: 'Connection error' })
+            if(_.isArray(res.data.data)){
+                this.props.categoryAction(res.data.data)
+                this.setState({ categories: res.data.data, loading: false })
+            }
         })
     }
 
@@ -75,4 +83,10 @@ class index extends Component {
     }
 }
 
-export default index;
+const mapStateToProps = (state) => {
+    return({
+        category: state. categoriesReducer
+    })
+}
+
+export default connect(mapStateToProps, { categoryAction })(index);

@@ -7,7 +7,14 @@
     border-radius: 3px;
     box-shadow: 0 3px 10px lightgray;
 
+    .photo {
+        height: 190px;
+        background-color: lightgrey;
+        margin-bottom: 5px;
+    }
+
     img {
+        height: 190px;
         width: 100%;
     }
 
@@ -109,6 +116,14 @@
         .actions {
             display: grid;
             grid-template-columns: 1fr;
+        }
+
+        .photo {
+            height: 150px;
+        }
+
+        img {
+            height: 150px;
         }
     }
 }
