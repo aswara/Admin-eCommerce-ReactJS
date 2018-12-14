@@ -4,8 +4,6 @@ import { url } from '../config'
 
 export const userAction = (payload, login, token) => {
     return(dispatch) => {
-        localStorage.setItem('token', token)
-        localStorage.setItem('user', JSON.stringify(payload))
         dispatch ({
             type: LOGIN,
             payload,
@@ -17,8 +15,6 @@ export const userAction = (payload, login, token) => {
 
 export const loginAction = (token, payload) => {
     return (dispatch) => {
-        localStorage.setItem('token', token)
-        localStorage.setItem('user', JSON.stringify(payload))
         dispatch({
             type: LOGIN,
             token : token,

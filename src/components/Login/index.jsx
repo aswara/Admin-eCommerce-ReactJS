@@ -49,7 +49,11 @@ class index extends Component {
             
             axios.post( url + "/admin/login" , formData )
             .then(res=>{
-                if(res.data)  this.props.loginAction(res.data.token, res.data.data)
+                if(res.data) {
+                    this.props.loginAction(res.data.token, res.data.data)
+                    localStorage.setItem('token', res.data.token)
+                    localStorage.setItem('user', JSON.stringify(res.data.data))
+                }
             })
             .catch(err=>{
                 if(err.response){

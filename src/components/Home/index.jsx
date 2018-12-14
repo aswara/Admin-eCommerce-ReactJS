@@ -12,13 +12,16 @@ class index extends Component {
         message: ''
     }
     
-    componentWillMount() {
+    componentDidMount() {
         let token = this.props.user.token
-        let user = this.props.user.data
+        let user = this.props.user.user
+        console.log(user)
         if(navigator.onLine){
             axios.get( url + "/admin/profile" , headers(token) )
             .then(res=>{
                 if(res.data){
+                    localStorage.setItem('token', token)
+                    localStorage.setItem('user', JSON.stringify(res.data.data))
                     this.props.userAction(res.data.data, true, token)
                     this.props.history.push("/dashboard")
                 }
@@ -35,9 +38,11 @@ class index extends Component {
             })
         } else {
             if(user && token){
+                console.log("dashboard")
                 this.props.userAction(user, true, token)
                 this.props.history.push("/dashboard")
             } else {
+                console.log("login")
                 this.props.history.push("/login")
                 this.props.userAction(user, false, token)
             }
