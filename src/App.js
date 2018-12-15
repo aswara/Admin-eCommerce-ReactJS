@@ -1,5 +1,4 @@
-import React, { Component, Suspense, lazy } from 'react';
-import './App.css';
+import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -15,15 +14,6 @@ import AddProduct from './components/Product/AddProduct'
 import UpdateProduct from './components/Product/Update'
 import Customers from './components/Customers'
 
-// const Dashboard = lazy(() => import('./components/Dashboard'))
-// const Orders = lazy(() => import('./components/Orders'))
-// const Products = lazy(() => import('./components/Products'))
-// const Customers = lazy(() => import('./components/Customers'))
-// const Categories = lazy(() => import('./components/Categories'))
-// const AddProduct = lazy(() => import('./components/Product/AddProduct'))
-// const Product = lazy(() => import('./components/Product'))
-// const UpdateProduct = lazy(() => import('./components/Product/Update'))
-
 class App extends Component {
   componentDidMount() {
     const element = document.getElementById('startingLoader')
@@ -38,7 +28,6 @@ class App extends Component {
     const { user } = this.props
     return (
         <BrowserRouter>
-        <Suspense fallback={Loading}>
         {
           user.login ?
           <Switch>
@@ -61,7 +50,6 @@ class App extends Component {
             <Route path="/*" component={Home} />
           </Switch>
         }
-        </Suspense>
         </BrowserRouter>
     );
   }
