@@ -43,8 +43,8 @@
 
                 img {
                     background-color: #4694fc;
-                    height: 50px;
-                    width:  50px;
+                    height: 30px;
+                    width:  30px;
                     margin-right: 10px;
                 }
 
@@ -68,6 +68,14 @@
             .customer {
                 display: grid;
                 grid-template-columns: 1fr;
+
+                .photo {
+                    margin-bottom: 5px;
+
+                    // img {
+                    //     width: 100%;
+                    // }
+                }
             }
         }
     }

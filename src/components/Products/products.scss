@@ -298,11 +298,8 @@
                 
                 .product{
                     display: grid;
-                    grid-template-columns: 1fr 1fr;
+                    grid-template-columns: 1fr;
 
-                    .name {
-                        font-size: 15px;
-                    }
 
                 }
             }
