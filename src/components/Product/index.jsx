@@ -78,6 +78,13 @@ class index extends Component {
         }
     }
 
+    price(number){
+        var reverse = number.toString().split('').reverse().join(''),
+        thousand = reverse.match(/\d{1,3}/g);
+        thousand = thousand.join('.').split('').reverse().join('');
+        return thousand + ",-";
+    }
+
     render() {
         const { product, size, stock, comfirm_delete, message, loading } = this.state
         return (
@@ -157,7 +164,7 @@ class index extends Component {
 
                             <div className="price">
                                 Price <br/>
-                                { loading ? <div className="load"></div> : <span>Rp {product.price}</span> }
+                                { loading ? <div className="load"></div> : <span>Rp {this.price(product.price)}</span> }
                             </div>
                         </div>
                     </div>

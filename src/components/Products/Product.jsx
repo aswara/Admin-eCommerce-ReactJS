@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom'
 import { Lazy } from 'react-lazy'
 
 class Product extends Component {
+    price(number){
+        var reverse = number.toString().split('').reverse().join(''),
+        thousand = reverse.match(/\d{1,3}/g);
+        thousand = thousand.join('.').split('').reverse().join('');
+        return thousand + ",-";
+    }
+
     render() {
         const { product } = this.props
         return (
@@ -17,11 +24,11 @@ class Product extends Component {
                     <span>{product.name}</span>
                 </div>
                 <div className="code">
-                    Code Product <br/>
+                    <div>Code product</div>
                     <span>{product.code}</span>
                 </div>
                 <div className="price">
-                    Price <span>Rp {product.price}</span>
+                    <div>Price</div> <span>Rp {this.price(product.price)}</span>
                 </div>
 
             </div>

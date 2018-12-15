@@ -17,7 +17,9 @@ class index extends Component {
         loading : true,
         products : [1,2,3,4,5,6,7,8,9,10],
         categories : [],
-        subcategories : []
+        subcategories : [],
+        category_id : 0,
+        sub_category_id: 0
     }
 
 
@@ -60,7 +62,7 @@ class index extends Component {
     selectCategory = (e) => {
         let id = e.target.value
 
-        this.setState({ category_id: id })
+        this.setState({ category_id: id, sub_category_id: 0 })
         if(id <= 0){
             this.fetchProducts()
         } else {
@@ -99,7 +101,7 @@ class index extends Component {
     selectSubcategory = (e) => {
         let id = e.target.value
         let category = this.state.category_id
-
+        this.setState({ sub_category_id: id })
         if(id <= 0){
             this.fetchProductsCategory(category)
         } else {
@@ -119,8 +121,7 @@ class index extends Component {
     }
 
     render() {
-        const { loading, products, show, categories, subcategories } = this.state
-        console.log(this.state)
+        const { loading, products, show, categories, subcategories, sub_category_id, category_id } = this.state
         return (
             <div className="products">
                 <Header />
@@ -145,7 +146,7 @@ class index extends Component {
                     <div className="wrapper-search">
                         <div className="search">
                             <label htmlFor="category">Category</label>
-                            <select onChange={this.selectCategory} name="category" id="category">
+                            <select value={category_id} onChange={this.selectCategory} name="category" id="category">
                                 <option value="0">All</option>
                                 {
                                 categories && categories.map( category => <option value={category.category_id}>{category.category_name}</option> )
@@ -155,7 +156,7 @@ class index extends Component {
 
                         <div className="search">
                             <label htmlFor="category">Subcategory</label>
-                            <select onChange={this.selectSubcategory} name="category" id="category">
+                            <select value={sub_category_id} onChange={this.selectSubcategory} name="category" id="category">
                                 <option value="0">All</option>
                                 {
                                 subcategories && subcategories.map( category => <option value={category.sub_category_id}>{category.name}</option> )

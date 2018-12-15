@@ -15,7 +15,6 @@ class index extends Component {
     componentDidMount() {
         let token = this.props.user.token
         let user = this.props.user.user
-        console.log(user)
         if(navigator.onLine){
             axios.get( url + "/admin/profile" , headers(token) )
             .then(res=>{
@@ -38,8 +37,7 @@ class index extends Component {
             })
         } else {
             if(user && token){
-                console.log("dashboard")
-                this.props.userAction(user, true, token)
+                this.props.userAction(JSON.parse(user), true, token)
                 this.props.history.push("/dashboard")
             } else {
                 console.log("login")

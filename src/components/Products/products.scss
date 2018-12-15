@@ -135,23 +135,14 @@
             .product {
                 padding: 5px;
                 display: grid;
-                grid-template-columns: 1fr 7fr 4fr 4fr;
+                grid-template-columns: 2fr 1fr 1fr;
                 background-color: white;      
                 margin-bottom: 5px;
                 border-radius: 3px;
                 box-shadow: 0 3px 10px lightgray;
-                animation: table 1s ease-in-out;
 
-                @keyframes table {
-                    0%{
-                        margin-top: 100px
-                    }
-                    50%{
-                        margin-top: -10px
-                    }
-                    100%{
-                        margin-top: 0px;
-                    }
+                .photo {
+                    display: none;
                 }
 
                 .photo img {
@@ -167,15 +158,21 @@
                 }
 
                 .code {
-                    span{
+                    div {
+                        display: none;
+                    }
+                    span {
                         color: #505050;
                         font-size: 18px;
                     }
                 }
 
                 .price {
+                    div {
+                        display: none;
+                    }
                     span {
-                        color: #4694fc;
+                        color: #505050;
                         font-size: 20px;
                         font-weight: 500;
                         display: flex;
@@ -238,21 +235,7 @@
                 border-radius: 2px;
                 box-shadow: 0 3px 10px lightgray;
                 font-size: 14px;
-                color: #570D8A;
-                animation: card 1s ease-in-out;
-
-                @keyframes card {
-                    0%{
-                        margin-top: 100px;
-                    }
-                    50%{
-                        margin-top: -10px
-                    }
-                    100%{
-                        margin-top: 0px;
-                  
-                    }
-                }
+                color: #4694fc;
 
                 .photo {
                     background-color: lightgray;
@@ -281,7 +264,7 @@
 
                 .price {
                     span {
-                        color: #4694fc;
+                        color: #505050;
                         font-size: 16px;
                         font-weight: 500;
                     }

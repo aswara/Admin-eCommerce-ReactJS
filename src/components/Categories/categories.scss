@@ -11,7 +11,9 @@
         }
 
         .loading-list {
-            height: 20px;
+            background-color: white;
+            margin-bottom: 15px;
+            height: 50px;
             animation: loading-list 2s infinite;
         }
 

@@ -16,7 +16,6 @@ class index extends Component {
         new_category: true,
         categories: [1,2,3,4,5,6,7,8],
         loading: true,
-        message: ''
     }
     
     componentDidMount(){
@@ -44,14 +43,14 @@ class index extends Component {
     }
 
     render() {
-        const { new_category, categories, loading, message } = this.state
+        const { new_category, categories, loading } = this.state
         return (
             <div className="categories">
                 <Header />
                 <Navbar />
 
                 { //loading fect data categories
-                    loading ? <div className="wrapper"> <span className="message">{message}</span> { categories.map(category=>{ return(<div key={category} className="category loading-list"></div>) }) }</div> :
+                    loading ? <div className="wrapper"> { categories.map(category=>{ return(<div key={category} className="loading-list"></div>) }) }</div> :
                 
 
                 <div className="wrapper">
