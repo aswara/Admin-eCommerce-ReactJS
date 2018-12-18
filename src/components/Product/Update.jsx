@@ -16,8 +16,8 @@ class UpdateProduct extends Component {
         imagePreview : '',
         message : '',
         messageadd: '',
-        allsize: [],
-        allstock: [],
+        sizes: [],
+        stocks: [],
         sizeinput: '',
         stockinput: '',
         description: '',
@@ -37,23 +37,10 @@ class UpdateProduct extends Component {
 
     fetchProduct() {
         if(this.props.location.state.product){
-            let sizes = this.props.location.state.product.sizes
-            let allsize = []
-            let allstock = []
-            if(sizes){
-                for (const key in sizes) {
-                    if (sizes.hasOwnProperty(key)) {
-                        const element = sizes[key];
-                        allsize.push(key)
-                        allstock.push(element)
-                    }
-                }
-            }
-
-            const { product_id, name, code, category_id, sub_category_id, price, weight, description, image } = this.props.location.state.product
+            const { product_id, name, code, category_id, sub_category_id, price, weight, description, image, sizes, stocks } = this.props.location.state.product
             this.setState({
-                allsize,
-                allstock,
+                sizes,
+                stocks,
                 name,
                 code, 
                 category_id, 
@@ -69,23 +56,11 @@ class UpdateProduct extends Component {
             axios( url + "/product/" + id )
             .then(res=>{
                 if(res.data){
-                    let sizes = res.data.sizes
-                    let allsize = []
-                    let allstock = []
-                    if(sizes){
-                        for (const key in sizes) {
-                            if (sizes.hasOwnProperty(key)) {
-                                const element = sizes[key];
-                                allsize.push(key)
-                                allstock.push(element)
-                            }
-                        }
-                    }
     
-                    const { product_id, name, code, category_id, sub_category_id, price, weight, description, image } = res.data
+                    const { product_id, name, code, category_id, sub_category_id, price, weight, description, image, sizes, stocks } = res.data
                     this.setState({
-                        allsize,
-                        allstock,
+                        sizes,
+                        stocks,
                         name,
                         code, 
                         category_id, 
@@ -121,19 +96,19 @@ class UpdateProduct extends Component {
     }
 
     addSize = () => {
-        const { allsize, inputsize, allstock, inputstock } = this.state
+        const { sizes, inputsize, stocks, inputstock } = this.state
 
         if(inputsize && inputstock){
             
-            let sizes = allsize
-            sizes.push(inputsize)
+            let size = sizes
+            size.push(inputsize)
     
-            let stocks = allstock
-            stocks.push(inputstock)
+            let stock = stocks
+            stock.push(inputstock)
     
             this.setState({
-                allsize : sizes,
-                allstock : stocks,
+                sizes : size,
+                stocks : stock,
                 inputsize: '',
                 inputstock : '',
                 messageadd: ''
@@ -150,18 +125,31 @@ class UpdateProduct extends Component {
     }
 
     changeSize (e, i) {
-        let all = this.state.allsize
+        let all = this.state.sizes
         all[i] = e.target.value
         this.setState({
-            allsize: all
+            sizes: all
         })
     }
 
     changeStock (e, i) {
-        let all = this.state.allstock
+        let all = this.state.stocks
         all[i] = e.target.value
         this.setState({
-            allstock: all
+            stocks: all
+        })
+    }
+
+    deleteSizes (i) {
+        let allsizes = this.state.sizes
+        let allstocks = this.state.stocks    
+        
+        allsizes.splice(i,1)
+        allstocks.splice(i,1)
+
+        this.setState({
+            sizes: allsizes,
+            stocks: allstocks
         })
     }
 
@@ -181,11 +169,11 @@ class UpdateProduct extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const { image, file, allsize, allstock, name, code, category_id, sub_category_id, price, weight, description, product_id } = this.state
+        const { image, file, sizes, stocks, name, code, category_id, sub_category_id, price, weight, description, product_id } = this.state
         const token = this.props.user.token
         
         if(!description) this.setState({ message: 'Submit description' })        
-        if(allsize.length<1) this.setState({ message: 'Click add size and stock' })
+        if(sizes.length<1) this.setState({ message: 'Click add size and stock' })
         if(!weight) this.setState({ message: 'Submit weight' })
         if(!price) this.setState({ message: 'Submit price' })
         if(!sub_category_id) this.setState({ message: 'Select subcategory' })
@@ -197,10 +185,10 @@ class UpdateProduct extends Component {
         this.setState({ messageadd: '' })
 
         //post data if no change image
-        if(!file && image && name && code && category_id && sub_category_id && price && weight && allsize && allstock && description) {
+        if(!file && image && name && code && category_id && sub_category_id && price && weight && sizes && stocks && description) {
             this.setState({ loading: true })
 
-            let data = { name, code, category_id, sub_category_id, price, weight, description, image, size: allsize, stock: allstock }
+            let data = { name, code, category_id, sub_category_id, price, weight, description, image, size: sizes, stock: stocks }
     
             axios.put( url + "/product/" + product_id , data, headers(token) )
             .then(res=>{
@@ -221,14 +209,14 @@ class UpdateProduct extends Component {
         }
 
         //Post data if change image
-        if(file && name && code && category_id && sub_category_id && price && weight && allsize && allstock && description ) {
+        if(file && name && code && category_id && sub_category_id && price && weight && sizes && stocks && description ) {
             this.setState({ loading: true })
             let data = new FormData()
             data.append('image', file )
             axios.post( url + "/product/upload-image" , data , headers(token) )
             .then(res=>{
 
-                let data = { name, code, category_id, sub_category_id, price, weight, description, image: res.data.url, size: allsize, stock: allstock }
+                let data = { name, code, category_id, sub_category_id, price, weight, description, image: res.data.url, size: sizes, stock: stocks }
         
                 axios.put( url + "/product/" + product_id , data, headers(token) )
                 .then(res=>{
@@ -256,8 +244,7 @@ class UpdateProduct extends Component {
     }
 
     render() {
-        console.log(this.state)
-        const { categories, subcategories, loading, inputsize, inputstock, allsize, allstock, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
+        const { categories, subcategories, loading, inputsize, inputstock, sizes, stocks, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
         return (
             <div className="update-product">
                 <Header />
@@ -266,7 +253,7 @@ class UpdateProduct extends Component {
                 { loading ? <Loading /> : '' }
 
                 <div className="add-product">
-                    <h1>Add Product</h1>
+                    <h1>Update Product</h1>
                     { success ? <div className="success"><div>Success</div></div> : "" }
 
                     <div className="photo">
@@ -316,7 +303,7 @@ class UpdateProduct extends Component {
                                 <span>Size</span><br/>
                                 <hr/>
                                 {
-                                    allsize.map((size, i)=>{
+                                   _.isArray(sizes) && sizes.map((size, i)=>{
                                         return(
                                                 <div className="size" key={i}>
                                                     <input value={size} onChange={ (e)=>this.changeSize(e, i) } type="text"/>
@@ -331,10 +318,10 @@ class UpdateProduct extends Component {
                                 <span>Stock</span><br/>
                                 <hr/>
                                 {
-                                    allstock.map((stock, i)=>{
+                                   _.isArray(stocks) && stocks.map((stock, i)=>{
                                         return(
                                                 <div className="stock" key={i}>
-                                                    <input onChange={(e)=>this.changeStock(e,i)} value={stock} type="text"/>
+                                                    <input onChange={(e)=>this.changeStock(e,i)} value={stock} type="text"/> <span onClick={()=>this.deleteSizes(i)}><i className="demo-icon icon-minus">&#xe814;</i></span>
                                                     <hr/>
                                                 </div>
                                         )

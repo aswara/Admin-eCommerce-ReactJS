@@ -81,6 +81,23 @@ class AddProduct extends Component {
         }
     }
 
+    deleteSizes (i) {
+        let allsize = this.state.allsize
+        let allstock = this.state.allstock 
+        let allinput = this.state.allinput   
+        
+
+        allsize.splice(i,1)
+        allstock.splice(i,1)
+        allinput.splice(i,1)
+
+        this.setState({
+            allsize,
+            allstock,
+            allinput
+        })
+    }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value
@@ -195,7 +212,7 @@ class AddProduct extends Component {
                             { imagePreview ? <img src={imagePreview} alt="imagePreview"/> : <div></div> } 
                         </div>
                         <label htmlFor="photo">Image  <i className="demo-icon icon-picture">&#xe812;</i></label><br/>
-                        <input onChange={this.handleImage} id="photo" type="file"/>
+                        <input onChange={this.handleImage} id="photo" type="file" accept="image/x-png,image/gif,image/jpeg"/>
                     </div>
 
                     <form onSubmit={this.handleSubmit}>
@@ -255,7 +272,7 @@ class AddProduct extends Component {
                                     allstock.map((stock, i)=>{
                                         return(
                                                 <div className="stock" key={i}>
-                                                    {stock}
+                                                    {stock} <span onClick={()=>this.deleteSizes(i)}><i className="demo-icon icon-minus">&#xe814;</i></span>
                                                     <hr/>
                                                 </div>
                                         )

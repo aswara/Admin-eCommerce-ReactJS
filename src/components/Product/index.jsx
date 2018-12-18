@@ -4,6 +4,7 @@ import axios from 'axios'
 import { url, headers } from '../../config'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import _ from 'lodash'
 
 import Header from '../Header'
 import Navbar from '../Navbar'
@@ -11,8 +12,6 @@ import Navbar from '../Navbar'
 class index extends Component {
     state = {
         product : '',
-        size: [],
-        stock: [],
         comfirm_delete: true,
         message: '',
         loading: true
@@ -30,22 +29,8 @@ class index extends Component {
 
     componentDidMount(){
         if(this.props.location.state){
-            let sizes = this.props.location.state.sizes
-            let size = []
-            let stock = []
-            if(sizes){
-                for (const key in sizes) {
-                    if (sizes.hasOwnProperty(key)) {
-                        const element = sizes[key];
-                        size.push(key)
-                        stock.push(element)
-                    }
-                }
-            }
             this.setState({
                 product: this.props.location.state,
-                size,
-                stock,
                 loading: false
             })
         }
@@ -55,22 +40,8 @@ class index extends Component {
             axios( url + "/product/" + id )
             .then(res=>{
                 if(res.data){
-                    let sizes = res.data.sizes
-                    let size = []
-                    let stock = []
-                    if(sizes){
-                        for (const key in sizes) {
-                            if (sizes.hasOwnProperty(key)) {
-                                const element = sizes[key];
-                                size.push(key)
-                                stock.push(element)
-                            }
-                        }
-                    }
                     this.setState({
                         product: res.data,
-                        size,
-                        stock,
                         loading: false
                     })
                 }
@@ -86,7 +57,7 @@ class index extends Component {
     }
 
     render() {
-        const { product, size, stock, comfirm_delete, message, loading } = this.state
+        const { product, comfirm_delete, message, loading } = this.state
         return (
             <div className="detail-product">
                 <Header />
@@ -110,6 +81,10 @@ class index extends Component {
                         </div>
                         <div className="detail">
                             <span className="message">{message}</span>
+
+                            <div className="back">
+                                 <Link style={{ textDecoration: 'none',  color: '#4694fc', fontWeight: '400'}} to='/products'>Products</Link> { ' > ' + product.name}
+                            </div>
 
                             <div onClick={()=>{this.setState({ comfirm_delete: false })}} className="delete">
                                 <i  className="demo-icon icon-minus">&#xe814;</i><span>delete</span>
@@ -148,14 +123,14 @@ class index extends Component {
                                         <span>Size</span>
                                         <hr/>
                                         {
-                                            size.map( (x,i) => <div key={i} className="size">{x} <hr/></div> )
+                                           _.isArray(product.sizes) && product.sizes.map( (x,i) => <div key={i} className="size">{x} <hr/></div> )
                                         }
                                     </div>
                                     <div>
                                         <span>Stock</span>
                                         <hr/>
                                         {
-                                            stock.map( (x,i) => <div key={i} className="stock">{x} <hr/></div> )
+                                          _.isArray(product.stocks) && product.stocks.map( (x,i) => <div key={i} className="stock">{x} <hr/></div> )
                                         }
                                     </div>
                                 </div>

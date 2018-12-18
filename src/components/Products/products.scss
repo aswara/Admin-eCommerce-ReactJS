@@ -19,7 +19,7 @@
             cursor: pointer;
             animation: icon 0.7s ease-in-out;
             color: white;
-            font-size: 30px;
+            font-size: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -66,7 +66,8 @@
         .show {
             margin-top: 5px;
             width: auto;
-            display: flex;         
+            display: flex;
+            font-size: 14px;      
 
             div {
                 background-color: white;
@@ -279,13 +280,13 @@
 
 @media (max-width: 700px){
     .products {
-        padding-left: 40px;
+        padding-left: 0px;
 
         .wrapper {
             padding: 15px;
 
             .new {
-                top: 60px;
+                top: 68px;
                 right: 10px;
             }
 

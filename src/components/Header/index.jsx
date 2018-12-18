@@ -33,7 +33,7 @@ class index extends Component {
                     <span>e-Commerce</span>
                 </div>
                 <div className="admin">
-                    <span onClick={this.dropDown}>Admin <i className="demo-icon icon-down-circle">&#xe810;</i></span>
+        <span onClick={this.dropDown}>Admin {dropdown ?  <i className="demo-icon icon-down-circle">&#xe810;</i> : <i className="demo-icon icon-up-circle">&#xe802;</i>  }</span>
 
                     <div className={`dropdown ${ dropdown ? `hide` : ``}`}>
                         <img src={data.photo} alt="photo"/>

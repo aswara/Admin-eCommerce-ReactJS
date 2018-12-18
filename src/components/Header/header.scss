@@ -2,9 +2,9 @@
     top: 0;
     position: fixed;
     width: 100%;
-    background-image: linear-gradient(#4694fc,#80befc);
+    background-image: linear-gradient(#80befc, #4694fc);
     color: white;
-    height: 50px;
+    height: 60px;
     display: flex;
     z-index: 10;
     left: 0;
@@ -16,6 +16,7 @@
     .title {
         margin-left: 18px;
         font-size: 20px;
+        font-weight: 500;
     }
 
     .admin {
@@ -26,33 +27,38 @@
         }
 
         .dropdown {
-            width: 120px;
+            width: 150px;
             height: auto;
             position: absolute;
             background-color: white;
             color: gray;
-            padding: 10px;
-            margin-top: 5px;
+            padding: 15px;
+            margin-top: 10px;
             right: 25px;
-            border-radius: 3px;
+            border-radius: 20px;
             box-shadow: 0px 1px 10px lightgray;
             display: flex;
             flex-direction: column;
+            animation: admin 0.5s ease-in-out;
+            text-align: center;
 
             img {
-                width: 100px;
-                height: 100px;
+                width: 130px;
+                height: 130px;
                 border-radius: 50%;
-                margin-left: 10px;
+                margin-left: 11px;
+                background-color: lightgray;
             }
 
             .name {
+                margin-top: 10px;
                 font-size: 16px;
                 font-weight: 500;
                 color: #4694fc;
             }
 
             .email {
+                margin-top: 5px;
                 font-size: 13px;
             }
 
@@ -62,9 +68,22 @@
                 background-color: #F6535A;
                 padding: 3px 5px;
                 color: white;
-                border-radius: 3px;
+                border-radius: 20px;
+                box-shadow: 0px 2px 10px lightgray;
+
             }
 
+            @keyframes admin {
+                0%{
+                    top: -100px;
+                }
+                50%{
+                    top: 80px
+                }
+                100%{
+                    top: 35px;
+                }
+            }
 
         }
 

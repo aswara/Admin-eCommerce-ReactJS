@@ -149,7 +149,7 @@ class index extends Component {
                             <select value={category_id} onChange={this.selectCategory} name="category" id="category">
                                 <option value="0">All</option>
                                 {
-                                categories && categories.map( category => <option value={category.category_id}>{category.category_name}</option> )
+                                categories && categories.map( category => <option key={category.category_id} value={category.category_id}>{category.category_name}</option> )
                                 }
                             </select>
                         </div>
@@ -159,7 +159,7 @@ class index extends Component {
                             <select value={sub_category_id} onChange={this.selectSubcategory} name="category" id="category">
                                 <option value="0">All</option>
                                 {
-                                subcategories && subcategories.map( category => <option value={category.sub_category_id}>{category.name}</option> )
+                                subcategories && subcategories.map( category => <option key={category.sub_category_id} value={category.sub_category_id}>{category.name}</option> )
                                 }
                             </select>
                         </div>

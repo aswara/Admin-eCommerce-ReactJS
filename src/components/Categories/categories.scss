@@ -43,7 +43,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 30px;
+            font-size: 25px;
             animation: icon 0.7s ease-in-out;
 
         }
@@ -130,7 +130,7 @@
             margin: 10px 0;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #4694fc;
+            border-bottom: 2px solid #b5d3fa;
             padding: 3px;
             color: #505050;
             align-items: center;
@@ -140,8 +140,8 @@
             }
 
             span {
-                margin-left: 5px;
-                font-size: 22px;
+                margin-left: 3px;
+                font-size: 20px;
                 font-weight: 500;
             }
 
@@ -155,7 +155,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 20px;
+                font-size: 15px;
                 cursor: pointer;
             }
 
@@ -169,7 +169,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 20px;
+                font-size: 15px;
                 cursor: pointer;
             }
 
@@ -182,7 +182,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 20px;
+                font-size: 15px;
                 cursor: pointer;
             }
 

@@ -4,49 +4,74 @@
     color: red;
     background-color: white;
     position: fixed;
-    top: 50px;
+    top: 60px;
     left: 0px;
     display: flex;
     flex-direction: column;
-    padding-top: 40px;
+    padding-top: 70px;
     box-shadow: 1px 0 10px lightgrey;
     transition: 1s;
+    z-index: 200px;
 
     .link {
+        margin-bottom: 60px;
         color: #4694fc;
-        margin-bottom: 40px;
         text-decoration: none;
+        padding-left: 10px;
     }
 
     .active {
         color: white;
         width: 100%;
-        color: white;
         background-image: linear-gradient(to left, #4694fc,#80befc);
-        padding: 7px;    
-        animation: active 0.5s ease-in-out;
-    }
-
-    @keyframes active {
-        0%{
-            width: 80%;
-        }
-        100%{
-            width: 100%;
-        }
+        padding: 10px 7px;
+        font-size: 20px;
+        font-weight: 550;
+        border-radius: 0 3px 3px 0;
     }
 
     i {
-        margin-left: 10px;
+        margin-right: 5px;
+        margin-left: 10px; 
+
     }
 }
 
 @media (max-width: 700px){
     .navbar {
-        width: 40px;
+        width: 100%;
+        flex-direction: row;
+        top: auto;
+        left: 0;
+        bottom: 0;
+        height: 40px;
+        justify-content: space-around;
+        padding-top: 0px;
 
         span {
             display: none;
+        }
+
+        .link {
+            padding-top: 12px;
+            width: auto;
+            margin-bottom: 0px;
+            padding-left: 0;
+            width: 22px;
+        }
+
+        .active {
+            border-radius: 0;
+            width: auto;
+            height: auto;
+            padding: 0px 0px;
+            background-image:linear-gradient(white, white);
+            color: #5E80FC;
+            font-size: 30px;
+        }
+
+        i {
+            margin-left: 0px;
         }
     }
 }
