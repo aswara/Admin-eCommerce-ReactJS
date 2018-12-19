@@ -41,6 +41,7 @@
         .wrapper-search {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            margin-bottom: 15px;
 
             .search {
                 margin-top: 8px;
@@ -50,12 +51,16 @@
                     color: #505050;
                     font-weight: 500;
                     margin-left: 10px;
-                    width: 150px;
+                    width: 170px;
                     border-radius: 3px;
                     font-size: 16px;
                     background-color: white;
-                    border: 1px solid lightblue;
-                    padding: 2px 5px;
+                    border: none;
+                    border-radius: 30px;
+                    outline: none;
+                    cursor: pointer;
+                    padding: 5px 7px;
+                    box-shadow: 0px 2px 3px lightgray;
                 }
     
             }
@@ -73,7 +78,8 @@
                 background-color: white;
                 padding: 5px 10px;
                 margin-right: 5px;
-                border-radius: 3px;
+                border-radius: 5px;
+                box-shadow: 0px 2px 3px lightgray;
                 cursor: pointer;
             }
 
@@ -134,13 +140,13 @@
             }
 
             .product {
-                padding: 5px;
+                padding: 5px 10px;
                 display: grid;
                 grid-template-columns: 2fr 1fr 1fr;
                 background-color: white;      
                 margin-bottom: 5px;
-                border-radius: 3px;
-                box-shadow: 0 3px 10px lightgray;
+                border-radius: 2px;
+                box-shadow: 0 2px 3px lightgray;
 
                 .photo {
                     display: none;
@@ -234,7 +240,7 @@
                 background: white;
                 padding: 10px;
                 border-radius: 2px;
-                box-shadow: 0 3px 10px lightgray;
+                box-shadow: 0 3px 3px lightgray;
                 font-size: 14px;
                 color: #4694fc;
 
@@ -281,9 +287,10 @@
 @media (max-width: 700px){
     .products {
         padding-left: 0px;
+        padding-bottom: 50px;
 
         .wrapper {
-            padding: 15px;
+            padding: 10px;
 
             .new {
                 top: 68px;
@@ -301,6 +308,39 @@
                     display: grid;
                     grid-template-columns: 1fr;
 
+                    .name {
+                        color: #505050;
+                        font-size: 18px;
+                        font-weight: 450;
+                    }
+    
+                    .code {
+                        display: flex;
+                        justify-content: space-between;
+                        div {
+                            display: block;
+                        }
+                        span {
+                            color: #505050;
+                            font-size: 18px;
+                        }
+                    }
+    
+                    .price {
+                        display: flex;
+                        justify-content: space-between;
+                        div {
+                            display: block;
+                        }
+                        span {
+                            color: #505050;
+                            font-size: 20px;
+                            font-weight: 500;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                    }
+
 
                 }
             }
@@ -313,11 +353,11 @@
 
                 .product {
                     .photo {
-                        height: 100px;
+                        height: 110px;
                     }
 
                     .photo img {
-                        height: 100px;
+                        height: 110px;
                     }
                 }
             }

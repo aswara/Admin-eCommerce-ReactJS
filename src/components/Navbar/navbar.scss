@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 70px;
-    box-shadow: 1px 0 10px lightgrey;
+    box-shadow: 1px 0 5px lightgrey;
     transition: 1s;
     z-index: 200px;
 
@@ -18,20 +18,34 @@
         color: #4694fc;
         text-decoration: none;
         padding-left: 10px;
+        transition: 1s;
     }
 
     .active {
         color: white;
         width: 100%;
-        background-image: linear-gradient(to left, #4694fc,#80befc);
+        background-image: linear-gradient(to left, #5E80FC,#80befc);
         padding: 10px 7px;
-        font-size: 20px;
-        font-weight: 550;
-        border-radius: 0 3px 3px 0;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 0 0px 0px 0;
+        animation: active 0.5s ease-in-out;
+    }
+
+    @keyframes active {
+        0%{
+            transform: scale(0.2)
+        }
+        50%{
+            transform: scale(1.2)
+        }
+        100%{
+            transform: scale(1)
+        }
     }
 
     i {
-        margin-right: 5px;
+        margin-right: 10px;
         margin-left: 10px; 
 
     }
@@ -61,17 +75,26 @@
         }
 
         .active {
-            border-radius: 0;
-            width: auto;
-            height: auto;
+            border-radius: 50%;
+            background-color: #4694fc;
+            width: 50px;
+            margin-top: -15px;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            height: 50px;
             padding: 0px 0px;
-            background-image:linear-gradient(white, white);
-            color: #5E80FC;
-            font-size: 30px;
+             background-image: linear-gradient( #5E80FC,#80befc);
+            // background-image:linear-gradient(white, white);
+            box-shadow: 1px 0 10px lightgrey;
+            // color: #5E80FC;
+            color: white;
+            font-size: 27px;
+
         }
 
         i {
-            margin-left: 0px;
+            margin: none;
         }
     }
 }

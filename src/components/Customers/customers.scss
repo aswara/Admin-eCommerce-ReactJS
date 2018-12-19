@@ -33,9 +33,9 @@
             background-color: white;
             padding: 5px;
             color: #505050;
-            border-radius: 5px;
+            border-radius: 30px;
             align-items: center;
-            box-shadow: 0 3px 10px lightgray;
+            box-shadow: 0 3px 2px lightgray;
 
             .photo {
                 display: flex;
@@ -46,6 +46,7 @@
                     height: 30px;
                     width:  30px;
                     margin-right: 10px;
+                    border-radius: 50%;
                 }
 
                 span {
@@ -60,21 +61,20 @@
 
 @media (max-width: 700px){
     .customers {
-        padding-left: 40px;
+        padding-left: 0px;
 
         .wrapper {
-            padding: 15px;
+            padding: 10px;
 
             .customer {
+                padding: 10px;
+                border-radius: 20px;
+
                 display: grid;
                 grid-template-columns: 1fr;
 
                 .photo {
                     margin-bottom: 5px;
-
-                    // img {
-                    //     width: 100%;
-                    // }
                 }
             }
         }

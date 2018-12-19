@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Home from './components/Home'
-import Loading from './components/Loading'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import Orders from './components/Orders'

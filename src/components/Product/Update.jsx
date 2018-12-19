@@ -182,11 +182,10 @@ class UpdateProduct extends Component {
         if(!name) this.setState({ message: 'Submit name' })
         if(!image) this.setState({ message: 'Submit image' })
 
-        this.setState({ messageadd: '' })
+        this.setState({ messageadd: '', loading: true })
 
         //post data if no change image
         if(!file && image && name && code && category_id && sub_category_id && price && weight && sizes && stocks && description) {
-            this.setState({ loading: true })
 
             let data = { name, code, category_id, sub_category_id, price, weight, description, image, size: sizes, stock: stocks }
     
@@ -199,7 +198,7 @@ class UpdateProduct extends Component {
                     file: null
                 })
                 setTimeout(() => {
-                    this.setState({ success: false })
+                    this.setState({ success: false, })
                 }, 3000);
             })
             .catch(err=>{
@@ -210,7 +209,6 @@ class UpdateProduct extends Component {
 
         //Post data if change image
         if(file && name && code && category_id && sub_category_id && price && weight && sizes && stocks && description ) {
-            this.setState({ loading: true })
             let data = new FormData()
             data.append('image', file )
             axios.post( url + "/product/upload-image" , data , headers(token) )

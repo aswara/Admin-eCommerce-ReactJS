@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './header.scss'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import  { logoutAction } from '../../actions'
 
 class index extends Component {
@@ -30,7 +31,7 @@ class index extends Component {
         return (
             <div className="header">
                 <div className="title">
-                    <span>e-Commerce</span>
+                    <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><span>e-Commerce</span></Link>
                 </div>
                 <div className="admin">
         <span onClick={this.dropDown}>Admin {dropdown ?  <i className="demo-icon icon-down-circle">&#xe810;</i> : <i className="demo-icon icon-up-circle">&#xe802;</i>  }</span>

@@ -135,6 +135,7 @@
             color: #505050;
             align-items: center;
 
+
             .actions {
                 display: flex;
             }
@@ -195,7 +196,7 @@
             box-shadow: 0 3px 10px lightgray;
             animation: add 1s ease-in-out;
             border-radius: 3px;
-            width: 99%;
+            width: 98%;
             margin-bottom: 10px;
         
             @keyframes add {
@@ -250,13 +251,16 @@
 // responsive mobile
 @media (max-width: 700px){
     .categories {
-        padding-left: 40px;
+        padding-left: 0px;
+        padding-bottom: 30px;
         
         .wrapper {
-            padding: 30px 15px;
+            padding: 30px 10px;
 
             .new {
-                top: 55px;
+                height: 40px;
+                width: 40px;
+                top: 65px;
                 right: 10px;
             }
 

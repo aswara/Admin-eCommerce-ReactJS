@@ -5,7 +5,7 @@
     padding: 10px;
     color: gray;
     border-radius: 3px;
-    box-shadow: 0 3px 10px lightgray;
+    box-shadow: 0 3px 3px lightgray;
 
     .photo {
         height: 190px;
@@ -106,6 +106,7 @@
         width: 93%;
         margin-right: 5px;
         margin-top: 5px;
+        transition: 1s;
     }
 
     button {
