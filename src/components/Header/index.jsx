@@ -15,7 +15,9 @@ class index extends Component {
         }
     }
 
+
     componentDidMount(){
+
         let data = this.props.user.data
         if(data){
             this.setState({ data })

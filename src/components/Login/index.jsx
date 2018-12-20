@@ -21,7 +21,7 @@ class index extends Component {
         loading : false,
         error: '',
         username: null,
-        password: null
+        password: null,
     }
 
     componentDidMount() {

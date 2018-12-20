@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './addproduct.scss'
 import axios from 'axios'
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill'
+import { Link } from 'react-router-dom'
+import 'react-quill/dist/quill.snow.css'
 import { url, headers } from '../../config'
 import { connect } from 'react-redux'
 import _ from 'lodash'
@@ -195,12 +196,13 @@ class AddProduct extends Component {
 
     render() {
         const { categories, subcategories, loading, imagePreview, allsize, allstock, name, code, size, stock, category_id, sub_category_id, price, weight, description, message, messageadd, success } = this.state
-        console.log(categories)
         return (
             <div className="add-wrapper">
                 <Header />
                 <Navbar />
-                
+                <Link to='/products'>
+                    <div className="cancel"><i className="demo-icon icon-cancel">&#xe80f;</i></div>
+                </Link>
                 { loading ? <Loading /> : '' }
 
                 <div className="add-product">

@@ -112,7 +112,7 @@ class index extends Component {
                             </div>
                             <div className="weight">
                                 Weight <br/>
-                                 <span>{product.weight}</span>                                
+                                 <span>{product.weight} gram</span>                                
                             </div>
                             <div className="sizes">
                                 <div className="size-stock">

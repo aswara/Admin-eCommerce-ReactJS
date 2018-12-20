@@ -2,6 +2,45 @@
     padding-top: 60px;
     padding-left: 150px;
 
+    .cancel {
+        height: 50px;
+        width: 50px;
+        border-radius: 25px;
+        position: fixed;
+        top: 70px;
+        right: 50px;
+        z-index: 5;
+        background-color: #4694fc;
+        box-shadow: 0px 2px 10px lightgray;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        animation: icon 0.7s ease-in-out;
+        transition: 0.5s;
+        color: white;
+    }
+
+    .cancel:hover {
+        transform: scale(1.2);
+        box-shadow: 0 10px 20px lightgray;
+    }
+
+
+    @keyframes icon {
+        0%{
+            transform: scale(0.2);
+       
+        }
+        50%{
+            transform:  scale(1.5);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+
     .add-product {
         background-color: white;
         color: gray;
@@ -168,6 +207,7 @@
                 margin-bottom: 15px;
                 border-radius: 20px;
                 cursor: pointer;
+               
             }
 
             .add:hover {
@@ -179,17 +219,18 @@
                 border: 1px solid #4694fc;
                 background-color: #4694fc;
                 color: white;
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: 520;
                 cursor: pointer;
-                padding: 3px 0;
+                padding: 5px 2px;
                 box-shadow: 0px 2px 10px lightgray;
-
+                transition: 0.5s;
             }
 
             button:hover {
                 background-color: white;
                 color: #4694fc;
+                
             }
         }
     }
@@ -199,6 +240,10 @@
     .add-wrapper {
         padding-left: 0px;
         padding-bottom: 40px;
+
+        .cancel {
+            right: 10px;
+        }
 
         .add-product {
             margin: 15px;

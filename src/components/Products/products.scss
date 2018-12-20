@@ -23,7 +23,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: 0.5;
         }
+
+        .new:hover {
+            transform: scale(1.2);
+            box-shadow: 0 10px 20px lightgray;
+        }
+
 
         @keyframes icon {
             0%{
@@ -288,6 +295,8 @@
     .products {
         padding-left: 0px;
         padding-bottom: 50px;
+        padding-top: 60px;
+
 
         .wrapper {
             padding: 10px;

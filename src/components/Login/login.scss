@@ -23,7 +23,7 @@
         }
 
         form {
-            margin-top: -110px;
+            margin-top: -116px;
             margin-left: 25px;
             margin-right: 25px;
         }
@@ -51,14 +51,22 @@
         }
 
         input {
-            width: 96%;
-            padding: 5px;
+            width: 91%;
+            padding: 5px 10px;
             margin-top: 7px;
             margin-bottom: 10px;
-            border: 1px solid #5daafd;
+            border: 1px solid rgb(190, 215, 252);
+            // border: none;
             font-size: 16px;
             background-color: #eaf4ff;
             border-radius: 3px;
+            outline: none;
+            box-shadow: 0 3px 3px lightgray;
+            transition: 0.5s;
+        }
+        input:focus {
+            transform: scale(1.1);
+            background-color: white;
         }
 
         button {
@@ -72,6 +80,7 @@
             box-shadow: 0px 3px 20px lightgrey;
             margin-top: 10px;
             animation: button 1s ease-in-out;
+            transition: 0.5s;
         }
 
         @keyframes button {
@@ -92,9 +101,8 @@
         }
 
         button:hover {
-            color: #5daafd;
-            background-image: linear-gradient( #eaf4ff, white);
-            border: 1px solid #5daafd;
+            
+            transform: scale(1.1);
             cursor: pointer;
         }
     }

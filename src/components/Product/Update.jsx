@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './update.scss'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.snow.css'
 import { url, headers } from '../../config'
 import { connect } from 'react-redux'
 import _ from 'lodash'
@@ -247,6 +248,10 @@ class UpdateProduct extends Component {
             <div className="update-product">
                 <Header />
                 <Navbar />
+
+                <Link to='/products'>
+                    <div className="cancel"><i className="demo-icon icon-cancel">&#xe80f;</i></div>
+                </Link>
                 
                 { loading ? <Loading /> : '' }
 

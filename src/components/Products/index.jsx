@@ -19,7 +19,8 @@ class index extends Component {
         categories : [],
         subcategories : [],
         category_id : 0,
-        sub_category_id: 0
+        sub_category_id: 0,
+        top : '100px'
     }
 
 
@@ -32,6 +33,15 @@ class index extends Component {
                 this.setState({ categories, loading: false })
         }
         this.fetchCategories()
+
+        window.addEventListener('scroll', ()=>{
+            let scroll =  window.scrollY
+            if( scroll>0 ) {
+                this.setState({ top: '65px' })
+            } else {
+                this.setState({ top: '100px' })
+            }
+        })
     }
 
     fetchCategories = () => {
@@ -121,7 +131,7 @@ class index extends Component {
     }
 
     render() {
-        const { loading, products, show, categories, subcategories, sub_category_id, category_id } = this.state
+        const { top, loading, products, show, categories, subcategories, sub_category_id, category_id } = this.state
         return (
             <div className="products">
                 <Header />
@@ -129,7 +139,7 @@ class index extends Component {
 
                 <div className="wrapper">
                     <Link to="/addproduct">
-                    <div className="new">
+                    <div style={{ top: top, transition: '0.5s' }} className="new">
                         <i className="demo-icon icon-plus">&#xe808;</i>
                     </div>
                     </Link>
