@@ -3,6 +3,7 @@ import axios from 'axios'
 import { url, headers } from '../../config'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import Loading from '../Loading'
 
 import SubCategory from './SubCategory'
 
@@ -13,7 +14,8 @@ class Category extends Component {
         comfirm_delete : true,
         name : '',
         message : '',
-        sub_categories : [] 
+        sub_categories : [],
+        loading: false
     }
 
     componentDidMount() {
@@ -82,7 +84,7 @@ class Category extends Component {
     addSubCategory(e, id) {
         e.preventDefault()
         const { name, file } = this.state
-
+        this.setState({ loading: true })
         let formData = new FormData()
         formData.append('image', file)
 
@@ -97,23 +99,25 @@ class Category extends Component {
             .then(res=>{
                 
                 this.fetchSubCategories()
-                this.setState({ message: 'Success add subcategory', open_add: true, name: '', image: null })
+                this.setState({ message: 'Success add subcategory', open_add: true, name: '', image: null, loading: false })
             })
             .catch(err=>{
-                this.setState({ message: 'Failed add subcategory' })
+                this.setState({ message: 'Failed add subcategory', loading: false })
             })
         })
         .catch(err=>{
-           this.setState({ message: 'Failed upload image'})
+           this.setState({ message: 'Failed upload image', loading: false})
         })
     }
 
 
     render() {
-        const { image, open_update, name, open_add, comfirm_delete, message, sub_categories } = this.state
+        const { loading, image, open_update, name, open_add, comfirm_delete, message, sub_categories } = this.state
         const { category } = this.props
         return (
             <div>
+                { loading && <Loading /> }
+
                 <span className="message">{message}</span>
                 <div className="category">
                     <div>
@@ -163,7 +167,7 @@ class Category extends Component {
                     open_add ? '' :
                     <div className="add-subcategory">
                         <form onSubmit={(e)=>{ this.addSubCategory(e, category.category_id) }}>
-                            <input onChange={this.handleImage}  type="file"/>
+                            <input onChange={this.handleImage}  type="file" accept="image/x-png,image/gif,image/jpeg"/>
                             <input placeholder="Name subcategory" onChange={(e)=>{this.setState({ name: e.target.value })}} type="text"/>
                             <button type="submit">Add</button>
                         </form>

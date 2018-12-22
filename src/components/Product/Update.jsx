@@ -25,7 +25,7 @@ class UpdateProduct extends Component {
         success: false,
         loading: false,
         categories: [],
-        subcategories: []
+        subcategories: [],
     }
 
     componentDidMount() {
@@ -243,13 +243,13 @@ class UpdateProduct extends Component {
     }
 
     render() {
-        const { categories, subcategories, loading, inputsize, inputstock, sizes, stocks, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
+        const { product_id, categories, subcategories, loading, inputsize, inputstock, sizes, stocks, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
         return (
             <div className="update-product">
                 <Header />
                 <Navbar />
 
-                <Link to='/products'>
+                <Link to={{ pathname:`/product/${product_id}`, state: this.props.location.state.product }}>
                     <div className="cancel"><i className="demo-icon icon-cancel">&#xe80f;</i></div>
                 </Link>
                 
@@ -264,7 +264,7 @@ class UpdateProduct extends Component {
                             <img src={image} alt="imagePreview"/> 
                         </div>
                         <label htmlFor="photo">Image  <i className="demo-icon icon-picture">&#xe812;</i></label><br/>
-                        <input onChange={this.handleImage} id="photo" type="file"/>
+                        <input onChange={this.handleImage} id="photo" type="file" accept="image/x-png,image/gif,image/jpeg"/>
                     </div>
 
                     <form onSubmit={this.handleSubmit}>

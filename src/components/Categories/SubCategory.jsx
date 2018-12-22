@@ -123,9 +123,9 @@ class SubCategory extends Component {
                 { //open input for update category
                     open ? '' :
                     <div className="update-subcategory">
-                        <input onChange={this.handleImage} type="file"/>
+                        <input onChange={this.handleImage} type="file" accept="image/x-png,image/gif,image/jpeg"/>
                         <form onSubmit={(e)=>{ this.updateCategory(e, data.sub_category_id) }}>
-                            <input onChange={(e)=>{this.setState({ name: e.target.value })}} value={name} type="text"/>
+                            <input onChange={(e)=>{this.setState({ name: e.target.value })}} value={name} type="text" />
                             <button type="submit">Save</button>
                         </form>
                     </div>

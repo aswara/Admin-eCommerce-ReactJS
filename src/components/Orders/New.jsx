@@ -1,0 +1,120 @@
+import React, { Component } from 'react';
+import axios from 'axios'
+import { url, headers, price } from '../../config'
+import { connect } from 'react-redux'
+import _ from 'lodash'
+import './new.scss'
+
+class New extends Component {
+    state = {
+        orders: []
+    }
+
+    componentDidMount(){
+        this.fetchOrdersUnconfirmed()
+    }
+
+    fetchOrdersUnconfirmed(){
+        let token = this.props.user.token
+        axios.get( url + "/order/unconfirmed" , headers(token) )
+        .then( res => {
+            if(_.isArray(res.data.data)){
+                this.setState({ orders: res.data.data })
+            }
+        })
+    }
+
+    render() {
+        const { orders } = this.state
+        console.log(orders)
+        return (
+            <div className="new-order">
+
+                {
+                    orders.length > 0 && orders.map(order => 
+                        <div className="order" key={order.order_id}>
+                            <div className="confirm">Confirm</div>
+                            <span>Detail Order</span>
+                            <div className="shipping">
+                                <div  className="detail">
+                                    <div>
+                                        Received Name
+                                        <span>{order.shipping_info.received_name}</span>
+                                    </div>
+                                    <div>
+                                        Phone
+                                        <span>{order.shipping_info.phone}</span>
+                                    </div>
+                                    <div>
+                                        Province
+                                        <span>{order.shipping_info.province_name}</span>
+                                    </div>
+                                    <div>
+                                        City
+                                        <span>{order.shipping_info.city_name}</span>
+                                    </div>
+                                    <div>
+                                        Postal Code
+                                        <span>{order.shipping_info.zip}</span>
+                                    </div>
+                                    <div>
+                                        Address
+                                        <span>{order.shipping_info.address}</span>
+                                    </div>
+                                </div>
+                                <div className="payment">
+                                    <div>
+                                        Status
+                                        <span>{order.status}</span>
+                                    </div>
+                                    <div>
+                                        Date
+                                        <span>{order.due_date}</span>
+                                    </div>
+                                    <div>
+                                        Invoice
+                                        <span>{order.invoice}</span>  
+                                    </div>
+                                    <div>
+                                        Amount
+                                        <span>Rp {price(order.amount)}</span>  
+                                    </div>
+                                    <div>
+                                        Shipping Cost
+                                        <span>Rp {price(order.shipping_cost)}</span>  
+                                    </div>
+                                    <div>
+                                        Total Payment
+                                        <span>Rp {price(order.total_payment)}</span>  
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="product-shipping">
+                            <span>Products</span>
+                            {
+                                _.isArray(order.order_detail) && order.order_detail.map( product => 
+                                    <div className="product" key={product.order_detail_id} >
+                                        <div>{product.product_name}</div>
+                                        <div>Size {product.size}</div>
+                                        <div>Rp { price(product.price) }</div>
+                                    </div>
+                                    )
+                            }
+                            </div>
+
+                        </div>
+                        )
+                }
+            </div>
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return({
+        user : state.userReducer
+    })
+}
+
+export default connect(mapStateToProps)(New);

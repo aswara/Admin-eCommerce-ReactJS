@@ -2,6 +2,7 @@ import _ from 'lodash'
 
 //endpoint
 export const url = "https://e-commerce-rest-api.herokuapp.com"
+// export const url = "http://192.168.1.1:8886"
 //headers
 export function headers(token) {
     return(

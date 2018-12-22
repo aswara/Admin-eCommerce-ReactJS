@@ -1,0 +1,174 @@
+.new-order {
+    position: relative;
+
+    .confirm {
+        position: absolute;
+        background-color: #4694FC;
+        color: white;
+        padding: 10px 20px;
+        right: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 2px;
+        font-weight: 500;
+    }
+
+    .confirm:hover {
+        box-shadow: 0 10px 20px lightgray;
+    }
+
+    .order {
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 3px 5px lightgray;
+
+        span {
+            color: #505050;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+
+    .shipping {
+        font-size: 16px;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr;
+
+        .detail div {
+            color: #4694FC;
+            // color: #505050;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid rgb(195, 218, 247);
+
+            span {
+                font-size: 18px;
+                display: grid;
+                color: #505050;
+            }
+        }
+
+        .payment div {
+            color: #4694FC;
+            // color: #505050;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid rgb(195, 218, 247);
+
+            span {
+                font-size: 18px;
+                display: grid;
+                color: #505050;
+            }
+        }
+    }
+
+    .product-shipping {
+        margin-top: 10px;
+        span {
+            color: #505050;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .product {
+            color: #505050;
+            font-size: 18px;
+            margin-top: 5px;
+            background-color: #F7F8F9;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 3px 5px;
+            box-shadow: 0 3px 5px lightgray;
+
+        }
+    }
+}
+
+@media (max-width: 700px){
+    .new-order {
+        position: relative;
+        .confirm {
+            position: absolute;
+            background-color: #4694FC;
+            color: white;
+            padding: 10px 20px;
+            right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-weight: 500;
+        }
+    
+        .confirm:hover {
+            box-shadow: 0 10px 20px lightgray;
+        }
+    
+        .order {
+            background-color: white;
+            padding: 10px;
+    
+            span {
+                color: #505050;
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+    
+        .shipping {
+            margin-top: 10px;
+            font-size: 16px;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 1fr;
+    
+            .detail div {
+                color: #4694FC;
+                // color: #505050;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-gap: 10px;
+                padding: 10px;
+                border-bottom: 1px solid rgb(195, 218, 247);
+    
+                span {
+                    font-size: 18px;
+                    display: grid;
+                    color: #505050;
+                }
+            }
+    
+            .payment div {
+                color: #4694FC;
+                // color: #505050;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-gap: 10px;
+                padding: 10px;
+                border-bottom: 1px solid rgb(195, 218, 247);
+    
+                span {
+                    font-size: 18px;
+                    display: grid;
+                    color: #505050;
+                }
+            }
+        }
+    
+        .product-shipping {
+            margin-top: 10px;
+            span {
+                color: #505050;
+                font-size: 18px;
+                font-weight: 500;
+            }
+            .product {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

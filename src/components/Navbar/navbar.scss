@@ -11,42 +11,53 @@
     padding-top: 70px;
     box-shadow: 1px 0 5px lightgrey;
     transition: 1s;
-    z-index: 200px;
+    z-index: 300;
 
     .link {
         margin-bottom: 60px;
         color: #4694fc;
         text-decoration: none;
-        padding-left: 10px;
-        transition: 1s;
+        transition: 0.5s;
+    }
+
+    .link:hover {
+        color: white;
+        width: 100%;
+        background-image: linear-gradient(to left, #5E80FC,#80befc);
+        box-shadow: 0 10px 20px lightgray;
+        padding: 10px 0px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 0 0px 0px 0;
     }
 
     .active {
         color: white;
         width: 100%;
         background-image: linear-gradient(to left, #5E80FC,#80befc);
-        padding: 10px 7px;
+        box-shadow: 0 10px 20px lightgray;
+        padding: 10px 0px;
         font-size: 18px;
         font-weight: 500;
         border-radius: 0 0px 0px 0;
-        animation: active 0.5s ease-in-out;
+        animation: active 0.2s linear;
     }
 
     @keyframes active {
         0%{
-            transform: scale(1)
+            transform: scaleX(0)
         }
         50%{
-            transform: scale(1.2)
+            transform: scaleX(0.5)
         }
         100%{
-            transform: scale(1)
+            transform: scaleX(1)
         }
     }
 
     i {
         margin-right: 10px;
-        margin-left: 10px; 
+        margin-left: 15px; 
 
     }
 }
@@ -90,7 +101,20 @@
             // color: #5E80FC;
             color: white;
             font-size: 27px;
+            animation: active 0.5s ease-in-out;
 
+        }
+
+        @keyframes active {
+            0%{
+                transform: scale(1)
+            }
+            50%{
+                transform: scale(1.2)
+            }
+            100%{
+                transform: scale(1)
+            }
         }
 
         i {

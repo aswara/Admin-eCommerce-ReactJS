@@ -2,6 +2,37 @@
     padding-top: 50px;
     padding-left: 150px;
 
+    .tab {
+        margin-top: 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+        grid-gap: 10px;
+        margin-bottom: 20px;
+
+        div {
+            background-color: white;
+            padding: 5px 0;
+            text-align: center;
+            box-shadow: 0 2px 3px lightgrey;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+
+        div:hover {
+            background-color: #4694fc;
+            color: white;
+            box-shadow: 0 5px 10px lightgrey;
+        }
+
+        .active {
+            background-color: #4694fc;
+            color: white;
+        }
+
+    }
+
     .wrapper {
         padding: 50px;
         color: #4694fc;
@@ -17,7 +48,7 @@
 
         .wrapper {
             padding: 10px;
-
+            
 
         }
     }

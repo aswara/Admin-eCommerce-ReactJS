@@ -30,9 +30,8 @@ class index extends Component {
                     this.props.userAction(null , false, null)
                     this.props.history.push("/login")
                 } else {
-                    this.props.userAction(user , true, token)
+                    this.props.userAction(null , false, null)
                     this.setState({ message: 'Failed connect server' })
-                    this.props.history.push("/dashboard")
                 }
             })
         } else {
