@@ -7,8 +7,9 @@ class index extends Component {
     render() {
         return (
             <div className="dashboard">
-                <Header />
                 <Navbar />
+
+                <Header />
                 <div className="wrapper">
                     <span>Overview</span>
                     <div className="total">

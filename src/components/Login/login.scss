@@ -74,37 +74,13 @@
 
         #username {
             top: 70px;
-            animation: username 1.5s ease-in-out;
         }
 
-        @keyframes username {
-            0%{
-                right: -400px;
-            }
-            80%{
-                right: 10px;
-            }
-            100%{
-                right: 0;
-            }
-        }
 
         #password {
             top: 140px;
-            animation: password 1.5s ease-in-out;
         }
 
-        @keyframes password {
-            0%{
-                left: -400px;
-            }
-            80%{
-                left: 10px;
-            }
-            100%{
-                left: 0;
-            }
-        }
 
         button {
             width: 260px;
@@ -118,6 +94,21 @@
             transition: 0.5s;
             position: absolute;
             top: 200px;
+            animation: button 1.5s ease-in;
+        }
+
+        @keyframes button {
+            0%{
+                top: 0;
+                opacity: 0;
+            }
+            50%{
+                top: 220px 
+            }
+            100%{
+                opacity: 1;
+                top: 200px;
+            }
         }
 
 
