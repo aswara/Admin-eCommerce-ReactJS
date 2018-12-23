@@ -179,7 +179,7 @@ class AddProduct extends Component {
                     })
                     setTimeout(() => {
                         this.setState({ success: false })
-                    }, 3000);
+                    }, 2000);
                 })
                 .catch(err=>{
                     this.setState({ message: 'Failed add product', loading: false })

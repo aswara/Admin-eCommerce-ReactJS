@@ -51,7 +51,7 @@ class index extends Component {
 
 
     render() {
-        const { product, comfirm_delete, message } = this.state
+        const { product, comfirm_delete, message, loading } = this.state
         return (
             <div className="detail-product">
                 <Header />
@@ -87,7 +87,8 @@ class index extends Component {
                     <div className="wrapper">
 
                         <div className="image">
-                            <img src={product.image} alt=""/> 
+                            { loading ? <div className="load"></div> :
+                            <img src={product.image} alt=""/> }
                         </div>
                         <div className="detail">
                             <span className="message">{message}</span>

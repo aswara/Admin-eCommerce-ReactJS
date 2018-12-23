@@ -19,13 +19,15 @@
 
         .error {
             color: #c83737;
-            margin-bottom: 5px;
+            position: absolute;
+            top: 13px;
         }
 
         form {
             margin-top: -116px;
             margin-left: 25px;
             margin-right: 25px;
+            position: relative;
         }
 
         @keyframes form {
@@ -48,6 +50,7 @@
 
         label {
             color: #5daafd;
+            position: absolute;
         }
 
         input {
@@ -56,17 +59,51 @@
             margin-top: 7px;
             margin-bottom: 10px;
             border: 1px solid rgb(190, 215, 252);
-            // border: none;
             font-size: 16px;
             background-color: #eaf4ff;
             border-radius: 3px;
             outline: none;
             box-shadow: 0 3px 3px lightgray;
             transition: 0.5s;
+            position: absolute;
         }
         input:focus {
             transform: scale(1.1);
             background-color: white;
+        }
+
+        #username {
+            top: 70px;
+            animation: username 1.5s ease-in-out;
+        }
+
+        @keyframes username {
+            0%{
+                right: -400px;
+            }
+            80%{
+                right: 10px;
+            }
+            100%{
+                right: 0;
+            }
+        }
+
+        #password {
+            top: 140px;
+            animation: password 1.5s ease-in-out;
+        }
+
+        @keyframes password {
+            0%{
+                left: -400px;
+            }
+            80%{
+                left: 10px;
+            }
+            100%{
+                left: 0;
+            }
         }
 
         button {
@@ -78,27 +115,11 @@
             padding: 7px;
             border-radius: 3px;
             box-shadow: 0px 3px 20px lightgrey;
-            margin-top: 10px;
-            animation: button 1s ease-in-out;
             transition: 0.5s;
+            position: absolute;
+            top: 200px;
         }
 
-        @keyframes button {
-            0%{
-                position: absolute;
-                top: 0;
-                opacity: 0;
-            }
-            50%{
-                position: absolute;
-                top: 320px;
-            }
-            100%{
-                opacity: 1;
-                position: absolute;
-                top: 300px;
-            }
-        }
 
         button:hover {
             

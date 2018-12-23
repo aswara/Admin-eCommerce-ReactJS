@@ -1,6 +1,29 @@
 .new-order {
     position: relative;
 
+    .load {
+        div {
+            width: 100%;
+            height: 150px;
+            background-color: lightgray;
+            margin-bottom: 10px;
+            animation: load 2s infinite;
+        }
+
+        @keyframes laod {
+            0%{
+                opacity: 0.2;
+            }
+            50%{
+                opacity: 0.9;
+            }
+            100%{
+                opacity: 0.2;
+            }
+        }
+        
+    }
+
     .confirm {
         position: absolute;
         background-color: #4694FC;

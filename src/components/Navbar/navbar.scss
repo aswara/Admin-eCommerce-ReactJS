@@ -11,7 +11,7 @@
     padding-top: 70px;
     box-shadow: 1px 0 5px lightgrey;
     transition: 1s;
-    z-index: 300;
+    z-index: 200;
 
     .link {
         margin-bottom: 60px;
@@ -118,7 +118,8 @@
         }
 
         i {
-            margin: none;
+            margin-left: 10px;
+            margin-right: 10px;
         }
     }
 }

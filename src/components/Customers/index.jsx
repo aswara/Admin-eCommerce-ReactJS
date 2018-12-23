@@ -29,7 +29,6 @@ class index extends Component {
 
     render() {
         const { customers, loading } = this.state
-        console.log(customers)
         return (
             <div className="customers">
                 <Header />

@@ -91,11 +91,11 @@ class index extends Component {
 
                         <p className="error"> {error} </p>
 
-                        <label id="username" htmlFor="username">Username</label>
+                        <label style={{ top: '50px' }} htmlFor="username">Username</label>
                         <br/>
                         <input onChange={this.handleChange} name="username" id="username" type="text"/>
                         <br/>
-                        <label className="password" htmlFor="password">Password</label>
+                        <label style={{ top: '120px' }} className="password" htmlFor="password">Password</label>
                         <br/>
                         <input onChange={this.handleChange} name="password" id="password" type="password"/>
                         <br/>

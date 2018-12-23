@@ -14,6 +14,7 @@ import Loading from '../Loading'
 
 class UpdateProduct extends Component {
     state = {
+        product: this.props.location.state.product,
         imagePreview : '',
         message : '',
         messageadd: '',
@@ -199,11 +200,10 @@ class UpdateProduct extends Component {
                     file: null
                 })
                 setTimeout(() => {
-                    this.setState({ success: false, })
-                }, 3000);
+                    this.setState({ success: false, product: null })
+                }, 2000);
             })
             .catch(err=>{
-                console.log(err.response)
                 this.setState({ message: 'Failed add product', loading: false })
             })
         }
@@ -226,7 +226,7 @@ class UpdateProduct extends Component {
                         file: null
                     })
                     setTimeout(() => {
-                        this.setState({ success: false })
+                        this.setState({ success: false, product: null })
                     }, 3000);
                 })
                 .catch(err=>{
@@ -243,13 +243,13 @@ class UpdateProduct extends Component {
     }
 
     render() {
-        const { product_id, categories, subcategories, loading, inputsize, inputstock, sizes, stocks, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
+        const { product, product_id, categories, subcategories, loading, inputsize, inputstock, sizes, stocks, message, messageadd, success, name, code, category_id, sub_category_id, price, weight, description, image } = this.state
         return (
             <div className="update-product">
                 <Header />
                 <Navbar />
 
-                <Link to={{ pathname:`/product/${product_id}`, state: this.props.location.state.product }}>
+                <Link to={{ pathname:`/product/${product_id}`, state: product }}>
                     <div className="cancel"><i className="demo-icon icon-cancel">&#xe80f;</i></div>
                 </Link>
                 

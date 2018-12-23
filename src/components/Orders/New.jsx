@@ -3,11 +3,13 @@ import axios from 'axios'
 import { url, headers, price } from '../../config'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import { Link } from 'react-router-dom'
 import './new.scss'
 
 class New extends Component {
     state = {
-        orders: []
+        orders: [],
+        loading: true,
     }
 
     componentDidMount(){
@@ -15,22 +17,26 @@ class New extends Component {
     }
 
     fetchOrdersUnconfirmed(){
+        let orders = localStorage.getItem('neworders') 
+        if(orders){
+            this.setState({ orders: JSON.parse(orders), loading: false })
+        }
         let token = this.props.user.token
         axios.get( url + "/order/unconfirmed" , headers(token) )
         .then( res => {
             if(_.isArray(res.data.data)){
-                this.setState({ orders: res.data.data })
+                localStorage.setItem("neworders", JSON.stringify(res.data.data))
+                this.setState({ orders: res.data.data, loading: false })
             }
         })
     }
 
     render() {
-        const { orders } = this.state
-        console.log(orders)
+        const { orders, loading } = this.state
         return (
             <div className="new-order">
 
-                {
+                { loading ? <div class="load"><div></div><div></div><div></div></div> :
                     orders.length > 0 && orders.map(order => 
                         <div className="order" key={order.order_id}>
                             <div className="confirm">Confirm</div>
@@ -94,11 +100,13 @@ class New extends Component {
                             <span>Products</span>
                             {
                                 _.isArray(order.order_detail) && order.order_detail.map( product => 
+                                    <Link style={{textDecoration: 'none'}} to={"/product/"+product.product_id} >
                                     <div className="product" key={product.order_detail_id} >
                                         <div>{product.product_name}</div>
                                         <div>Size {product.size}</div>
                                         <div>Rp { price(product.price) }</div>
                                     </div>
+                                    </Link>
                                     )
                             }
                             </div>
