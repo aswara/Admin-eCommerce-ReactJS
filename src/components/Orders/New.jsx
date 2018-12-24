@@ -10,6 +10,7 @@ class New extends Component {
     state = {
         orders: [],
         loading: true,
+        message: ''
     }
 
     componentDidMount(){
@@ -31,15 +32,31 @@ class New extends Component {
         })
     }
 
+    confirm(id){
+        this.setState({ loading: true })
+        let token = this.props.user.token
+        axios.get( url + "/order/confirm?order_id=" + id ,  headers(token) )
+        .then(res=>{
+            this.setState({ message: 'Success confirm order', loading: false, orders: [] })
+            localStorage.setItem("neworders", JSON.stringify([]))
+        })
+        .catch(err=>{
+            this.setState({ message: 'Failed confirm order', loading: false })
+        })
+    }
+
     render() {
-        const { orders, loading } = this.state
+        const { orders, loading, message } = this.state
         return (
             <div className="new-order">
-
+                <span style={{ color: 'red' }}>{message}</span>
                 { loading ? <div class="load"><div></div><div></div><div></div></div> :
+                    <div> { orders.length < 1 && <div>Empty</div> } {
                     orders.length > 0 && orders.map(order => 
                         <div className="order" key={order.order_id}>
-                            <div className="confirm">Confirm</div>
+
+                            <div onClick={()=> this.confirm(order.order_id)} className="confirm">Confirm</div>
+
                             <span>Detail Order</span>
                             <div className="shipping">
                                 <div  className="detail">
@@ -113,6 +130,7 @@ class New extends Component {
 
                         </div>
                         )
+                    }</div>
                 }
             </div>
         );

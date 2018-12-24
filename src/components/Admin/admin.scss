@@ -1,0 +1,102 @@
+.account {
+    padding-top: 50px;
+    padding-left: 150px;
+
+    .wrapper {
+        padding: 50px;
+        color: #505050;
+        font-size: 18px;
+
+        .profile {
+            border-radius: 10px;
+            box-shadow: 0px 3px 3px lightgray;
+            background-color: white;
+            height: auto;
+            max-width: 400px;
+            margin: 10px auto;
+            padding: 20px;
+            padding-bottom: 50px;
+            position: relative;
+
+            .edit {
+                top: 15px;
+                font-size: 35px;
+                right: 15px;
+                color: #5D8EFB;
+                cursor: pointer;
+                position: absolute;            
+            }
+
+            input {
+                padding: 2px 5px;
+                border: none;
+                border-bottom: 1px solid lightblue;
+                font-size: 18px;
+                outline: none;
+                width: 100%;
+            }
+
+            button {
+                border: none;
+                color: white;
+                border-radius: 10px;
+                outline: none;
+                cursor: pointer;
+                font-size: 18px;
+                background-color: #5D8EFB;
+            }
+
+            .photo {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                margin: 10px auto;
+                background-color: lightgray;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50%;
+                }
+            }
+
+            .username {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 10px;
+                border-bottom: 1px solid lightgray;
+            }
+
+            .name {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 10px;
+                border-bottom: 1px solid lightgray;
+            }
+
+            .email {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 10px;
+                border-bottom: 1px solid lightgray;
+            }
+        }
+
+    }
+}
+
+@media (max-width: 700px){
+    .account {
+        padding-top: 60px;
+        padding-left: 0px;
+        padding-bottom: 50px;
+
+        .wrapper {
+            padding: 10px;
+            
+            .profile {
+                width: 90%;
+            }
+        }
+    }
+}

@@ -12,6 +12,7 @@ import Categories from './components/Categories'
 import AddProduct from './components/Product/AddProduct'
 import UpdateProduct from './components/Product/Update'
 import Customers from './components/Customers'
+import Admin from './components/Admin'
 
 class App extends Component {
   componentDidMount() {
@@ -39,6 +40,7 @@ class App extends Component {
             <Route path="/categories" component={Categories} />
             <Route path="/addproduct" component={AddProduct} />
             <Route path="/product/:id" component={Product} />
+            <Route path="/admin" component={Admin} />
             <Route path="/updateproduct/:id" component={UpdateProduct} />
             <Route path="/*" component={Home} />
           </Switch>

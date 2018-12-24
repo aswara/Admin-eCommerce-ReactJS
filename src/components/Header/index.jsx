@@ -36,13 +36,13 @@ class index extends Component {
                     <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><span>e-Commerce</span></Link>
                 </div>
                 <div className="admin">
-        <span onClick={this.dropDown}>Admin {dropdown ?  <i className="demo-icon icon-down-circle">&#xe810;</i> : <i className="demo-icon icon-up-circle">&#xe802;</i>  }</span>
+        <span onClick={this.dropDown}>{data.name} {dropdown ?  <i className="demo-icon icon-down-circle">&#xe810;</i> : <i className="demo-icon icon-up-circle">&#xe802;</i>  }</span>
 
                     <div className={`dropdown ${ dropdown ? `hide` : ``}`}>
                         <img src={data.photo} alt="photo"/>
                         <span className="name">{data.name}</span>
                         <span className="email">{data.email}</span>
-                        <span onClick={()=>this.props.logoutAction() } className="logout"><i className="demo-icon icon-power">&#xe80e;</i> Logout</span>
+                        <span onClick={()=>this.props.logoutAction() } className="logout"><i className="demo-icon icon-power">&#xe80e;</i> logout</span>                        
                     </div>
                 </div>
             </div>
