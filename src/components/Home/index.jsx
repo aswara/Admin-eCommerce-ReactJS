@@ -36,10 +36,9 @@ class index extends Component {
             })
         } else {
             if(user && token){
-                this.props.userAction(JSON.parse(user), true, token)
+                this.props.userAction(JSON.parse(user, true, token))
                 this.props.history.push("/dashboard")
             } else {
-                console.log("login")
                 this.props.history.push("/login")
                 this.props.userAction(user, false, token)
             }
