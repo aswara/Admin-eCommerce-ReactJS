@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Live Preview : https://admin-ecommerce.herokuapp.com/
+
+## Admin Features
+- Admin can add, edit, and delete product
+- Admin can add, edit, and delete category
+- Admin can add, edit, and subcategory
+- Admin can view list customers
+- Admin can view list products
+- Admin can view list and confirm new order
+- Admin can view list order in shipping
+
 ## Features
 - PWA - Progressive Web Application
 - Add to home screen
