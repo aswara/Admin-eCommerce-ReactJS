@@ -1,4 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Preview : https://admin-ecommerce.herokuapp.com/
+## Features
+- PWA - Progressive Web Application
+- State Management using Redux
+- Hot Reloading
+- Offline support. Thanks to service workers.
+- Lazy Loading Image
+- Responsive
+- Add to home screen
+
+## Backend
+Using programming language PHP framework Lumen
+https://e-commerce-rest-api.herokuapp.com
 
 ## Available Scripts
 
