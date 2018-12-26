@@ -2,12 +2,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Live Preview : https://admin-ecommerce.herokuapp.com/
 ## Features
 - PWA - Progressive Web Application
+- Add to home screen
 - State Management using Redux
-- Hot Reloading
+- Utility Library using Lodash
 - Offline support. Thanks to service workers.
 - Lazy Loading Image
 - Responsive
-- Add to home screen
 
 ## Backend
 Using programming language PHP framework Lumen
