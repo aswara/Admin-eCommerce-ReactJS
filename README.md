@@ -15,11 +15,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Features
 - PWA - Progressive Web Application
 - Add to home screen
-- State Management using Redux
-- Utility Library using Lodash
 - Offline support. Thanks to service workers.
 - Lazy Loading Image
 - Responsive
+- State Management using Redux
+- Utility Library using Lodash
+- XMLHttpRequest using axios
+- Rich Text Editor using React-Quill
+- CSS preprocessor using Sass
 
 ## Backend
 Using programming language PHP framework Lumen
