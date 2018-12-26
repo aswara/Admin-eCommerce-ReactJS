@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 #### Live Preview : https://admin-ecommerce.herokuapp.com/
--username : adi
--password : 12345
+- username : adi
+- password : 12345
 
 ## Admin Features
 - Admin can add, edit, and delete product
