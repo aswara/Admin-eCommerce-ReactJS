@@ -8,7 +8,7 @@ class index extends Component {
         return (
             <div className="loading">
                 <img src={logo} alt="logo"/>
-                <h1>e-Commerce</h1>
+                <h1>loading</h1>
             </div>
         );
     }

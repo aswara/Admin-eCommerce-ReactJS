@@ -41,6 +41,7 @@
     }
 
     .order {
+        cursor: pointer;
         background-color: white;
         padding: 10px;
         box-shadow: 0 3px 5px lightgray;
@@ -50,6 +51,11 @@
             font-size: 18px;
             font-weight: 500;
         }
+    }
+
+    .hide {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     .shipping {
@@ -89,6 +95,8 @@
                 color: #505050;
             }
         }
+
+
     }
 
     .product-shipping {
@@ -140,6 +148,11 @@
                 font-size: 18px;
                 font-weight: 500;
             }
+        }
+
+        .hide {
+            display: grid;
+            grid-template-columns: 1fr;
         }
     
         .shipping {

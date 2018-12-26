@@ -12,7 +12,7 @@
             box-shadow: 0px 3px 3px lightgray;
             background-color: white;
             height: auto;
-            max-width: 400px;
+            max-width: 350px;
             margin: 10px auto;
             padding: 20px;
             padding-bottom: 50px;
@@ -39,11 +39,15 @@
             button {
                 border: none;
                 color: white;
-                border-radius: 10px;
+                border-radius: 20px;
                 outline: none;
                 cursor: pointer;
                 font-size: 18px;
                 background-color: #5D8EFB;
+            }
+
+            button:hover {
+                box-shadow: 0 5px 10px lightgray;
             }
 
             .photo {
@@ -62,21 +66,21 @@
 
             .username {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 2fr;
                 padding: 10px;
                 border-bottom: 1px solid lightgray;
             }
 
             .name {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 2fr;
                 padding: 10px;
                 border-bottom: 1px solid lightgray;
             }
 
             .email {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 2fr;
                 padding: 10px;
                 border-bottom: 1px solid lightgray;
             }
@@ -89,13 +93,13 @@
     .account {
         padding-top: 60px;
         padding-left: 0px;
-        padding-bottom: 50px;
+        padding-bottom: 60px;
 
         .wrapper {
             padding: 10px;
             
             .profile {
-                width: 90%;
+                width: 85%;
             }
         }
     }

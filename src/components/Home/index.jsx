@@ -36,7 +36,7 @@ class index extends Component {
             })
         } else {
             if(user && token){
-                this.props.userAction(JSON.parse(user, true, token))
+                this.props.userAction(JSON.parse(user), true, token)
                 this.props.history.push("/dashboard")
             } else {
                 this.props.history.push("/login")
@@ -51,7 +51,7 @@ class index extends Component {
         return (
             <div className="home">
                 <img src={logo} alt="logo"/>
-                <h1>e-Commerce</h1>
+                <h1>Hallo Admin</h1>
                 <span>{message}</span>
             </div>
         );

@@ -10,6 +10,7 @@ class Shipping extends Component {
     state = {
         orders: [],
         loading: true,
+        detail: false
     }
 
     componentDidMount(){
@@ -24,7 +25,6 @@ class Shipping extends Component {
         let token = this.props.user.token
         axios.get( url + "/order/waiting-shipping" , headers(token) )
         .then( res => {
-            console.log(res)
             if(_.isArray(res.data.data)){
                 localStorage.setItem("shippingorders", JSON.stringify(res.data.data))
                 this.setState({ orders: res.data.data, loading: false })
@@ -33,7 +33,7 @@ class Shipping extends Component {
     }
 
     render() {
-        const { orders, loading } = this.state
+        const { orders, loading, detail } = this.state
         return (
             <div className="new-order">
 
@@ -41,6 +41,9 @@ class Shipping extends Component {
                     <div> { orders.length < 1 && <div>Empety</div> } {
                     orders.length > 0 && orders.map(order => 
                         <div className="order" key={order.order_id}>
+                        {
+                            detail ?
+                            <div onClick={()=>this.setState({ detail: false })}>
                             <span>Detail Order</span>
                             <div className="shipping">
                                 <div  className="detail">
@@ -111,6 +114,17 @@ class Shipping extends Component {
                                     )
                             }
                             </div>
+                            </div>
+
+                            :
+
+                            <div onClick={()=>this.setState({ detail: true })} className="hide">
+                                <span>{order.shipping_info.received_name}</span>
+                                <span>Total : {order.order_detail.length} product</span>
+                                <span>Payment : Rp {price(order.total_payment)}</span>
+                                <span>Date : {order.due_date}</span>
+                            </div>
+                        }
 
                         </div>
                         )

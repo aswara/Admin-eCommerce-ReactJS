@@ -42,6 +42,7 @@ class index extends Component {
                         <img src={data.photo} alt="photo"/>
                         <span className="name">{data.name}</span>
                         <span className="email">{data.email}</span>
+                        <Link style={{textDecoration: 'none', marginTop: '20px'}} to="/admin"><span style={{padding: '5px 32px', backgroundColor: '#5D8EFB'}} className="logout"><i className="demo-icon icon-user">&#xf061;</i> account</span></Link>
                         <span onClick={()=>this.props.logoutAction() } className="logout"><i className="demo-icon icon-power">&#xe80e;</i> logout</span>                        
                     </div>
                 </div>
