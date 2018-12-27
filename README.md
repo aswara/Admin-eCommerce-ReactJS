@@ -33,9 +33,9 @@ https://e-commerce-rest-api.herokuapp.com
 ## Setup
 
 1. Clone the repo
-2. `$ cd react-pwa-wwwid`
+2. `$ cd Admin-eCommerce-ReactJS
 3. Run `$ yarn` or `npm install`
-4. Run locally `$ yarn start` or `npm run start`
+4. Run locally `$ yarn start` or `npm start`
 
 
 ## Available Scripts
