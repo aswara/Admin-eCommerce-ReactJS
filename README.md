@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Admin Features
 - Admin can add, edit, and delete product
 - Admin can add, edit, and delete category
-- Admin can add, edit, and subcategory
+- Admin can add, edit, and delete subcategory
 - Admin can view list customers
 - Admin can view list products
 - Admin can view list and confirm new order
