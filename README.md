@@ -1,3 +1,5 @@
+# Admin e-Commerce ReactJS
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 #### Live Preview : https://admin-ecommerce.herokuapp.com/
 - username : adi
@@ -27,6 +29,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Backend
 Using programming language PHP framework Lumen
 https://e-commerce-rest-api.herokuapp.com
+
+## Setup
+
+1. Clone the repo
+2. `$ cd react-pwa-wwwid`
+3. Run `$ yarn` or `npm install`
+4. Run locally `$ yarn start` or `npm run start`
+
 
 ## Available Scripts
 
