@@ -14,12 +14,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Admin can view list and confirm new order
 - Admin can view list order in shipping
 
-## Features
+## Featured Tech
 - PWA - Progressive Web Application
 - Add to home screen
 - Offline support. Thanks to service workers.
 - Lazy Loading Image
-- Responsive
+- Responsive Web
 - State Management using Redux
 - Utility Library using Lodash
 - XMLHttpRequest using axios
@@ -27,8 +27,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - CSS preprocessor using Sass
 
 ## Backend
-Using programming language PHP framework Lumen
-https://e-commerce-rest-api.herokuapp.com
+- Programming language PHP
+- Framework Lumen
+- https://e-commerce-rest-api.herokuapp.com
 
 ## Setup
 
