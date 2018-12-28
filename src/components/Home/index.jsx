@@ -51,7 +51,7 @@ class index extends Component {
         return (
             <div className="home">
                 <img src={logo} alt="logo"/>
-                <h1>Welcome Admin</h1>
+                <h1>Hello Admin</h1>
                 <span>{message}</span>
             </div>
         );
