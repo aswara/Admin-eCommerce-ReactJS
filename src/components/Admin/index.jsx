@@ -61,7 +61,21 @@ class index extends Component {
             formData.append('image' , file)
             axios.post( url + "/admin/profile/upload-image", formData ,headers(token) )
             .then( res => {
-                console.log(res)
+                let data =  { username, name, email, photo: res.data.url }
+                axios.put( url + "/admin/profile" , data, headers(token) )
+                .then( res=>{
+                    console.log(res)
+                    if(res.data.success){
+                        this.setState({ message: "Success Update", loading: false, edit: false })
+                    }
+                    
+                })
+                .catch(err=>{
+                    this.setState({ message: "Failed Update", loading: false, edit: false })
+                })
+            })
+            .catch(err=>{
+                this.setState({ message: "Failed Update", loading: false, edit: false })
             })
         }
 
@@ -101,7 +115,7 @@ class index extends Component {
                         <div className="photo">
                             <img src={image ? image : photo } alt="admin"/>
                         </div>
-                        <input onChange={this.handleImage} type="file"/>
+                        <input onChange={this.handleImage} type="file" accept="image/x-png,image/gif,image/jpeg" />
                         <div className="username">
                             <span>Username</span><input value={username} name="username" onChange={this.handleChange} type="text"/>
                         </div>

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './orders.scss'
-import axios from 'axios'
-import { url, headers } from '../../config'
-import { connect } from 'react-redux'
 
 import Header from '../Header'
 import Navbar from '../Navbar'
 import New from './New';
 import Shipping from './Shipping'
+import Success from './Success'
 
 class index extends Component {
     state = {
@@ -42,6 +40,9 @@ class index extends Component {
                     {
                         tab === "shipping" && <Shipping />
                     }
+                    {
+                        tab === "success" && <Success />
+                    }
                     </div>
                 </div>
             </div>
@@ -49,10 +50,4 @@ class index extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return({
-        user : state.userReducer
-    })
-}
-
-export default connect(mapStateToProps)(index);
+export default index;

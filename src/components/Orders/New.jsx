@@ -138,7 +138,6 @@ class New extends Component {
                                 <span>Total : {order.order_detail.length} product</span>
                                 <span>Payment : Rp {price(order.total_payment)}</span>
                                 <span>Date : {order.due_date}</span>
-                                <div onClick={()=> this.confirm(order.order_id)} className="confirm">Confirm</div>
                             </div>
                         }
                         </div>

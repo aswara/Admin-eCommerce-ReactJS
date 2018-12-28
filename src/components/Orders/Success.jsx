@@ -6,7 +6,7 @@ import _ from 'lodash'
 import { Link } from 'react-router-dom'
 import './new.scss'
 
-class Shipping extends Component {
+class Success extends Component {
     state = {
         orders: [],
         loading: true,
@@ -18,15 +18,16 @@ class Shipping extends Component {
     }
 
     fetchOrdersUnconfirmed(){
-        let orders = localStorage.getItem('shippingorders') 
+        let orders = localStorage.getItem('shippingsuccess') 
         if(orders){
             this.setState({ orders: JSON.parse(orders), loading: false })
         }
         let token = this.props.user.token
-        axios.get( url + "/order/waiting-shipping" , headers(token) )
+        axios.get( url + "/order/show-success" , headers(token) )
         .then( res => {
+            console.log(res)
             if(_.isArray(res.data.data)){
-                localStorage.setItem("shippingorders", JSON.stringify(res.data.data))
+                localStorage.setItem("shippingsuccess", JSON.stringify(res.data.data))
                 this.setState({ orders: res.data.data, loading: false })
             }
         })
@@ -141,4 +142,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps)(Shipping);
+export default connect(mapStateToProps)(Success);

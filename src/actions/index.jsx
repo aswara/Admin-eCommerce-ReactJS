@@ -1,6 +1,4 @@
 import { LOGIN,LOGOUT, FETCH_CATEGORIES } from '../types'
-import axios from 'axios'
-import { url } from '../config'
 
 export const userAction = (payload, login, token) => {
     return(dispatch) => {

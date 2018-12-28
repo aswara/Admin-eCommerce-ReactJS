@@ -6,6 +6,7 @@
         padding: 50px;
         color: #505050;
         font-size: 18px;
+        animation: account 1s ease-in-out;
 
         .profile {
             border-radius: 10px;
@@ -44,6 +45,7 @@
                 cursor: pointer;
                 font-size: 18px;
                 background-color: #5D8EFB;
+                padding: 3px 0;
             }
 
             button:hover {
@@ -86,6 +88,17 @@
             }
         }
 
+    }
+
+    @keyframes account {
+        0%{
+            opacity: 0;
+            transform: scaleY(0);
+        }
+        100%{
+            transform: scaleY(1);
+            opacity: 1;
+        }
     }
 }
 

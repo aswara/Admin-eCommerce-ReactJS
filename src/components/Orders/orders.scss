@@ -9,6 +9,7 @@
         width: 100%;
         grid-gap: 10px;
         margin-bottom: 20px;
+        animation: tab 1s ease-in-out;
 
         div {
             background-color: white;
@@ -31,6 +32,15 @@
             color: white;
         }
 
+    }
+
+    @keyframes tab {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
     }
 
     .wrapper {
