@@ -25,7 +25,6 @@ class Success extends Component {
         let token = this.props.user.token
         axios.get( url + "/order/show-success" , headers(token) )
         .then( res => {
-            console.log(res)
             if(_.isArray(res.data.data)){
                 localStorage.setItem("shippingsuccess", JSON.stringify(res.data.data))
                 this.setState({ orders: res.data.data, loading: false })

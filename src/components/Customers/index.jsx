@@ -21,6 +21,7 @@ class index extends Component {
         
         axios.get( url + "/customers" , headers(this.props.user.token) )
         .then(res=>{
+            console.log(res)
             if( res.data.constructor === Array )
                 localStorage.setItem('customers', JSON.stringify(res.data))
                 this.setState({ customers: res.data, loading: false })

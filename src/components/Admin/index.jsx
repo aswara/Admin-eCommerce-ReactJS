@@ -3,7 +3,7 @@ import './admin.scss'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { url, headers } from '../../config'
-import  { logoutAction } from '../../actions'
+import  { userAction } from '../../actions'
 import Header from '../Header'
 import Navbar from '../Navbar'
 import Loading from '../Loading'
@@ -19,7 +19,10 @@ class index extends Component {
         image: '',
         file: null,
         message: '',
-        loading: false
+        loading: false,
+        change: false,
+        current_password: '',
+        new_password: ''
     }
 
     handleChange = (e) => {
@@ -52,7 +55,6 @@ class index extends Component {
 
     saveProfile = (e) => {
         e.preventDefault()
-        console.log("tes")
         this.setState({ loading: true })
         let token = this.props.user.token
         const { username, name, email, photo, file } = this.state
@@ -64,14 +66,14 @@ class index extends Component {
                 let data =  { username, name, email, photo: res.data.url }
                 axios.put( url + "/admin/profile" , data, headers(token) )
                 .then( res=>{
-                    console.log(res)
                     if(res.data.success){
-                        this.setState({ message: "Success Update", loading: false, edit: false })
+                        this.props.userAction(res.data.profile, true, token)
+                        const { name, email, username, photo } = res.data.profile
+                        this.setState({ message: "Success update profile", loading: false, edit: false, name, email, username, photo })
                     }
-                    
                 })
                 .catch(err=>{
-                    this.setState({ message: "Failed Update", loading: false, edit: false })
+                    this.setState({ message: "Failed update profile", loading: false, edit: false })
                 })
             })
             .catch(err=>{
@@ -85,25 +87,59 @@ class index extends Component {
             .then( res=>{
                 console.log(res)
                 if(res.data.success){
-                    this.setState({ message: "Success Update", loading: false, edit: false })
+                    this.props.userAction(res.data.profile, true, token)
+                    this.setState({ message: "Success update profile", loading: false, edit: false })
                 }
                 
             })
             .catch(err=>{
-                this.setState({ message: "Failed Update", loading: false, edit: false })
+                this.setState({ message: "Failed update profile", loading: false, edit: false })
             })
         }
     }
 
+    changePassword = (e) => {
+        e.preventDefault()
+        const { new_password, current_password } = this.state
+        let token = this.props.user.token
+        if(new_password && current_password){
+            axios.put( url + "/admin/profile/change-password" , { current_password, new_password } , headers(token) )
+            .then(res => {
+                this.setState({ change: false, message: 'Success change password' })
+            })
+            .catch(err => {
+                this.setState({ change: false, message: 'Failed change password' })                
+            })
+        } else {
+            this.setState({ change: false, message: 'Failed change password' })                
+        }
+    }
 
     render() {
-        const { username, email, photo, name , edit, image, loading, message } = this.state
+        const { change, username, email, photo, name , edit, image, loading, message } = this.state
+        console.log(this.state)
         return (
             <div className="account">
                 <Header />
                 <Navbar />
                 <div className="wrapper">
                 { loading ? <Loading /> : '' }
+
+                { !change ? '' : 
+                    <div className="change">
+                        <form onSubmit={this.changePassword}>
+                            <div onClick={()=> this.setState({ change: false })} className="edit">
+                                <i class="demo-icon icon-cancel">&#xe80f;</i>
+                            </div>
+                            <h2>Change Password</h2>
+                            <label htmlFor="">Current Password</label>
+                            <input onChange={(e)=>{this.setState({ current_password: e.target.value })}} type="password"/>
+                            <label htmlFor="">New Password</label>
+                            <input onChange={(e)=>{this.setState({ new_password: e.target.value })}} type="password"/>
+                            <button type="submit">save</button>
+                        </form>
+                    </div>
+                }
 
                 {
                     edit ?
@@ -148,7 +184,7 @@ class index extends Component {
                             <span>Email</span><span>{email}</span>
                         </div>
                         <div className="email">
-                            <span>Password</span><span>secret</span>
+                            <span>Password</span><button onClick={()=>this.setState({ change: true })} >change</button>
                         </div>
                     </div>
                 }
@@ -165,4 +201,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default  connect(mapStateToProps,{ logoutAction })(index);       
+export default  connect(mapStateToProps,{ userAction })(index);       

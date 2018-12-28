@@ -8,13 +8,14 @@
     box-shadow: 0 3px 3px lightgray;
 
     .photo {
-        height: 190px;
-        background-color: lightgrey;
+        min-height: 190px;
+        background-color: white;
         margin-bottom: 5px;
     }
 
     img {
-        height: 190px;
+        min-height: 190px;
+        height: 100%;
         width: 100%;
     }
 
