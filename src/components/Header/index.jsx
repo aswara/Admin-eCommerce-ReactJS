@@ -36,7 +36,7 @@ class index extends Component {
                     <Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard"><span>e-Commerce</span></Link>
                 </div>
                 <div className="admin">
-        <span onClick={this.dropDown}>{data.name} {dropdown ?  <i className="demo-icon icon-down-circle">&#xe810;</i> : <i className="demo-icon icon-up-circle">&#xe802;</i>  }</span>
+                <span onClick={this.dropDown}>{data.name} {dropdown ?  <i className="demo-icon icon-down-circle">&#xe810;</i> : <i className="demo-icon icon-up-circle">&#xe802;</i>  }</span>
 
                     <div className={`dropdown ${ dropdown ? `hide` : ``}`}>
                         <img src={data.photo} alt="photo"/>
