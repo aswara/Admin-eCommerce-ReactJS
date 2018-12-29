@@ -5,9 +5,9 @@
     .tab {
         margin-top: 5px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         width: 100%;
-        grid-gap: 10px;
+        grid-gap: 15px;
         margin-bottom: 20px;
         animation: tab 1s ease-in-out;
 
@@ -55,6 +55,10 @@
         padding-top: 60px;
         padding-left: 0px;
         padding-bottom: 60px;
+
+        .tab {
+            grid-template-columns: 1fr 1fr;
+        }
 
         .wrapper {
             padding: 10px;

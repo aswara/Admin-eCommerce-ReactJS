@@ -39,7 +39,6 @@ class New extends Component {
         axios.get( url + "/order/confirm?order_id=" + id ,  headers(token) )
         .then(res=>{
             this.setState({ message: 'Success confirm order', loading: false })
-            localStorage.setItem("neworders", JSON.stringify([]))
             this.fetchOrdersUnconfirmed()
         })
         .catch(err=>{

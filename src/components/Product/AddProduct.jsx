@@ -145,9 +145,9 @@ class AddProduct extends Component {
                
                 let data = new FormData()
         
-                allinput.map(num=>{        
-                    data.append("size[]", allsize[num])
-                    data.append("stock[]", allstock[num])
+                allsize.map((v , i) => {        
+                    data.append("size[]", allsize[i])
+                    data.append("stock[]", allstock[i])
                 })
                 
                 data.append("image", res.data.url)

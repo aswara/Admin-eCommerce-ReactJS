@@ -129,11 +129,13 @@
         }
 
         .photo {
-            height: 150px;
+            height: auto;
+            min-height: 140px;
         }
 
         img {
-            height: 150px;
+            min-height: 140px;
+            height: auto;
         }
     }
 }

@@ -6,6 +6,7 @@ import Navbar from '../Navbar'
 import New from './New';
 import Shipping from './Shipping'
 import Success from './Success'
+import Process from './Process'
 
 class index extends Component {
     state = {
@@ -25,6 +26,9 @@ class index extends Component {
                         <div className={ tab === "new" ? "active" : "" } onClick={()=>this.setState({ tab: "new" })}>
                             <span>New</span>
                         </div>
+                        <div  className={ tab === "process" ? "active" : "" } onClick={()=>this.setState({ tab: "process" })}>
+                            <span>Process</span>
+                        </div>
                         <div  className={ tab === "shipping" ? "active" : "" } onClick={()=>this.setState({ tab: "shipping" })}>
                             <span>Shipping</span>
                         </div>
@@ -36,6 +40,9 @@ class index extends Component {
                     <div className="list-orders">
                     {
                         tab === "new" && <New />
+                    }
+                    {
+                        tab === "process" && <Process />
                     }
                     {
                         tab === "shipping" && <Shipping />

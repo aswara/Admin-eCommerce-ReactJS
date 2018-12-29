@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
 import _ from 'lodash'
-import axios from 'axios'
 import { price, url, headers } from '../../config'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 class Order extends Component {
     state = {
-        detail: false
+        detail: false,
+        input: false,
+        awb: '',
+        order_id: null
     }
 
     confirm(id){
         this.props.confirm(id)
     }
 
+    confirmProcess(id){
+        this.setState({ order_id: id, input: true })
+    }
+
+    sendAwb = (e) => {
+        e.preventDefault()
+        const { awb, order_id } = this.state
+        this.props.sendAwb(order_id, awb)
+        this.setState({input: false})
+    }
+
     render() {
-        const { detail } = this.state
+        const { detail, input } = this.state
         const { order, status } = this.props
         return (
             <div className="order">
+            { input && <div className="confirm-process">
+                            <div>
+                                <label htmlFor="awb">Air Waybill</label>
+                                <input id="awb" onChange={(e)=>this.setState({ awb: e.target.value })} type="text"/><br />
+                                <button onClick={this.sendAwb}>Confirm</button>
+                                <button onClick={()=>this.setState({ input: false})}>Cancel</button>
+                            </div>
+                        </div> }
             {
                 detail ? 
                 <div onClick={()=>this.setState({ detail: false })}>
                     { status === "new" && <div onClick={()=> this.confirm(order.order_id)} className="confirm">Confirm</div> }
+                    { status === "process" && <div onClick={()=> this.confirmProcess(order.order_id)} className="confirm">Shipping</div> }
                     <span>Detail Order</span>
                     <div className="shipping">
                         <div  className="detail">

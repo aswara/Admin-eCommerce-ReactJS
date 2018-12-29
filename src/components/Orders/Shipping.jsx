@@ -23,7 +23,7 @@ class Shipping extends Component {
             this.setState({ orders: JSON.parse(orders), loading: false })
         }
         let token = this.props.user.token
-        axios.get( url + "/order/waiting-shipping" , headers(token) )
+        axios.get( url + "/order/shipping" , headers(token) )
         .then( res => {
             if(_.isArray(res.data.data)){
                 localStorage.setItem("shippingorders", JSON.stringify(res.data.data))

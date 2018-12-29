@@ -40,6 +40,54 @@
         box-shadow: 0 10px 20px lightgray;
     }
 
+    .confirm-process {
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 250;
+        
+        div {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            margin: 100px auto;
+            border-radius: 10px;
+
+            label {
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            input {
+                border: 1px solid #4694FC;
+                border-radius: 3px;
+                width: 95%;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                font-size: 18px;
+                padding: 3px 5px;
+            }
+            
+            button {
+                margin-left: 35px;
+                background-color: #4694FC;
+                border: none;
+                font-size: 16px;
+                padding: 5px 20px;
+                border-radius: 25px;
+                color: white;
+                cursor: pointer;
+            }
+
+            button:hover {
+                box-shadow: 0 10px 10px lightgrey;
+            }
+        }
+    }
+
     .order {
         margin-bottom: 10px;
         border-radius: 5px;
