@@ -1,4 +1,43 @@
+# Admin e-Commerce ReactJS
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Live Preview : https://admin-ecommerce.herokuapp.com/
+- username : adi
+- password : 12345
+
+## Admin Features
+- Admin can add, edit, and delete product
+- Admin can add, edit, and delete category
+- Admin can add, edit, and delete subcategory
+- Admin can view list customers
+- Admin can view list products
+- Admin can view list and confirm new order
+- Admin can view list order in shipping
+
+## Featured Tech
+- PWA - Progressive Web Application
+- Add to home screen
+- Offline support. Thanks to service workers.
+- Lazy Loading Image
+- Responsive Web
+- State Management using Redux
+- Utility Library using Lodash
+- XMLHttpRequest using axios
+- Rich Text Editor using React-Quill
+- CSS preprocessor using Sass
+
+## Backend
+- Programming language PHP
+- Framework Lumen
+- https://e-commerce-rest-api.herokuapp.com
+
+## Setup
+
+1. Clone the repo
+2. `$ cd Admin-eCommerce-ReactJS
+3. Run `$ yarn` or `npm install`
+4. Run locally `$ yarn start` or `npm start`
+
 
 ## Available Scripts
 
