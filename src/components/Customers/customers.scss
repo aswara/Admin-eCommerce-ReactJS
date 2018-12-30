@@ -37,6 +37,7 @@
             border-radius: 30px;
             align-items: center;
             box-shadow: 0 3px 2px lightgray;
+            animation: customer 1s ease-in-out;
 
             .photo {
                 display: flex;
@@ -55,6 +56,17 @@
                 }
             }
 
+        }
+
+        @keyframes customer {
+            0%{
+                margin-top: -50px;
+                opacity: 0;
+            }
+            100%{
+                margin-top: 10px;
+                opacity: 1;
+            }
         }
 
     }
