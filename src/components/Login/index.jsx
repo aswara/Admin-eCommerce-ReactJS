@@ -24,9 +24,6 @@ class index extends Component {
         password: null,
     }
 
-    componentDidMount() {
-    }
-
     handleChange = (e) => {
         this.setState({ [e.target.name] : e.target.value })
     }

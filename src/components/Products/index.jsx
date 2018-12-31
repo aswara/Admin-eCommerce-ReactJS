@@ -20,7 +20,8 @@ class index extends Component {
         subcategories : [],
         category_id : 0,
         sub_category_id: 0,
-        top : '100px'
+        top : '100px',
+        search : ''
     }
 
 
@@ -130,20 +131,33 @@ class index extends Component {
         }
     }
 
+    searchProduct = (e) => {
+        e.preventDefault()
+        axios.get( url + "/product?search=" + this.state.search )
+        .then(res =>{
+            if(_.isArray(res.data)){
+                this.setState({ products: res.data })
+            }
+        })
+    }
+
     render() {
-        const { top, loading, products, show, categories, subcategories, sub_category_id, category_id } = this.state
+        const { top, loading, products, show, categories, subcategories, sub_category_id, category_id, message } = this.state
         return (
             <div className="products">
                 <Header />
                 <Navbar />
 
                 <div className="wrapper">
+
                     <Link to="/addproduct">
                     <div style={{ top: top, transition: '0.5s' }} className="new">
                         <i className="demo-icon icon-plus">&#xe808;</i>
                     </div>
                     </Link>
+
                     <span>Products</span>
+
                     <div className="show">
                         <div className={ show === 'card' ? 'active' : '' } onClick={()=> this.setState({ show: 'card' })}>
                             <span>cards</span>
@@ -155,7 +169,7 @@ class index extends Component {
 
                     <div className="wrapper-search">
                         <div className="search">
-                            <label htmlFor="category">Category</label>
+                            <label style={{marginRight: "27px"}} htmlFor="category">Category</label>
                             <select value={category_id} onChange={this.selectCategory} name="category" id="category">
                                 <option value="0">All</option>
                                 {
@@ -173,12 +187,20 @@ class index extends Component {
                                 }
                             </select>
                         </div>
+
+                        <div className="search-input">
+                            <form onSubmit={this.searchProduct}>
+                                <input placeholder="Search product" onChange={(e)=>this.setState({ search: e.target.value })} type="search"/>
+                                <button type="submit"><i className="demo-icon icon-search">&#xe806;</i></button>
+                            </form>
+                        </div>
                     </div>
 
                     { // loading product
                         loading ? <div className={show}>{ products.map(num=> <div key={num} className="loading-list"><div></div><div></div><div></div></div> ) }</div> :
                         <div className={show}>
-                            { //list all products 
+                            { //list all products
+                                products.length === 0 ? <span style={{color: "red"}}>Empty</span> :
                                 products.map(product=> <Product key={product.product_id} product={product} /> )
                             }
                         </div>

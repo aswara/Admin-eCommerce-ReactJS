@@ -13,6 +13,7 @@
             margin-top: 10px; 
             display: flex;
             justify-content: space-between;
+            margin-bottom: 20px;
             
             i {
                 margin-top: 10px;
@@ -65,6 +66,112 @@
                 100%{
                     opacity: 1;
                     margin-top: 0
+                }
+            }
+        }
+
+        button {
+            background-color: #4694fc;
+            font-size: 14px;
+            padding: 3px 20px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .form-bank {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+
+            input {
+                margin-bottom: 10px;
+                font-size: 14px;
+                padding: 5px 5px;
+                border: 1px solid lightblue;
+            }
+        }
+
+        .load {
+            div {
+                width: 100%;
+                height: 50px;
+                background-color: lightgray;
+                margin-bottom: 10px;
+                animation: load 2s infinite;
+                border-radius: 20px;
+
+            }
+
+            @keyframes laod {
+                0%{
+                    opacity: 0.2;
+                }
+                50%{
+                    opacity: 0.9;
+                }
+                100%{
+                    opacity: 0.2;
+                }
+            }
+            
+        }
+
+        .bank {
+            background-color: white;
+            margin-top: 10px;
+            padding: 10px;
+            box-shadow: 0px 3px 5px lightgrey;
+            border-radius: 3px;
+            position: relative;
+
+            div {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                padding: 5px;
+                grid-gap: 10px;
+                color: #4694fc;
+
+                span {
+                    color: #505050;
+                }
+            }
+
+            .action {
+                position: absolute;
+                right: 0px;
+
+                span {
+                    top: -20px;
+                    right: 13px;
+                    color: gray;
+                    cursor: pointer;
+                    font-weight: 600;
+                    font-size: 30px;
+                    position: absolute;
+                }
+
+                button {
+                    position: absolute;
+                    top: 20px;
+                    right: 10px;
+                    animation: button 1s ease-in-out;
+                }
+
+                @keyframes button {
+                    0%{
+                        opacity: 0;
+                        transform: scale(0.2);
+                    }
+                    50%{
+                        transform: scale(1.2);
+                    }
+                    100%{
+                        opacity: 1;
+                        transform: scale(1);
+                    }
                 }
             }
         }
