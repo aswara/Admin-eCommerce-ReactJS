@@ -57,14 +57,18 @@ class index extends Component {
     }
 
     updateBank = (id) => {
-        axios.delete( url + "/bank/" + id , headers(this.props.user.token) )
-        .then(res=>{
+        if(id){
+            axios.delete( url + "/bank/" + id , headers(this.props.user.token) )
+            .then(res=>{
+                this.fetchBank()
+                this.setState({ message: "Success delete Bank" })
+            })
+            .catch(err=>{
+                this.setState({ message: "Failed delete Bank" })
+            })
+        } else {
             this.fetchBank()
-            this.setState({ message: "Success delete Bank" })
-        })
-        .catch(err=>{
-            this.setState({ message: "Failed delete Bank" })
-        })
+        }
     }
 
     handleChange = (e) => {
