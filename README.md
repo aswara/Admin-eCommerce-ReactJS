@@ -5,6 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - username : aguzs
 - password : 12345
 
+## Required
+- Internet to access this website
+
 ## Admin Features
 - Admin can add, edit, and delete product
 - Admin can add, edit, and delete category
