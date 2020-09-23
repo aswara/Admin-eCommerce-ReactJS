@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 #### Live Preview : https://admin-ecommerce.herokuapp.com/
 - username : adi
-- password : 123456
+- password : 12345
 
 ## Required
 - Internet to access this website
